@@ -10,7 +10,7 @@ It is not stage-specific.
 Stage: Step 2 — Implementation Foundation
 Status: IMPLEMENTED_PENDING_VERIFICATION
 Branch: architecture/step-2-foundation
-Current checkpoint: 6519ad6d5b2de14571e8c6774757144fa2098aa3
+Current checkpoint: 4666a2e8a2c14f64506ca437f4b5facfc641650b
 Previous accepted baseline: e35acff00a5c45d3509a62294bc24834374bad57
 Stage definition: STEP-2-PLAN.md
 Stage gate: STEP-2-QUALITY-REVIEW.md
@@ -24,7 +24,7 @@ Previous accepted result: 98/100, zero unresolved Critical defects.
 
 The Step 2 implementation exists as a bounded executable foundation. Its scientific computation and renderer seam are implemented, but the stage remains pending verification and has newly identified governance, technology-scope, design-system, and visual-quality work recorded in the defect ledger.
 
-The technology architecture is now consolidated in ADR-005, ADR-006, and ADR-008. ADR-008 records selected foundation technologies, approved future capabilities, candidates, explicit non-selections, and adoption rules; it does not imply that future technologies are installed.
+The technology architecture is now consolidated in ADR-005, ADR-006, and ADR-008. ADR-008 records selected foundation technologies, approved future capabilities, candidates, explicit non-selections, and adoption rules; it does not imply that future technologies are installed. A repository/package-manifest audit at checkpoint 4666a2e8a2c14f64506ca437f4b5facfc641650b found no unrecorded direct third-party dependency; the root lockfile is present.
 
 ## 4. Executed verification evidence
 
