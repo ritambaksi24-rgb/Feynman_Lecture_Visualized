@@ -10,7 +10,7 @@ It is not stage-specific.
 Stage: Step 2 — Implementation Foundation
 Status: IMPLEMENTED_PENDING_VERIFICATION
 Branch: architecture/step-2-foundation
-Current checkpoint: 5ee8ca7ada2165f042d09a69c56f97cb999dda7b
+Current checkpoint: 1677696936158b863e12e12214d3470c9a824cfb
 Previous accepted baseline: e35acff00a5c45d3509a62294bc24834374bad57
 Stage definition: STEP-2-PLAN.md
 Stage gate: STEP-2-QUALITY-REVIEW.md
@@ -27,24 +27,26 @@ The approved Step 2 scope has been implemented as a bounded foundation across re
 ## 4. Executed verification evidence
 
 Latest Step 2 foundation workflow:
-- Run: 37145979192
+- Run: 37146076959
 - Result: success
-- npm ci: pass
-- governance validation: pass
-- token validation: pass (19 files)
-- contract/schema validation: pass
-- architecture boundary validation: pass
-- runtime safety validation: pass
-- accessibility baseline validation: pass
-- TypeScript build: pass
-- core tests: pass (9/9)
-- performance test: pass
-- application production build: pass
-- built-output smoke validation: pass
 
-PR validation for the same checkpoint also passed:
-- Step 2 PR foundation: 37145982273
-- Governance Validation: 37145982268
+Latest Governance Validation:
+- Run: 37146076949
+- Result: success
+
+The Step 2 workflow passed:
+- npm ci;
+- governance validator;
+- token validator (19 files);
+- contract/schema validator;
+- architecture boundary validator;
+- runtime-safety validator;
+- accessibility baseline validator;
+- TypeScript build;
+- core tests (9/9);
+- performance test;
+- production application build;
+- built-output smoke validation.
 
 Adversarial architecture review:
 - STEP-2-ADVERSARIAL-ARCHITECTURE-REVIEW.md

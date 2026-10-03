@@ -2,7 +2,7 @@
 
 Status: IMPLEMENTED_PENDING_VERIFICATION
 Baseline commit: e35acff00a5c45d3509a62294bc24834374bad57
-Current implementation checkpoint: 5ee8ca7ada2165f042d09a69c56f97cb999dda7b
+Current implementation checkpoint: 1677696936158b863e12e12214d3470c9a824cfb
 
 ## Implementation result
 
@@ -37,49 +37,45 @@ The approved Step 2 implementation scope is established as a coherent executable
 
 ## Executed CI evidence
 
-The latest Step 2 foundation workflow for checkpoint 5ee8ca7ada2165f042d09a69c56f97cb999dda7b passed all configured checks.
+The final Step 2 foundation checkpoint passed all configured CI checks.
 
-Workflow run: 37145979192
-Result: success
+Step 2 foundation workflow: 37146076959 — success
+Governance Validation workflow: 37146076949 — success
 
-The run verified:
+The foundation workflow verified:
 
-- npm ci
-- permanent governance validation
-- DTCG token validation across 19 token files
-- contract/schema validation
-- architecture boundary validation
-- runtime-safety validation
-- application accessibility baseline validation
-- TypeScript project-reference compilation
-- 9 core scientific/infrastructure tests
-- 1 performance budget test
-- production application build
-- built-output smoke validation
+- npm ci with the committed lockfile;
+- permanent governance validation;
+- DTCG token validation across 19 token files;
+- contract/schema validation;
+- architecture boundary validation;
+- runtime-safety validation;
+- application accessibility baseline validation;
+- TypeScript project-reference compilation;
+- 9 core scientific/infrastructure tests;
+- 1 performance-budget test;
+- production application build;
+- built-output smoke validation.
 
-PR validation on the same checkpoint also passed:
-- Step 2 foundation PR workflow: 37145982273 — success
-- Governance Validation: 37145982268 — success
+## Additional architecture evidence
 
-## Additional review evidence
+STEP-2-ADVERSARIAL-ARCHITECTURE-REVIEW.md records an adversarial review with no Critical architectural defect found.
 
-STEP-2-ADVERSARIAL-ARCHITECTURE-REVIEW.md records the adversarial architecture review. No Critical architectural defect was found.
+The review covers package-boundary direction, scientific/UI separation, renderer neutrality, safe expression execution, state/reactivity, provenance, capability resolution, token-generation normalization, and verification-discipline controls.
 
-The review verified package boundary direction, scientific/UI separation, renderer neutrality, safe expression handling, state/reactivity structure, provenance handling, capability resolution, and token-generation naming normalization.
+## Remaining acceptance evidence
 
-## Mandatory final-gate evidence still missing
-
-The final Step 2 gate is intentionally not closed. Three evidence items remain:
+The stage is deliberately not marked VERIFIED_PASS. The remaining required evidence is:
 
 1. Browser interaction review of the built prototype.
 2. Manual browser/assistive-technology accessibility review.
 3. Direct reconciliation against a concrete Figma file and its variables/components.
 
-These are verification/evidence dependencies, not known implementation failures.
+These are evidence dependencies, not known implementation failures.
 
 ## Gate decision
 
-No final score is assigned until the remaining evidence is collected.
+No final score is assigned until all mandatory evidence is present.
 
 The permanent QUALITY-GATE.md requires:
 - score >=95/100;
