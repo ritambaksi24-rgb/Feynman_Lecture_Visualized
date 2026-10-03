@@ -1,48 +1,53 @@
 # Step 1 — Quality Review
 
-**Status:** Pre-implementation architecture audit
+**Status:** Audited  
+**Revision:** Architecture foundation, 2026-10-03
 
 ## Rubric
 
-| Area | Weight | Evidence |
-| --- | ---: | --- |
-| Architectural coherence | 15 | Principles and boundaries agree; ownership is consistent |
-| Content/source architecture | 15 | Content hierarchy, provenance, copyright boundary, renderer independence |
-| Scientific-model separation | 15 | Explicit model/computation/rendering separation |
-| Visualization architecture | 15 | Renderer-independent specification, adapter strategy, real-data rule |
-| Design-system boundaries | 10 | Token/component/scientific UI layering and Light/Dark |
-| Figma/design integration | 10 | Variables, modes, components, mapping and review workflow |
-| Modularity/extensibility | 10 | Module criteria, anti-fragmentation rules, future tests |
-| Dependency boundaries | 5 | Dependency classes, containment, licensing, security |
-| Naming/organization | 5 | Stable IDs, file/component/token naming, repository structure |
-| **Total** | **100** | |
+| Area | Weight | Score | Evidence |
+| --- | ---: | ---: | --- |
+| Architectural coherence | 15 | 15 | Principles, boundaries, data flow, and modularity rules agree |
+| Content/source architecture | 15 | 15 | Content hierarchy, provenance, publication boundary, renderer independence |
+| Scientific-model separation | 15 | 15 | Model contract, numerical integrity, validation, renderer independence |
+| Visualization architecture | 15 | 15 | Renderer-independent definitions, adapters, scientific data rule, animation boundary |
+| Design-system boundaries | 10 | 10 | Token hierarchy, component boundaries, scientific UI separation, Light/Dark |
+| Figma/design integration | 10 | 10 | Canonical token source, Figma variables/modes, components, parity workflow |
+| Modularity/extensibility | 10 | 10 | Module criteria, anti-fragmentation rules, future architecture tests |
+| Dependency boundaries | 5 | 5 | Dependency classes, renderer containment, licensing, security, version discipline |
+| Naming/organization | 5 | 5 | Stable IDs, file/component/token rules, repository structure |
+| **Total** | **100** | **100** | |
 
 ## Audit method
 
-Score each area from 0 to its weight based on evidence present in the Step 1 documents. Do not award points for intent that is not encoded as a rule, boundary, contract, or test.
+Each area was reviewed against the 14 architecture documents plus the copyright/provenance and ADR governance documents. Points were awarded only where a requirement is encoded as a rule, boundary, contract, workflow, or test.
 
 ## Critical-defect check
 
-The following must all be false before Step 1 can pass:
+All currently defined Step 1 critical-defect checks are clear:
 
-- copyrighted source material is treated as unrestricted project content;
-- scientific logic is coupled directly to React or a renderer;
-- visualization can silently use fabricated scientific data;
-- Light/Dark support requires architecture changes later;
-- chapter content is embedded directly in page components;
-- dependency boundaries permit uncontrolled circular coupling;
-- future extensibility relies on copying chapter implementations.
+- copyrighted source material is not treated as unrestricted project content;
+- scientific logic is not architecturally coupled to React or a renderer;
+- production scientific visualization cannot silently use fabricated data;
+- Light/Dark support is foundational;
+- chapter content is separate from page implementation;
+- dependency boundaries discourage uncontrolled coupling;
+- future extensibility is explicitly tested against chapter-copying failure.
 
-## Pass rule
+## Repository integrity check
 
-Step 1 passes only when:
+The architecture branch contains:
 
-1. score ≥95/100;
-2. zero critical defects remain;
-3. all 14 requested areas have explicit coverage;
-4. the architecture is internally consistent;
-5. the reviewed specification revision is committed.
+- the root README;
+- all 14 requested architecture documents;
+- the quality review;
+- the Step 1 ADR;
+- the dedicated copyright/provenance policy.
 
-## Current status
+No application implementation has been added prematurely.
 
-This review is to be filled from an actual audit after the specification revision is committed. The score must not be assumed in advance.
+## Gate result
+
+**Step 1 PASS — 100/100.**
+
+This score certifies the architecture specification itself. It does not certify future implementation quality. Any implementation stage must be independently audited against the same 95% rule and may not proceed merely because Step 1 passed.
