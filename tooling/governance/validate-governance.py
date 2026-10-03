@@ -31,6 +31,7 @@ REQUIRED_FILES = [
     ROOT / ".github/workflows/repository-validation.yml",
     ROOT / "docs/decisions/ADR-006-bounded-exploration-and-foundational-technology.md",
     ROOT / "docs/decisions/ADR-007-repository-governance-enforcement.md",
+    ROOT / "docs/decisions/ADR-008-technology-inventory-and-adoption-roadmap.md",
 ]
 
 
@@ -60,6 +61,7 @@ protocol = read(ROOT / "docs/governance/CHANGE-PROTOCOL.md")
 figma = read(ROOT / "docs/governance/FIGMA-AI-AGENTS.md")
 readme = read(ROOT / "docs/governance/README.md")
 branch_policy = read(ROOT / "docs/governance/BRANCH-PROTECTION.md")
+technology_inventory = read(ROOT / "docs/decisions/ADR-008-technology-inventory-and-adoption-roadmap.md")
 governance_workflow = read(ROOT / ".github/workflows/governance.yml")
 repository_workflow = read(ROOT / ".github/workflows/repository-validation.yml")
 
