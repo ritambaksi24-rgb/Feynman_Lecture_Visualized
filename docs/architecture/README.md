@@ -56,6 +56,8 @@ The project is contract-driven at stable subsystem boundaries, scientifically gr
 - [ADR-001 — Step 1 Foundation](../decisions/ADR-001-step-1-foundation.md)
 - [ADR-002 — Contract-First Boundaries](../decisions/ADR-002-contract-first-boundaries.md)
 - [ADR-003 — Scientific Exploration Engine](../decisions/ADR-003-scientific-exploration-engine.md)
+- [Project Governance](../governance/README.md)
+- [Figma AI Agent Rules](../governance/FIGMA-AI-AGENTS.md)
 
 ## Standards referenced
 
