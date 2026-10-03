@@ -5,25 +5,27 @@
 
 ## Context
 
-The project is intended to visualize the Feynman Lectures chapter by chapter while preserving source flow, maintaining scientific rigor, supporting multiple visualization technologies, using a modular design system, integrating Figma, and remaining maintainable over a long lifecycle.
+The project visualizes the Feynman Lectures chapter by chapter while preserving source flow, maintaining scientific rigor, supporting multiple visualization technologies, integrating Figma, providing interactive scientific/mathematical exploration, and remaining maintainable.
 
 ## Decisions
 
-1. Treat the Feynman Lectures as the authoritative conceptual source while maintaining a clear copyright/provenance boundary.
-2. Model content independently from UI.
-3. Separate scientific models from computation and rendering.
-4. Design visualization around renderer-independent specifications and adapters.
-5. Use shadcn/ui + Base UI as the proposed UI foundation, with implementation-stage verification.
-6. Use a tokenized design system with Light and Dark modes as first-class requirements.
-7. Use the repository's machine-readable token source as the canonical implementation token source; Figma variables mirror/reconcile with it.
-8. Use Markdown for architectural documentation and structured JSON/schema formats for machine-consumed content and tokens where appropriate.
-9. Use ADRs for important architectural decisions.
-10. Apply the 95% hard quality gate before advancing stages.
+1. Feynman Lectures are the conceptual source of truth within a clear copyright/provenance boundary.
+2. Content is independent from UI implementation.
+3. Scientific models, computation, exploration, visualization, and rendering are separate responsibilities.
+4. Stable subsystem boundaries use contract-first/API-first design.
+5. JSON Schema is used for persisted/exchanged JSON, TypeScript contracts for internal APIs, and OpenAPI for genuine external HTTP services.
+6. The Scientific Exploration Engine is first-class and connects parameters, expressions, calculations, graphs, plots, tables, simulations, and visualization through shared state.
+7. shadcn/ui + Base UI remains the proposed UI foundation, subject to implementation-stage verification.
+8. Repository DTCG token data is canonical for implementation; Figma variables mirror/reconcile.
+9. Light and Dark themes are foundational.
+10. Three.js is a browser visualization capability; Manim is optional offline animation tooling; VisPy is optional Python scientific tooling.
+11. Scientific provenance, reproducibility, accessibility, performance, security, and licensing are architectural requirements.
+12. The 95% quality gate is mandatory.
 
 ## Consequences
 
-The project incurs more upfront architecture work and validation. In return, chapter expansion, renderer replacement, theme support, scientific validation, and design-system evolution can proceed with less cross-layer coupling.
+The project has greater upfront architecture work but can expand chapters, scientific models, exploration definitions, renderers, and design-system components with controlled coupling.
 
 ## Revisit triggers
 
-Revisit this ADR if the chosen UI foundation cannot satisfy accessibility or modularity requirements; the content model proves insufficient for multiple volumes; renderer adapters create unacceptable performance or complexity; licensing requirements materially change; Figma/token synchronization creates unacceptable drift; or a future subsystem requires breaking a stated boundary.
+Revisit when a boundary repeatedly requires exceptions, the exploration model proves insufficient, technology or licensing assumptions materially change, or implementation evidence contradicts this architecture.

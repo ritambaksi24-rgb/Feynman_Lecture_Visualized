@@ -1,40 +1,67 @@
 # Architecture Specification
 
-This directory contains the Step 1 architecture foundation for **Feynman Lectures Visualized**.
+This is the architecture foundation for **Feynman Lectures Visualized**.
 
-## Documents
+The project is contract-driven at stable subsystem boundaries, scientifically grounded, renderer-independent, and designed for chapter-by-chapter expansion.
 
-1. [Architecture Principles](./01-architecture-principles.md)
-2. [System Boundaries](./02-system-boundaries.md)
-3. [Repository Structure](./03-repository-structure.md)
-4. [Content Model](./04-content-model.md)
-5. [Scientific Model Architecture](./05-scientific-model-architecture.md)
-6. [Visualization Architecture](./06-visualization-architecture.md)
-7. [Design-System Architecture](./07-design-system-architecture.md)
-8. [Figma Architecture](./08-figma-architecture.md)
-9. [Dependency Rules](./09-dependency-rules.md)
-10. [Data-Flow Rules](./10-data-flow-rules.md)
-11. [Naming Conventions](./11-naming-conventions.md)
-12. [Modularity Rules](./12-modularity-rules.md)
-13. [Quality Gates](./13-quality-gates.md)
-14. [Future Extensibility Tests](./14-future-extensibility-tests.md)
+## Foundation
 
-## Additional governance
+01 Architecture Principles  
+02 System Boundaries  
+03 Repository Structure  
+04 Content Model  
+05 Scientific Model Architecture  
+06 Visualization Architecture  
+07 Design-System Architecture  
+08 Figma Architecture  
+09 Dependency Rules  
+10 Data-Flow Rules  
+11 Naming Conventions  
+12 Modularity Rules  
+13 Quality Gates  
+14 Future Extensibility Tests
 
-- [Step 1 Quality Review](./STEP-1-QUALITY-REVIEW.md)
-- [Copyright and Provenance](./COPYRIGHT-AND-PROVENANCE.md)
-- [ADR-001 — Step 1 Foundation](../decisions/ADR-001-step-1-foundation.md)
+## API and contracts
 
-## Foundational decisions
+15 API-First Architecture  
+16 Contract and Schema Strategy  
+17 Internal Module API Strategy  
+18 External HTTP API Strategy  
+19 API Versioning and Compatibility  
+20 Contract Validation and Testing
 
-- Feynman Lectures are the conceptual source of truth, while public application content must respect copyright and provenance boundaries.
-- The project will not redistribute the source work wholesale.
-- Light and Dark themes are foundational requirements.
-- The UI foundation is proposed as shadcn/ui + Base UI, subject to implementation-stage verification.
-- Scientific models are renderer-independent.
-- Visualization engines are adapters/capabilities, not content dependencies.
-- Repository token files are the canonical implementation token source; Figma mirrors/reconciles them.
-- Markdown is the format for human-readable architecture documentation.
-- Structured JSON/schema files are preferred for machine-consumed content and tokens where appropriate.
-- ADRs record important architecture decisions and changes.
-- The 95% quality gate is mandatory.
+## Scientific exploration and execution
+
+21 Scientific Exploration Engine  
+22 State and Reactivity Architecture  
+23 Computation and Execution Architecture  
+24 Scientific Data, Provenance and Reproducibility  
+25 Performance and Rendering Budgets  
+26 Accessibility and Scientific UX
+
+## Security, content, extension and operations
+
+27 Security, Privacy and Supply Chain  
+28 Content Authoring and Editorial Pipeline  
+29 Capability Registry and Extension Architecture  
+30 Observability, Diagnostics and Failure Handling  
+31 Technology Selection and Renderer Adoption  
+32 Build, Release and Deployment Architecture
+
+## Governance
+
+- Copyright and Provenance
+- Contract Cross-Check
+- Step 1 Quality Review
+- ADR-001 — Step 1 Foundation
+- ADR-002 — Contract-First Boundaries
+- ADR-003 — Scientific Exploration Engine
+
+## Standards referenced
+
+- Design Tokens Community Group Format 2025.10
+- JSON Schema Draft 2020-12
+- OpenAPI 3.2.0 for external HTTP APIs
+- WCAG 2.2 AA as the product accessibility target
+
+External standards guide implementation; project-specific contracts remain authoritative within their defined boundaries.

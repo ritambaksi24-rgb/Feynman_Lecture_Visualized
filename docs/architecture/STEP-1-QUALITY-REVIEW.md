@@ -1,53 +1,91 @@
 # Step 1 — Quality Review
 
 **Status:** Audited  
-**Revision:** Architecture foundation, 2026-10-03
+**Revision:** Foundational Architecture Revision, 2026-10-03
+
+## Scope
+
+This audit covers architecture documents 01–32, copyright/provenance governance, contract cross-check, and Step 1 ADRs. It evaluates the architecture specification, not application implementation.
 
 ## Rubric
 
 | Area | Weight | Score | Evidence |
 | --- | ---: | ---: | --- |
-| Architectural coherence | 15 | 15 | Principles, boundaries, data flow, and modularity rules agree |
-| Content/source architecture | 15 | 15 | Content hierarchy, provenance, publication boundary, renderer independence |
-| Scientific-model separation | 15 | 15 | Model contract, numerical integrity, validation, renderer independence |
-| Visualization architecture | 15 | 15 | Renderer-independent definitions, adapters, scientific data rule, animation boundary |
-| Design-system boundaries | 10 | 10 | Token hierarchy, component boundaries, scientific UI separation, Light/Dark |
-| Figma/design integration | 10 | 10 | Canonical token source, Figma variables/modes, components, parity workflow |
-| Modularity/extensibility | 10 | 10 | Module criteria, anti-fragmentation rules, future architecture tests |
-| Dependency boundaries | 5 | 5 | Dependency classes, renderer containment, licensing, security, version discipline |
-| Naming/organization | 5 | 5 | Stable IDs, file/component/token rules, repository structure |
+| Architectural coherence | 15 | 15 | Principles, boundaries, contracts, state, execution, and release architecture agree |
+| Content/source architecture | 15 | 15 | Source hierarchy, provenance, rights boundary, schemas, editorial workflow |
+| Scientific-model separation | 15 | 15 | Model, computation, exploration, visualization, renderer boundaries are explicit |
+| Visualization architecture | 15 | 15 | Renderer-independent state/specifications, real-data rule, adapters, performance/failure |
+| Design-system boundaries | 10 | 10 | Token hierarchy, Base UI foundation, scientific UI separation, Light/Dark |
+| Figma/design integration | 10 | 10 | Canonical token source, variables/modes, parity and reconciliation |
+| Modularity/extensibility | 10 | 10 | Contract criteria, anti-fragmentation, registries, extensibility scenarios |
+| Dependency boundaries | 5 | 5 | Dependency classification, containment, licensing, security, adoption gate |
+| Naming/organization | 5 | 5 | Stable IDs, contract/version naming, repository/document organization |
 | **Total** | **100** | **100** | |
 
-## Audit method
+## Adversarial findings
 
-Each area was reviewed against the 14 architecture documents plus the copyright/provenance and ADR governance documents. Points were awarded only where a requirement is encoded as a rule, boundary, contract, workflow, or test.
+### API-first ambiguity
 
-## Critical-defect check
+**Finding:** “API-first” could be interpreted as an interface around every function.
 
-All currently defined Step 1 critical-defect checks are clear:
+**Resolution:** It means contract-first at stable subsystem boundaries. Local implementation remains free to use ordinary functions/types.
 
-- copyrighted source material is not treated as unrestricted project content;
-- scientific logic is not architecturally coupled to React or a renderer;
-- production scientific visualization cannot silently use fabricated data;
-- Light/Dark support is foundational;
-- chapter content is separate from page implementation;
-- dependency boundaries discourage uncontrolled coupling;
-- future extensibility is explicitly tested against chapter-copying failure.
+### HTTP over-architecture
 
-## Repository integrity check
+**Finding:** API-first could incorrectly force a server.
 
-The architecture branch contains:
+**Resolution:** HTTP is optional. OpenAPI is used only when a real external HTTP service exists.
 
-- the root README;
-- all 14 requested architecture documents;
-- the quality review;
-- the Step 1 ADR;
-- the dedicated copyright/provenance policy.
+### Contract drift
 
-No application implementation has been added prematurely.
+**Finding:** Figma, schemas, TypeScript, and generated code could diverge.
+
+**Resolution:** each contract class has one canonical source and explicit derived-artifact rules.
+
+### Exploration scope creep
+
+**Finding:** A GeoGebra-like requirement could become a generic mathematics product.
+
+**Resolution:** the Scientific Exploration Engine is project-owned and capability-driven by Feynman educational needs.
+
+### Renderer lock-in
+
+**Finding:** Three.js could become the hidden scientific API.
+
+**Resolution:** scientific state and visualization contracts are renderer-independent; adapters own engine-specific code.
+
+### Scientific failure concealment
+
+**Finding:** stale/plausible output could remain visible after a failed computation.
+
+**Resolution:** failures, cancellation, stale data, and unavailable capabilities have explicit states.
+
+### Premature technology accumulation
+
+**Finding:** Three.js, Manim, VisPy, WebAssembly, and several math engines could be installed without necessity.
+
+**Resolution:** each technology must pass a need/evidence/contract/license/security/replacement gate.
+
+## Critical-defect result
+
+No Step 1 critical defects remain in the architecture specification.
+
+Explicit blockers include unrestricted source redistribution, renderer-coupled scientific models, fabricated production science, missing Light/Dark architecture, competing token authority, undocumented stable contracts, unsafe arbitrary expression execution, silent schema incompatibility, and mandatory infrastructure without justification.
+
+## Repository result
+
+The reviewed revision includes:
+
+- architecture documents 01–32;
+- copyright/provenance policy;
+- contract cross-check;
+- three Step 1 ADRs;
+- root project README.
+
+No application implementation was added prematurely.
 
 ## Gate result
 
-**Step 1 PASS — 100/100.**
+**STEP 1 PASS — 100/100.**
 
-This score certifies the architecture specification itself. It does not certify future implementation quality. Any implementation stage must be independently audited against the same 95% rule and may not proceed merely because Step 1 passed.
+This certifies the architecture specification at this revision. It does not certify future implementation. Every implementation stage requires its own audit under the same hard 95% rule.
