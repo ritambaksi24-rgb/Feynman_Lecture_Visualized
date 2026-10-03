@@ -1,12 +1,8 @@
 # 11 — Naming Conventions
 
-## 1. General rule
+## Stable identity
 
-Names express domain meaning and remain stable enough to be referenced by content, documentation, design, and code.
-
-## 2. IDs
-
-Content and scientific model IDs use stable kebab-case identifiers:
+Stable identifiers use lowercase kebab-case:
 
 ~~~text
 volume-1
@@ -14,79 +10,82 @@ chapter-01
 section-1-2
 idea-molecular-motion
 model-brownian-motion
+exploration-diffusion
 visualization-particle-diffusion
+renderer-three
 ~~~
 
-IDs do not encode UI layout.
+## API and contract names
 
-## 3. Files
-
-Use kebab-case for content, configuration, and documentation files.
-
-Executable source follows the language ecosystem's conventions; React component files may use PascalCase when appropriate.
-
-## 4. Components
-
-Component names describe semantic responsibilities:
+Contract names express capability and semantics:
 
 ~~~text
-ScientificParameterControl
-EquationBlock
-VisualizationPanel
-ChapterNavigation
+ScientificModel
+Computation
+Exploration
+Visualization
+Renderer
+ContentRepository
 ~~~
 
-Avoid generic names such as Thing, Box, or SectionComponent.
+HTTP resources use noun-oriented paths when a server exists.
 
-## 5. Tokens
+## Files
 
-Token names describe meaning, not implementation.
+Documentation, content, configuration, and schema files use kebab-case.
 
-Good semantic names include:
+Language ecosystem conventions apply to executable source; React components may use PascalCase.
+
+## Tokens
+
+Semantic tokens express meaning:
 
 ~~~text
 color.text.primary
 surface.canvas
 visualization.axis.x
 visualization.phase.positive
+exploration.control.value
 ~~~
 
-Avoid implementation-specific names such as blue-500 or panel-gray in semantic layers.
+Avoid implementation names such as blue-500 in semantic layers.
 
-## 6. Scientific variables
+## Scientific identifiers
 
-Scientific names follow conventional discipline notation where useful, while implementation identifiers remain readable and unambiguous.
+Variables follow discipline conventions while avoiding ambiguous abbreviations. Units are encoded by types/schema or explicit metadata.
 
-Use explicit units in types or naming where required.
+## Functions
 
-## 7. Functions
-
-Function names express actions or calculations:
+Functions describe actions or calculations:
 
 ~~~text
+evaluateExpression()
 calculateDiffusionCoefficient()
-integrateTrajectory()
+advanceSimulation()
 deriveVelocity()
-mapParticleStateToVisuals()
+mapScientificState()
 ~~~
 
-## 8. Booleans
+## Events
 
-Boolean names read as predicates: isPlaying, isLoading, hasError, canReset.
-
-## 9. Renderer identifiers
-
-Renderer names identify capabilities:
+Events describe domain occurrences:
 
 ~~~text
-three-js
-math-canvas
-svg
-manim
+parameter.changed
+simulation.started
+simulation.completed
+simulation.failed
+theme.changed
 ~~~
 
-They must not leak into content identifiers.
+## Version fields
 
-## 10. Naming change rule
+Use explicit schemaVersion, modelVersion, apiVersion, and visualizationVersion fields. Versions are independent and must not be conflated.
 
-Renaming a stable content ID or scientific model ID is a migration, not a cosmetic refactor, because references may exist outside source code.
+## Renderer leakage
+
+Content IDs must not contain renderer technology names.
+
+## Renaming
+
+Renaming a stable content/model/contract ID is a migration, not a cosmetic change.

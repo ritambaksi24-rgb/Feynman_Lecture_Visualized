@@ -1,69 +1,60 @@
 # 09 — Dependency Rules
 
-## 1. Principle
+## Principle
 
-Dependencies are selected for capability, maturity, licensing, accessibility, performance, maintenance, and architectural fit—not convenience alone.
+A dependency must justify itself by capability, maintenance, accessibility, performance, licensing, security, and architectural fit.
 
-## 2. Dependency classes
+## Classes
 
-Dependencies are classified as core runtime, UI foundation, visualization, scientific computation, content/documentation, testing, or development/tooling.
+- core runtime;
+- UI foundation;
+- design tooling;
+- visualization;
+- scientific computation;
+- exploration/math;
+- testing;
+- authoring/rendering tools;
+- build/development;
+- external service clients.
 
-Each dependency belongs to a clear class and boundary.
+## Boundary rules
 
-## 3. Preferred direction
+Renderer packages belong behind visualization boundaries.
 
-~~~text
-Application
-  ↓
-Domain / Visualization / Design System
-  ↓
-Shared primitives
-~~~
+Math-engine packages belong behind mathematical/exploration boundaries.
 
-Scientific models must not import application UI.
+Scientific model packages must not import React, UI libraries, or renderer implementations.
 
-## 4. No convenience coupling
+Manim and VisPy may be used by authoring/validation pipelines but are not browser-runtime requirements unless explicitly re-evaluated.
 
-A package is not introduced merely because it solves a small task that an existing capability can handle without material complexity.
+## Capability uniqueness
 
-## 5. Renderer containment
+Two dependencies solving materially the same problem require explicit justification.
 
-Three.js and other renderer-specific dependencies are contained within visualization adapters/compositions.
+## Contract tooling
 
-Content and scientific model packages must not import renderer packages.
+Schema validators, OpenAPI tooling, type-generation tooling, and token transformation tooling are allowed when they reduce contract drift. Generated output must be deterministic.
 
-## 6. Math engine containment
+## Supply-chain review
 
-A symbolic algebra or math-canvas dependency should sit behind a mathematical capability interface where practical.
+Production dependencies require license and security review. Lockfiles are committed.
 
-Scientific models express mathematical semantics independently of a specific engine.
+## Upgrade policy
 
-## 7. Heavy tooling
+Upgrades require release review, compatibility assessment, tests, visual/scientific validation where relevant, and architecture-impact assessment for boundary changes.
 
-Manim and other heavyweight authoring/rendering tools remain outside the browser runtime unless a documented requirement proves otherwise.
+## No convenience coupling
 
-## 8. Version discipline
+A tiny feature does not justify a new package when existing project capabilities are sufficient.
 
-Dependency upgrades require release-note review, compatibility checks, test execution, and architecture-impact review where relevant.
+## Browser versus authoring
 
-## 9. Licensing
+Browser dependencies must be distinguished from offline scientific tooling.
 
-Every production dependency must have a license compatible with intended project distribution. Licenses and attributions are tracked.
+## Dependency containment
 
-## 10. Security
+A dependency that would otherwise spread through multiple layers should be wrapped by a narrow project-owned adapter when that materially preserves the boundary.
 
-Dependencies are kept within a reasonable maintenance policy. Material critical security issues block release until resolved or formally mitigated.
+## Licensing
 
-## 11. Duplicate capability rule
-
-Two dependencies providing substantially overlapping capabilities require explicit justification.
-
-## 12. Lockfile
-
-A lockfile is committed and treated as part of the reproducible build.
-
-## 13. Dependency budget
-
-The project prefers fewer well-bounded dependencies over a large collection of micro-libraries.
-
-A dependency that crosses multiple architectural boundaries carries a higher review burden.
+Dependency licenses must be compatible with planned distribution and tracked with attribution requirements.

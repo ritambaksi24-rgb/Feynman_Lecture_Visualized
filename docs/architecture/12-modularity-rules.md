@@ -1,73 +1,64 @@
 # 12 — Modularity Rules
 
-## 1. Definition
+## Core definition
 
-Modularity means a system can change, test, replace, or reuse a capability without propagating unrelated changes across the codebase.
+Modularity means a capability can change, test, replace, or reuse without propagating unrelated changes.
 
-It does not mean maximizing file count.
+It does not mean maximizing files, packages, or interfaces.
 
-## 2. Module criteria
+## Module criteria
 
-A module should have at least one of:
+Create a module when it has one or more of:
 
-- coherent responsibility;
-- independent testing value;
-- stable public contract;
+- meaningful architectural responsibility;
+- stable contract;
+- independent testability;
 - meaningful reuse;
-- distinct architectural boundary.
+- distinct lifecycle;
+- meaningful replacement boundary.
 
-## 3. Avoid fragmentation
+## Contract criteria
 
-Do not extract a file solely because a function is short, a JSX block appears once, or an existing function can be split into artificial layers.
+A contract is justified when multiple consumers depend on stable behavior, when replacement is expected, or when validation/versioning has real value.
 
-## 4. Avoid monoliths
+Do not introduce an interface solely to satisfy an abstract pattern.
 
-A file is a refactoring candidate when it mixes multiple domains, has unstable responsibilities, contains unrelated state, or becomes difficult to test independently.
+## Avoid fragmentation
 
-## 5. Public APIs
+Do not split one-off calculations, small JSX fragments, or local helpers into artificial layers.
 
-Shared modules expose deliberate public APIs. Internal implementation details remain private.
+## Avoid monoliths
 
-## 6. Content modules
+Split when unrelated domains, state ownership, lifecycle, or dependency responsibilities accumulate.
 
-Chapter content modules describe educational structure. They must not become containers for renderer implementation.
+## Public API discipline
 
-## 7. Scientific modules
+Public module APIs should be intentionally small. Internal helpers remain private.
 
-Scientific modules are independently testable without React or browser rendering.
+## Registry discipline
 
-## 8. Visualization modules
+Registries are appropriate when bounded interchangeable capabilities grow. A registry must be explicit, type-safe, discoverable, and must not hide arbitrary dynamic dependency loading.
 
-Visualization modules isolate engine-specific concerns.
+## Scientific Exploration boundary
 
-## 9. Design-system modules
+The exploration engine is cohesive because calculator/expression evaluation, dependency tracking, plotting, parameter control, simulation orchestration, and scientific data inspection share a lifecycle and state graph.
 
-UI components depend on tokens and established foundations rather than copying style values from other components.
+This does not mean every operation becomes a package.
 
-## 10. Registry pattern
+## Renderer boundary
 
-When a growing set of concepts or renderers requires selection, use a registry or declarative mapping instead of long conditional chains.
+Each renderer adapter owns engine-specific code. Scientific models must not know renderer objects.
 
-Registries remain explicit and type-safe.
+## Design-system boundary
 
-## 11. Dead code
+Shared UI behavior lives in design-system components. Scientific compositions consume them.
 
-Unused exports, stale adapters, unreachable branches, abandoned components, duplicate implementations, and obsolete compatibility layers are removed rather than preserved “just in case.”
+## Dead code and event hygiene
 
-## 12. Event hygiene
+Remove unused exports, unreachable branches, stale adapters, duplicates, and obsolete compatibility layers.
 
-Event listeners require clear ownership and cleanup. Duplicate listeners and hidden global subscriptions are prohibited.
+Listeners, subscriptions, animation frames, workers, and timers have explicit ownership and cleanup.
 
-## 13. Duplication
+## Change amplification
 
-Duplicated scientific formulas, color values, interaction contracts, and content metadata are maintainability defects.
-
-## 14. Extension test
-
-A new renderer should require adding an adapter/composition rather than rewriting content.
-
-A new chapter should primarily add content and scientific/visual assets rather than duplicate page infrastructure.
-
-## 15. Refactor threshold
-
-When a module repeatedly attracts unrelated responsibilities, stop adding features to it and resolve its boundary before continuing.
+A change in one concern should not require unrelated changes elsewhere. High change amplification is evidence of a broken boundary.
