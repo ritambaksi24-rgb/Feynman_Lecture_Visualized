@@ -1,7 +1,7 @@
 # Step 1 — Quality Review
 
 **Status:** Audited  
-**Revision:** Foundational Architecture Revision, 2026-10-03
+**Revision:** Foundational Architecture Revision — final audited tree, 2026-10-03
 
 ## Scope
 
@@ -74,18 +74,21 @@ Explicit blockers include unrestricted source redistribution, renderer-coupled s
 
 ## Repository result
 
-The reviewed revision includes:
+The final reviewed revision includes:
 
 - architecture documents 01–32;
 - copyright/provenance policy;
 - contract cross-check;
 - three Step 1 ADRs;
-- root project README.
+- root project README;
+- normalized architecture filenames with no duplicate numeric document index.
 
 No application implementation was added prematurely.
 
 ## Gate result
 
 **STEP 1 PASS — 100/100.**
+
+Final verification includes the normalized document tree after the contract cross-check naming correction.
 
 This certifies the architecture specification at this revision. It does not certify future implementation. Every implementation stage requires its own audit under the same hard 95% rule.
