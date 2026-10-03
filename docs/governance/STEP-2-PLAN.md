@@ -38,6 +38,14 @@ Step 2 is a foundation stage, not a feature-completion stage. It establishes the
 25. Developer Documentation
 26. End-to-End Scientific Prototype
 
+## Technology and dependency boundary
+
+ADR-005 defines the exact current Step 2 foundation versions. ADR-006 defines the bounded exploration kernel and immediate foundation rules. ADR-008 is the comprehensive technology inventory and future-adoption roadmap.
+
+Selected foundation technologies are implemented only at their documented boundaries. KaTeX is for mathematical presentation. Math.js may be used behind the constrained expression adapter. Rete.js is for visual dependency/data-flow authoring. D3.js is for 2D visualization primitives behind renderer contracts. Three.js is future 3D renderer capability. The inventory also records browser workers/GPU/WASM, content tooling, browser verification, offline scientific tooling, APIs/persistence, and AI-assisted authoring candidates.
+
+Listing a technology in ADR-008 does not install or approve it for runtime use. New persistent dependencies still require the decision process and verification evidence.
+
 ## Implementation order
 
 ### Track A — Repository and contracts
@@ -52,9 +60,13 @@ Establish DTCG 2025.10 token files as the canonical repository source. Add primi
 
 Implement renderer-independent scientific domain types, a minimal unit/dimension model, deterministic computation contract, safe mathematical-expression AST/parser/evaluator, dependency graph, and a parameter/exploration state store.
 
+The final expression implementation may use an approved external parser/evaluator such as Math.js only behind the constrained project-owned expression contract described by ADR-006/ADR-008.
+
 ### Track D — Visualization and rendering
 
 Define renderer-neutral VisualizationState, scene/mark semantics, renderer adapter contract, lifecycle/error handling, and a first browser renderer proof. Renderer objects must never cross scientific/exploration contracts.
+
+D3.js may later implement 2D renderer primitives behind this boundary. Rete.js may later implement visual dependency/data-flow authoring over project-owned state. KaTeX handles mathematical presentation separately from scientific computation.
 
 ### Track E — Systems quality
 
@@ -102,9 +114,9 @@ Those capabilities may be introduced later only as separately bounded, versioned
 
 ## Technology decision boundary
 
-Foundational choices are recorded in ADR-005 and ADR-006.
+Foundational choices are recorded in ADR-005 and ADR-006. The broader inventory and future adoption roadmap is ADR-008.
 
-A new foundational runtime dependency, state mechanism, renderer family, expression engine, or authoring platform requires the decision process before implementation. "Convenient" is not an accepted architectural criterion.
+A new foundational runtime dependency, state mechanism, renderer family, expression engine, or authoring platform requires the decision process before implementation. Convenience is not an accepted architectural criterion.
 
 ## Modularity rule
 
@@ -146,7 +158,7 @@ Step 2 cannot pass from documentation alone. The final review must contain execu
 - end-to-end scientific prototype;
 - adversarial boundary review;
 - repository enforcement policy applied to protected integration branches;
-- technology decisions and exploration scope reconciled against ADR-006/ADR-007.
+- technology decisions and exploration scope reconciled against ADR-006/ADR-007/ADR-008.
 
 ## Checkpoints
 
