@@ -1,0 +1,1 @@
+export interface ProvenanceRecord{readonly contentVersion:string;readonly modelVersion:string;readonly explorationVersion:string;readonly algorithm:string;readonly numericalSettings:Readonly<Record<string,string|number|boolean>>;readonly randomSeed?:number;readonly classification:"exact"|"numerical-tolerance"|"statistical"|"illustrative"}

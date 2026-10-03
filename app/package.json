@@ -1,0 +1,1 @@
+{"name":"@feynman/app","version":"0.1.0","private":true,"type":"module","dependencies":{"@feynman/computation":"0.1.0","@feynman/design-system":"0.1.0","@feynman/scientific-domain":"0.1.0","@feynman/visualization":"0.1.0","react":"19.3.0","react-dom":"19.3.0"},"devDependencies":{"@vitejs/plugin-react":"6.1.1","vite":"8.3.2"}}

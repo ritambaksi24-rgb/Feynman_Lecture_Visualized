@@ -1,0 +1,2 @@
+export interface CapabilityDescriptor{readonly id:string;readonly version:string;readonly kind:"model"|"compute"|"exploration"|"visualization"|"renderer";readonly description:string}
+export interface CapabilityRegistry{register(descriptor:CapabilityDescriptor):void;resolve(id:string,version:string):CapabilityDescriptor|undefined}

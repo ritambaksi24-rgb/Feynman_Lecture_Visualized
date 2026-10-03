@@ -1,0 +1,4 @@
+import type {ModelId,ValidationInvariant} from "@feynman/contracts";
+export interface ScientificState{readonly time:number;readonly values:Readonly<Record<string,number>>}
+export interface ScientificParameter{readonly id:string;readonly label:string;readonly unit:string;readonly defaultValue:number;readonly min?:number;readonly max?:number;readonly dimension:string}
+export interface ScientificModel{readonly id:ModelId;readonly version:string;readonly title:string;readonly parameters:readonly ScientificParameter[];readonly initialState:ScientificState;readonly invariants:readonly ValidationInvariant[];step(state:ScientificState,dt:number):ScientificState;energy(state:ScientificState):number}

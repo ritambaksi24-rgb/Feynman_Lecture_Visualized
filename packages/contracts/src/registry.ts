@@ -1,0 +1,2 @@
+import type{CapabilityDescriptor,CapabilityRegistry}from"./capabilities.js";
+export class InMemoryCapabilityRegistry implements CapabilityRegistry{private readonly entries=new Map<string,CapabilityDescriptor>();register(d:CapabilityDescriptor){const key=`${d.id}@${d.version}`;if(this.entries.has(key))throw new Error(`Duplicate capability: ${key}`);this.entries.set(key,d)}resolve(id:string,version:string){return this.entries.get(`${id}@${version}`)}}

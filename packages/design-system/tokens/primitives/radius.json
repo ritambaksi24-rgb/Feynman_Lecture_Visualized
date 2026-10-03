@@ -1,0 +1,44 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$type": "dimension",
+  "primitive": {
+    "radius": {
+      "none": {
+        "$value": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "sm": {
+        "$value": {
+          "value": 4,
+          "unit": "px"
+        }
+      },
+      "md": {
+        "$value": {
+          "value": 8,
+          "unit": "px"
+        }
+      },
+      "lg": {
+        "$value": {
+          "value": 12,
+          "unit": "px"
+        }
+      },
+      "xl": {
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        }
+      },
+      "2xl": {
+        "$value": {
+          "value": 24,
+          "unit": "px"
+        }
+      }
+    }
+  }
+}

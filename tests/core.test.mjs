@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";
+import{createHarmonicOscillator}from"../.tsbuild/core/packages/scientific-domain/src/harmonic-oscillator.js";import{integrate}from"../.tsbuild/core/packages/computation/src/integrate.js";import{parseExpression,evaluateExpression}from"../.tsbuild/core/packages/exploration/src/expression.js";import{DependencyGraph,DependencyCycleError}from"../.tsbuild/core/packages/exploration/src/dependency-graph.js";
+test("harmonic oscillator conserves energy",()=>{const m=createHarmonicOscillator({mass:1,springConstant:1});const t=integrate(m,5000,.001);assert.ok(Math.abs((t.energies.at(-1)??0)-t.energies[0]!)<1e-5)});
+test("expression parser rejects unsupported syntax",()=>{assert.equal(evaluateExpression(parseExpression("2*(x+3)/5"),{x:2}),2);assert.throws(()=>parseExpression("globalThis.process"),/Unsupported|Unexpected/)});
+test("dependency graph rejects cycles",()=>{const g=new DependencyGraph();g.addNode("a",["c"]);g.addNode("b",["a"]);g.addNode("c",["b"]);assert.throws(()=>g.topologicalOrder(),DependencyCycleError)});
+test("invalid scientific inputs fail",()=>{assert.throws(()=>createHarmonicOscillator({mass:0,springConstant:1}),/positive/)});
