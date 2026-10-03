@@ -23,8 +23,12 @@ This record centralizes that inventory so future agents do not infer architectur
 | --- | --- | --- |
 | React | Application UI | Selected for foundation |
 | React DOM | Browser UI runtime | Selected for foundation |
+| Node.js | JavaScript runtime used by tooling/build/tests | Selected foundation runtime; version floor remains in package manifest |
+| npm | Package manager | Selected foundation package manager |
 | TypeScript | Type system / implementation language | Selected for foundation |
 | Vite | Browser build and development | Selected for foundation |
+| @vitejs/plugin-react | Vite React integration | Selected build dependency |
+| @types/react / @types/react-dom | TypeScript type declarations | Selected build/type dependencies |
 | Base UI | Headless accessible UI primitives | Selected for foundation |
 | shadcn/ui conventions | Component/composition conventions layered over Base UI and project-owned tokens | Selected design-system approach; not a separate runtime dependency source |
 | npm workspaces + package-lock.json | Repository/package management | Selected for foundation |
@@ -158,6 +162,12 @@ This roadmap covers the technology categories currently required or discussed fo
 - alternatives and explicitly non-selected technologies.
 
 A future technology not represented here must either be a local implementation detail or go through the decision process and be added to this inventory before becoming a persistent architectural dependency.
+
+## Direct dependency audit
+
+At the technology-roadmap checkpoint used by the current Step 2 state, the repository manifests contain no unrecorded direct third-party dependency. The direct runtime/build dependencies are covered by the selected foundation inventory above, while the lockfile records transitive dependency resolution. Internal @feynman/* workspace packages are project-owned modules, not third-party technologies.
+
+New direct dependencies must be added to the appropriate inventory category before they become persistent architecture and must pass the adoption gate.
 
 ## Verification plan
 
