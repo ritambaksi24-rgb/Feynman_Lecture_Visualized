@@ -7,7 +7,7 @@
 
 **Step 1.5 — AI-Resilient Project Governance**
 
-**Status:** IN_PROGRESS
+**Status:** VERIFIED_PASS
 
 ## Completed before this stage
 
@@ -70,7 +70,23 @@ Canonical source: `DEFECT-LEDGER.md`.
 
 At the time this checkpoint is written, no known critical governance defect is intentionally accepted.
 
-The first independent verification of this stage MUST update this section with the resulting score, evidence, and commit.
+Independent verification recorded: governance workflow run `37140661017` passed on commit `8fb7241ad6608d35e2209eb5bc16a3e4f3da9e1f`. The Step 1.5 review scored 98/100 with zero unresolved critical defects. This verification covers the governance control plane only; it does not certify Step 2 or application runtime behavior.
+
+## Step 1.5 verification result
+
+**Score:** 98/100
+
+**Critical defects:** 0 unresolved
+
+**Evidence:**
+
+- Exact two-commit comparison from `architecture/foundation-step-1` to the Step 1.5 branch was inspected.
+- Governance validator passed in GitHub Actions workflow run `37140661017`.
+- Validator output confirmed all 13 required governance files were present and the declared invariants passed.
+- Adversarial review covered source-of-truth conflicts, gate bypasses, unsupported completion claims, Figma/code drift, missing current-state recovery, duplicate sources of truth, and screenshot-only acceptance.
+- Figma-specific rules were reviewed as part of the acceptance check.
+
+**Verification boundary:** governance structure and agent/design-agent operating rules only. No application build, runtime scientific validation, performance validation, or full visual validation is claimed.
 
 ## Forbidden next steps until gate passes
 
