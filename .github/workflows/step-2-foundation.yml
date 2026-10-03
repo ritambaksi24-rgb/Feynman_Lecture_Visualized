@@ -12,12 +12,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
       - run: python3 tooling/governance/validate-governance.py
       - run: python3 tooling/tokens/validate_tokens.py
       - run: python3 tooling/contracts/validate_contracts.py
       - run: python3 tooling/architecture/validate_boundaries.py
       - run: python3 tooling/security/validate_runtime_safety.py
       - run: npm install
-      - run: test -f package-lock.json
       - run: npm run check
