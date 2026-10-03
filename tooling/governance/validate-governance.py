@@ -75,7 +75,7 @@ required_rules = [
     (current, "It is not a Step 1.5-only document."),
     (gate, "permanent quality-gate framework for the entire project"),
     (gate, "Score >=95/100 AND zero unresolved Critical defects"),
-    (gate, "stage-specific quality reviews apply that framework"),
+    (gate, "A stage-specific review contains:"),
     (stage_template, "Permanent template"),
     (stage_template, "Current-state update"),
     (verification, "Intent"),
