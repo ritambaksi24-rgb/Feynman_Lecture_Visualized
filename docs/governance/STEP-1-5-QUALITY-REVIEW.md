@@ -12,7 +12,7 @@ This review evaluates the repository governance control plane introduced by Step
 ## Evidence collected
 
 - Repository inspection of the governance documents and architecture index.
-- Exact review of the Step 1.5 commit.
+- Exact review of the Step 1.5 branch comparison.
 - Presence check for the required governance documents.
 - Consistency inspection of source-of-truth, quality-gate, Figma-agent, decision, verification, and change-protocol rules.
 - Automated governance validator included in `tooling/governance/validate-governance.py`.
@@ -27,7 +27,7 @@ This review evaluates the repository governance control plane introduced by Step
 | Constitutional rules and source-of-truth hierarchy | 15 | 15 | Constitution defines authority precedence, scientific/source rules, architecture boundaries, and non-negotiables. |
 | Evidence-based verification and claim discipline | 15 | 15 | Verification policy distinguishes intent, implementation, tested, verified, and released; workflow evidence passed. |
 | 95/100 gate, defect control, and progression discipline | 15 | 15 | Quality gate, defect ledger, stop conditions, and final state evidence are aligned. |
-| AI coding-agent operating rules | 10 | Pending | `AGENTS.md` and change protocol implemented; final validator evidence required. |
+| AI coding-agent operating rules | 10 | 10 | Repository startup, inspection-before-editing, stop conditions, claim discipline, and adversarial review are explicit; workflow evidence passed. |
 | Figma AI / design-agent operating rules | 10 | 10 | Dedicated rules cover source-of-truth, tokens, components, icons, scientific UI, handoff, acceptance, and no silent architecture changes. |
 | Decision, ADR, and change control | 5 | 5 | ADR-004, decision classes, change protocol, and reversal/supersession rules are consistent. |
 | Executable governance enforcement | 10 | 8 | Dependency-free validator and GitHub Actions enforcement are working; branch-protection/merge enforcement is not asserted because repository administration was not changed in this stage. |
@@ -43,7 +43,7 @@ The review is marked **VERIFIED_PASS** because all conditions below are now evid
 3. No contradictory governance rule remains.
 4. No unresolved Critical defect exists.
 5. The independently assigned score is at least 95/100.
-6. `CURRENT-STATE.md` records the evidence and final commit.
+6. `CURRENT-STATE.md` records the evidence and verified checkpoint.
 7. Step 2 is governed by its own next-stage quality gate; any material Step 1.5 governance change reopens this gate.
 
 ## Important limitation
