@@ -7,7 +7,7 @@
 
 **Step 1.5 — AI-Resilient Project Governance**
 
-**Status:** IMPLEMENTED_PENDING_VERIFICATION
+**Status:** IN_PROGRESS
 
 ## Completed before this stage
 
@@ -48,6 +48,7 @@ The governance layer must control:
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - `.github/workflows/governance.yml`
 - `tooling/governance/validate-governance.py`
+- `docs/governance/STEP-1-5-QUALITY-REVIEW.md`
 
 ## Not completed by Step 1.5
 

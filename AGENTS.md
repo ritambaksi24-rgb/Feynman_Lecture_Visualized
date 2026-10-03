@@ -114,7 +114,7 @@ Before declaring a task complete:
 5. Re-check architecture and source-of-truth boundaries.
 6. Update `CURRENT-STATE.md`, `DEFECT-LEDGER.md`, and decision records as applicable.
 7. Record evidence and gate score.
-8. Commit only after the gate passes.
+8. For an accepted or completed change, commit only after the applicable gate passes. An explicitly marked `IN_PROGRESS` or `BLOCKED` checkpoint commit is allowed only when the current state records that status and no one may treat the checkpoint as acceptance.
 
 ## Figma-connected development
 

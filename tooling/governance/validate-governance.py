@@ -22,6 +22,7 @@ REQUIRED_FILES = [
     ROOT / "docs/governance/FIGMA-AI-AGENTS.md",
     ROOT / "docs/decisions/ADR-004-step-1-5-ai-resilient-project-governance.md",
     ROOT / ".github/PULL_REQUEST_TEMPLATE.md",
+    ROOT / "docs/governance/STEP-1-5-QUALITY-REVIEW.md",
 ]
 
 def fail(message: str) -> None:
@@ -47,6 +48,7 @@ verification = read(ROOT / "docs/governance/VERIFICATION-POLICY.md")
 protocol = read(ROOT / "docs/governance/CHANGE-PROTOCOL.md")
 figma = read(ROOT / "docs/governance/FIGMA-AI-AGENTS.md")
 governance_readme = read(ROOT / "docs/governance/README.md")
+quality_review = read(ROOT / "docs/governance/STEP-1-5-QUALITY-REVIEW.md")
 
 required_phrases = [
     (agents, "repository is the durable project memory"),
@@ -55,13 +57,15 @@ required_phrases = [
     (constitution, "Repository DTCG tokens are the canonical implementation token source"),
     (constitution, "Arbitrary JavaScript execution"),
     (current, "Step 1.5"),
-    (current, "IMPLEMENTED_PENDING_VERIFICATION"),
+    (current, "Step 1.5"),
     (gate, "Minimum 95/100 and zero unresolved critical defects"),
     (ledger, "Critical"),
     (verification, "Intent"),
     (verification, "Verified"),
     (protocol, "Adversarial review"),
     (protocol, "Update CURRENT-STATE.md"),
+    (quality_review, "Step 1.5"),
+    (quality_review, "95/100"),
     (figma, "Repository DTCG tokens remain the canonical implementation token source."),
     (figma, "Figma AI is an implementation assistant and design collaborator"),
 ]
@@ -86,6 +90,7 @@ expected_links = [
     "./VERIFICATION-POLICY.md",
     "./CHANGE-PROTOCOL.md",
     "./FIGMA-AI-AGENTS.md",
+    "./STEP-1-5-QUALITY-REVIEW.md",
 ]
 for link in expected_links:
     if link not in governance_readme:

@@ -16,6 +16,7 @@ Governance exists to prevent architectural drift, context loss, unsupported comp
 | [Verification Policy](./VERIFICATION-POLICY.md) | Evidence standards and claim discipline. |
 | [Change Protocol](./CHANGE-PROTOCOL.md) | Exact operating sequence for agents and contributors. |
 | [Figma AI Agents](./FIGMA-AI-AGENTS.md) | Rules for Figma AI, Figma-connected agents, design-to-code agents, and visual implementation agents. |
+| [Step 1.5 Quality Review](./STEP-1-5-QUALITY-REVIEW.md) | Evidence record for the Step 1.5 acceptance gate. |
 
 ## Governance state
 
