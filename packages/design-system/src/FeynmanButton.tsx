@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Button} from "@base-ui/react/button";
-import "./FeynmanButton.css";
 
 export interface FeynmanButtonProps extends React.ComponentProps<typeof Button>{
   readonly tone?:"accent"|"neutral";

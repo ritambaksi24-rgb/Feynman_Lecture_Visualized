@@ -1,9 +1,9 @@
 # Step 2 Design System Baseline
 
-The repository token source is DTCG 2025.10 JSON. Primitive colors use structured sRGB values; dimensions use typed value objects; shadows use the DTCG composite shadow structure. Semantic tokens reference primitives.
+The repository token source uses the DTCG 2025.10 format. Primitive colors use structured sRGB values; dimensions use typed value objects; shadow and typography use composite token values. urlDTCG 2025.10 format specificationhttps://www.designtokens.org/TR/2025.10/format/
 
-Light and Dark are explicit modes. Base UI supplies unstyled accessible interaction primitives; Feynman-owned components provide application identity.
+The foundation includes color, spacing, sizing, radius, opacity, shadow, font, typography, easing, motion, z-index, breakpoints, aspect ratio, stroke width, and border primitives, plus semantic color, dimension, and typography roles.
 
-CSS variables are generated from token source. Generated CSS is derived output and is never a second source of truth.
+Light and Dark are explicit semantic modes. Base UI provides unstyled accessible interaction primitives; Feynman-owned components provide project identity.
 
-The DTCG 2025.10 format defines typed color and dimension values and a composite shadow type.
+Generated CSS is derived output. DTCG JSON remains the source of truth. Component CSS is owned by the design-system package and consumed by application integration, avoiding a package-build/runtime style mismatch.
