@@ -1,7 +1,7 @@
 import type{VisualizationState}from"@feynman/contracts";
 import type{RenderContext,ScientificRenderer}from"./renderer.js";
 import{assertRendererState}from"./renderer.js";
-export class SvgScientificRenderer implements ScientificRenderer{
+export class SvgScientificRenderer implements ScientificRenderer<RenderContext>{
   readonly id="renderer.svg";readonly version="1.0.0";private svg:SVGSVGElement|undefined;
   mount(context:RenderContext):void{
     this.destroy();
@@ -21,10 +21,13 @@ export class SvgScientificRenderer implements ScientificRenderer{
       const minX=series.x[0]??0,maxX=series.x.at(-1)??1,minY=Math.min(...series.y),maxY=Math.max(...series.y);
       const xSpan=maxX-minX||1,ySpan=maxY-minY||1;
       const points=series.x.map((x,index)=>{
-        const y=series.y[index]??0,px=20+760*(x-minX)/xSpan,py=220-190*(y-minY)/ySpan;
+        const y=series.y[index]??0;
+        const px=20+760*(x-minX)/xSpan,py=220-190*(y-minY)/ySpan;
         return px.toFixed(2)+","+py.toFixed(2);
       }).join(" ");
-      polyline.setAttribute("points",points);polyline.setAttribute("fill","none");polyline.setAttribute("stroke","currentColor");polyline.setAttribute("stroke-width","2");polyline.setAttribute("vector-effect","non-scaling-stroke");this.svg.append(polyline);
+      polyline.setAttribute("points",points);polyline.setAttribute("fill","none");
+      polyline.setAttribute("stroke","currentColor");polyline.setAttribute("stroke-width","2");
+      polyline.setAttribute("vector-effect","non-scaling-stroke");this.svg.append(polyline);
     }
   }
   resize(width:number,height:number):void{
