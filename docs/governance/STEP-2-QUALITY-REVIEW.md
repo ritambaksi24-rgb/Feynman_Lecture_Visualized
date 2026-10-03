@@ -2,7 +2,7 @@
 
 Status: IMPLEMENTED_PENDING_VERIFICATION
 Baseline commit: e35acff00a5c45d3509a62294bc24834374bad57
-Current implementation checkpoint: 1677696936158b863e12e12214d3470c9a824cfb
+Current implementation checkpoint: af213f8a7618e505de9a31ce5d3fa7ef4e6a0dd0
 
 ## Implementation result
 
