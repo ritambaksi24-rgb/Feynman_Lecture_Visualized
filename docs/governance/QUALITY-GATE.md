@@ -1,5 +1,9 @@
 # Project Quality Gate
 
+## 0. Gate authority
+
+This document is the permanent authority for project gate method and hard acceptance conditions. The Project Constitution supplies the higher-level constitutional requirements. Stage-specific quality reviews apply this framework to one stage and may tailor evidence and weights but may not weaken or replace the hard gate. CURRENT-STATE.md records the live result and cannot override this document. A material change to this authority requires the decision process in DECISION-POLICY.md.
+
 ## 1. Purpose
 
 This is the permanent quality-gate framework for the entire project.
@@ -58,7 +62,8 @@ These apply to every stage:
 - known security blocker ignored;
 - broken contract relied upon by consumers;
 - verification evidence falsely represented as collected;
-- acceptance criteria weakened solely to obtain a pass.
+- acceptance criteria weakened solely to obtain a pass;
+- required protected-branch controls are absent or unverified for the branch that is supposed to receive an accepted stage result.
 
 A mandatory blocker is a gate failure regardless of score.
 
@@ -80,31 +85,6 @@ Every stage review MUST evaluate these dimensions:
 | Total reference model | 100 | |
 
 The reference weights are a baseline, not permission to ignore stage semantics.
-
-### Layer C — Stage-specific weighting
-
-A stage review may adjust the reference weights to reflect its actual responsibilities.
-
-Examples:
-
-- a scientific-model stage may increase Correctness;
-- a token-system stage may increase Design System and Figma reconciliation evidence;
-- a release stage may increase Security, provenance, reliability, and deployment evidence.
-
-The stage review MUST:
-
-1. evaluate all relevant universal dimensions;
-2. preserve every mandatory blocker;
-3. total exactly 100 points;
-4. explain weight changes;
-5. record explicit deductions;
-6. map evidence to scored dimensions.
-
-### Layer D — Verification boundary
-
-The stage review MUST explicitly state what the score does and does not certify.
-
-Passing one stage never certifies unrelated future subsystems.
 
 ## 5. Stage-specific review
 

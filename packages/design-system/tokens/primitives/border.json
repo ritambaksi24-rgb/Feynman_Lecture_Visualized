@@ -1,0 +1,23 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "primitive": {
+    "border": {
+      "default": {
+        "$type": "border",
+        "$value": {
+          "color": "{primitive.color.neutral.300}",
+          "width": "{primitive.strokeWidth.hairline}",
+          "style": "solid"
+        }
+      },
+      "strong": {
+        "$type": "border",
+        "$value": {
+          "color": "{primitive.color.neutral.500}",
+          "width": "{primitive.strokeWidth.thin}",
+          "style": "solid"
+        }
+      }
+    }
+  }
+}

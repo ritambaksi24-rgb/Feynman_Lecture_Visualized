@@ -1,0 +1,55 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "semantic": {
+    "spacing": {
+      "control": {
+        "paddingX": {
+          "$type": "dimension",
+          "$value": "{primitive.spacing.4}"
+        },
+        "paddingY": {
+          "$type": "dimension",
+          "$value": "{primitive.spacing.2}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{primitive.spacing.2}"
+        }
+      }
+    },
+    "sizing": {
+      "control": {
+        "height": {
+          "$type": "dimension",
+          "$value": "{primitive.sizing.control.height}"
+        }
+      }
+    },
+    "radius": {
+      "control": {
+        "$type": "dimension",
+        "$value": "{primitive.radius.md}"
+      }
+    },
+    "elevation": {
+      "control": {
+        "$type": "shadow",
+        "$value": "{primitive.shadow.subtle}"
+      },
+      "raised": {
+        "$type": "shadow",
+        "$value": "{primitive.shadow.raised}"
+      }
+    },
+    "stroke": {
+      "default": {
+        "$type": "dimension",
+        "$value": "{primitive.strokeWidth.hairline}"
+      },
+      "focus": {
+        "$type": "dimension",
+        "$value": "{primitive.strokeWidth.thin}"
+      }
+    }
+  }
+}

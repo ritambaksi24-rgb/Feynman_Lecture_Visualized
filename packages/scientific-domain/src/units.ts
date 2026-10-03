@@ -1,0 +1,5 @@
+export type DimensionVector=Readonly<{mass:number;length:number;time:number}>;
+export const dimensions={dimensionless:{mass:0,length:0,time:0},length:{mass:0,length:1,time:0},velocity:{mass:0,length:1,time:-1},acceleration:{mass:0,length:1,time:-2},mass:{mass:1,length:0,time:0},time:{mass:0,length:0,time:1},energy:{mass:1,length:2,time:-2}} satisfies Record<string,DimensionVector>;
+export interface Quantity{readonly value:number;readonly unit:string;readonly dimension:DimensionVector}
+export function quantity(value:number,unit:string,dimension:DimensionVector):Quantity{if(!Number.isFinite(value))throw new Error("Quantity value must be finite");return{value,unit,dimension}}
+export function add(a:Quantity,b:Quantity):Quantity{if(a.dimension.mass!==b.dimension.mass||a.dimension.length!==b.dimension.length||a.dimension.time!==b.dimension.time)throw new Error("Quantities must have matching dimensions");return quantity(a.value+b.value,a.unit,a.dimension)}

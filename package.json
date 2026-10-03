@@ -1,0 +1,39 @@
+{
+  "name": "feynman-lectures-visualized",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "app",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace app",
+    "typecheck": "tsc --build",
+    "validate:governance": "python3 tooling/governance/validate-governance.py",
+    "validate:tokens": "python3 tooling/tokens/validate_tokens.py",
+    "generate:tokens": "python3 tooling/tokens/generate_css.py",
+    "validate:contracts": "python3 tooling/contracts/validate_contracts.py",
+    "validate:architecture": "python3 tooling/architecture/validate_boundaries.py",
+    "validate:security": "python3 tooling/security/validate_runtime_safety.py",
+    "validate:accessibility": "python3 tooling/accessibility/validate_app.py",
+    "validate:build": "python3 tooling/web/validate_build.py",
+    "test:core": "tsc --build tsconfig.core.json && node --test tests/core.test.mjs tests/performance.test.mjs",
+    "check": "npm run validate:governance && npm run validate:tokens && npm run validate:contracts && npm run validate:architecture && npm run validate:security && npm run validate:accessibility && npm run typecheck && npm run test:core",
+    "build": "npm run generate:tokens && npm run check && npm run build --workspace app && npm run validate:build"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "@base-ui/react": "1.8.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.2"
+  }
+}

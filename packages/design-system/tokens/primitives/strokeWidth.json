@@ -1,0 +1,32 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$type": "dimension",
+  "primitive": {
+    "strokeWidth": {
+      "hairline": {
+        "$value": {
+          "value": 1,
+          "unit": "px"
+        }
+      },
+      "thin": {
+        "$value": {
+          "value": 1.5,
+          "unit": "px"
+        }
+      },
+      "regular": {
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        }
+      },
+      "strong": {
+        "$value": {
+          "value": 3,
+          "unit": "px"
+        }
+      }
+    }
+  }
+}

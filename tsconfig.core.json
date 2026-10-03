@@ -1,0 +1,1 @@
+{"extends":"./tsconfig.base.json","compilerOptions":{"composite":true,"rootDir":"./packages","outDir":"./.tsbuild/core","lib":["ES2022","DOM"]},"include":["packages/contracts/src/**/*.ts","packages/scientific-domain/src/**/*.ts","packages/computation/src/**/*.ts","packages/exploration/src/**/*.ts","packages/visualization/src/**/*.ts"],"exclude":["node_modules","app"]}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$type": "number",
+  "primitive": {
+    "zIndex": {
+      "base": {
+        "$value": 0
+      },
+      "raised": {
+        "$value": 10
+      },
+      "overlay": {
+        "$value": 100
+      },
+      "modal": {
+        "$value": 1000
+      },
+      "toast": {
+        "$value": 1100
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$type": "number",
+  "primitive": {
+    "opacity": {
+      "0": {
+        "$value": 0
+      },
+      "5": {
+        "$value": 0.05
+      },
+      "10": {
+        "$value": 0.1
+      },
+      "15": {
+        "$value": 0.15
+      },
+      "20": {
+        "$value": 0.2
+      },
+      "25": {
+        "$value": 0.25
+      },
+      "50": {
+        "$value": 0.5
+      },
+      "75": {
+        "$value": 0.75
+      },
+      "100": {
+        "$value": 1
+      }
+    }
+  }
+}

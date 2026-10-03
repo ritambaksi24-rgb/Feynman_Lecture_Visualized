@@ -1,0 +1,5 @@
+.feynman-button{border:var(--primitive-border-default);border-radius:var(--semantic-radius-control);padding:var(--semantic-spacing-control-padding-y) var(--semantic-spacing-control-padding-x);min-height:var(--semantic-sizing-control-height);background:var(--semantic-color-surface-container);color:var(--semantic-color-content-primary);cursor:pointer;transition:background-color var(--primitive-motion-duration-fast) var(--primitive-motion-easing-standard),outline-color var(--primitive-motion-duration-fast) var(--primitive-motion-easing-standard)}
+.feynman-button[data-tone="accent"]{background:var(--semantic-color-action-accent);color:var(--semantic-color-content-on-accent);border-color:var(--semantic-color-action-accent)}
+.feynman-button:hover{background:var(--semantic-color-action-accent-hover)}
+.feynman-button:focus-visible{outline:var(--semantic-stroke-focus) solid var(--semantic-color-action-selection);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.feynman-button{transition:none}}

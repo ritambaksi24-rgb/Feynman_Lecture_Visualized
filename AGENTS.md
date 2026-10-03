@@ -15,9 +15,10 @@ Before changing anything, an agent MUST:
 3. Read `docs/governance/CURRENT-STATE.md`.
 4. Read `docs/governance/QUALITY-GATE.md`.
 5. Read `docs/governance/CHANGE-PROTOCOL.md`.
-6. Read the relevant architecture document(s), contract(s), ADR(s), token definitions, and existing implementation before proposing a change.
-7. Inspect the actual target branch, working tree, and relevant files. Never infer repository state from memory.
-8. Identify the active stage and the exact acceptance gate before implementation.
+6. Read `docs/governance/BRANCH-PROTECTION.md`.
+7. Read the relevant architecture document(s), contract(s), ADR(s), token definitions, and existing implementation before proposing a change.
+8. Inspect the actual target branch, working tree, and relevant files. Never infer repository state from memory.
+9. Identify the active stage and the exact acceptance gate before implementation.
 
 For Figma or Figma-connected work, also read `docs/governance/FIGMA-AI-AGENTS.md`.
 
@@ -28,13 +29,14 @@ For scientific work, also inspect the relevant scientific-model, computation, ex
 When two sources disagree, use this authority order unless an ADR explicitly changes the applicable boundary:
 
 1. External authoritative scientific, legal, standards, or source material.
-2. `PROJECT-CONSTITUTION.md`.
-3. Approved architecture documents.
-4. Approved ADRs.
-5. Approved contracts and schemas.
-6. Actual repository implementation.
-7. Verification evidence produced from the repository.
-8. Conversation messages, generated plans, and prior AI statements.
+2. `docs/governance/PROJECT-CONSTITUTION.md`.
+3. `docs/governance/QUALITY-GATE.md` for gate method and hard acceptance conditions.
+4. Approved architecture documents.
+5. Approved ADRs.
+6. Approved contracts and schemas.
+7. Actual repository implementation.
+8. Verification evidence produced from the repository.
+9. Conversation messages, generated plans, and prior AI statements.
 
 A lower-level source MUST NOT silently override a higher-level source.
 
@@ -73,7 +75,8 @@ Agents MUST NOT:
 - put arbitrary JavaScript execution behind a mathematical-expression feature;
 - couple domain models to renderer objects;
 - copy or redistribute copyrighted Feynman source material outside the project's documented rights/provenance rules;
-- claim a test, build, visual review, scientific validation, or compatibility check was run when it was not.
+- claim a test, build, visual review, scientific validation, or compatibility check was run when it was not;
+- treat branch-protection policy documents as evidence that GitHub enforcement is active.
 
 ## Required verification language
 

@@ -3,124 +3,80 @@
 Purpose: This is the living project-state deliverable for the entire lifecycle of Feynman Lectures Visualized.
 
 It is not a Step 1.5-only document.
+It is not stage-specific.
 
 ## 1. Current stage
 
-Stage: Step 1.5 — AI-Resilient Project Governance
-Status: VERIFIED_PASS
-Last verified commit: e3fdbb533c7414f5fed35de77541a372618c34be
+Stage: Step 2 — Implementation Foundation
+Status: IMPLEMENTED_PENDING_VERIFICATION
+Branch: architecture/step-2-foundation
+Current checkpoint: 034c41a65a8686c3c57dbaa5878c935333734eaf
+Previous accepted baseline: e35acff00a5c45d3509a62294bc24834374bad57
+Stage definition: STEP-2-PLAN.md
+Stage gate: STEP-2-QUALITY-REVIEW.md
 
 ## 2. Last accepted baseline
 
-Previous baseline: 3eba527682f6875d760078b84a2ac6a4e89d40fc
-Previous stage: Step 1 — Foundational Architecture Revision
+Previous stage: Step 1.5 — AI-Resilient Project Governance
+Previous accepted result: 98/100, zero unresolved Critical defects.
 
-## 3. Current objective
+## 3. Step 2 implementation state
 
-The current objective is the next explicitly approved task recorded for the active stage.
+The Step 2 implementation exists as a bounded executable foundation. Its scientific computation and renderer seam are implemented, but the stage remains pending verification and has newly identified governance, technology-scope, design-system, and visual-quality work recorded in the defect ledger.
 
-When a new stage begins, this section is rewritten to describe that stage's objective. It must never be inferred from conversation history.
+The technology architecture is now consolidated in ADR-005, ADR-006, and ADR-008. ADR-008 records selected foundation technologies, approved future capabilities, candidates, explicit non-selections, and adoption rules; it does not imply that future technologies are installed. At checkpoint 034c41a65a8686c3c57dbaa5878c935333734eaf, the repository/package manifests contain no unrecorded direct third-party dependency; the root lockfile is present.
 
-## 4. Active stage Definition of Done
+## 4. Executed verification evidence
 
-The active stage links to its stage-specific review or equivalent acceptance record.
+Latest fully successful pre-correction Step 2 foundation workflow:
+- Run: 37146076959
+- Result: success
 
-Current: STEP-1-5-QUALITY-REVIEW.md
+Latest fully successful pre-correction Governance Validation:
+- Run: 37146076949
+- Result: success
 
-Future stages must add their own stage-specific review rather than modifying the permanent Quality Gate.
+Technology-inventory governance changes through checkpoint 034c41a65a8686c3c57dbaa5878c935333734eaf triggered fresh CI runs; their results must be checked before using them as acceptance evidence.
 
-## 5. Verified accomplishments
+## 5. Acceptance blockers and required evidence
 
-### Step 1 baseline
+Step 2 is not VERIFIED_PASS.
 
-- Foundational architecture specification established.
-- Architecture index links restored.
-- Content, scientific model, computation, exploration, visualization, design-system, Figma, contract, security, provenance, accessibility, extension, diagnostics, technology-selection, and release architecture documented.
+Required remaining evidence:
+- browser interaction review of the built prototype;
+- manual browser/assistive-technology accessibility review;
+- direct reconciliation against a concrete Figma file/variable/component set;
+- repository branch-protection/status-check controls applied to protected integration branches;
+- design-system and browser visual corrective pass;
+- verification of the bounded exploration-engine scope and technology decisions in ADR-006/ADR-008.
 
-### Governance foundation
-
-- Persistent AI-agent operating contract established.
-- Permanent project constitution established.
-- Living current-state checkpoint established.
-- Universal project quality-gate framework established for all stages.
-- Stage-gate template established.
-- Defect ledger established.
-- Decision and ADR policy established.
-- Verification and claim-discipline policy established.
-- Change protocol established.
-- Figma AI agent rules established.
-- Repository-level governance validator and CI workflow established.
-
-## 6. Not yet verified / not yet implemented
-
-These items are outside the verified scope of the governance stage:
-
-- application/package foundation;
-- runtime scientific-model implementation;
-- Scientific Exploration Engine implementation;
-- renderer implementation;
-- complete design-token build pipeline;
-- complete Figma synchronization automation;
-- application-level scientific, accessibility, performance, visual, and end-to-end verification.
-
-## 7. Open defects
+## 6. Open defects
 
 Canonical source: DEFECT-LEDGER.md.
 
-Current Critical defects: 0
+Known Critical defects: 0.
 
-Any new Critical defect changes this state and blocks progression immediately.
+Current Major blockers include repository enforcement configuration and the unresolved design-system/browser visual quality pass.
 
-## 8. Current gate record
+## 7. Gate
 
-Gate: Step 1.5 stage-specific gate
-Result: 98/100
-Critical defects: 0 unresolved
-Evidence record: STEP-1-5-QUALITY-REVIEW.md
+Gate result: IMPLEMENTED_PENDING_VERIFICATION.
 
-The permanent QUALITY-GATE.md defines how every stage gate works. The stage-specific review contains the concrete Step 1.5 scoring and evidence.
+No final score is assigned until all mandatory evidence is present. Progression remains blocked until the permanent QUALITY-GATE.md criteria are satisfied and the stage review records VERIFIED_PASS.
 
-## 9. Next permitted scope
+## 8. Governance and decision authority
 
-The next stage is determined by the roadmap and its approved stage definition.
+- QUALITY-GATE.md is the permanent authority for gate method and hard acceptance conditions.
+- A stage-specific quality review applies that framework to one stage and cannot weaken it.
+- CURRENT-STATE.md records the live result and cannot override the gate.
+- Approved ADRs record architecture and technology decisions; a later ADR is required to supersede an earlier decision.
+- ADR-008 is the auditable technology inventory; listing a future technology is not evidence that it is installed or verified.
+- GitHub branch protection is an external repository control; source-controlled policy documents and workflows define the required configuration, but repository commits alone do not create the protection rule.
 
-No work may begin solely because an AI agent says it is the next step. The stage and task must be recorded here or in an approved stage plan.
+## 9. Forbidden assumptions
 
-## 10. Forbidden assumptions
+Do not infer browser correctness from build success, scientific correctness from visual plausibility, Figma synchronization from documentation alone, branch protection from a policy document, future dependency installation from ADR-008, or final stage acceptance from CI alone.
 
-Future contributors must not assume:
+## 10. Context reset
 
-- previous AI claims remain correct;
-- documentation proves implementation;
-- a screenshot proves functionality;
-- a visual mock proves scientific meaning;
-- Figma is canonical for repository tokens;
-- an existing abstraction is correct without inspection;
-- a stage is passed without its recorded evidence.
-
-## 11. State update protocol
-
-Update this file when:
-
-- a stage starts;
-- a stage is passed or fails;
-- a Critical or Major defect changes status;
-- a material contract or architecture decision changes;
-- a major implementation milestone is verified;
-- release state changes.
-
-Every update must preserve traceability to the relevant commit, test, ADR, review, or evidence artifact.
-
-## 12. Context-reset rule
-
-A new agent must be able to answer these questions from this file:
-
-1. Where are we?
-2. What is verified?
-3. What is not verified?
-4. What defects are open?
-5. What gate applies?
-6. What is the next permitted scope?
-7. What must not be assumed?
-
-If any answer cannot be recovered from the repository, update the state before continuing material work.
+A new agent must be able to recover the current stage, verified evidence, remaining evidence blockers, defects, gate state, decision authority, and permitted scope from this file alone.

@@ -1,0 +1,3 @@
+export interface MathCanvasExpression{readonly id:string;readonly expression:string;readonly label?:string}
+export interface MathCanvasViewport{readonly xmin:number;readonly xmax:number;readonly ymin:number;readonly ymax:number}
+export interface MathematicalCanvasDefinition{readonly id:string;readonly version:string;readonly expressions:readonly MathCanvasExpression[];readonly viewport:MathCanvasViewport}
