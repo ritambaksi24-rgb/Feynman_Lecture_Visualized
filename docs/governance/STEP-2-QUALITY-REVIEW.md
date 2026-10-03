@@ -2,7 +2,7 @@
 
 Status: IMPLEMENTED_PENDING_VERIFICATION
 Baseline commit: e35acff00a5c45d3509a62294bc24834374bad57
-Current implementation checkpoint: 4666a2e8a2c14f64506ca437f4b5facfc641650b
+Current implementation checkpoint: 034c41a65a8686c3c57dbaa5878c935333734eaf
 
 ## Gate authority
 
@@ -12,7 +12,7 @@ This file is a stage-specific application of the permanent `docs/governance/QUAL
 
 The Step 2 implementation establishes an executable foundation, but verification has exposed additional governance, technology-boundary, and design-system quality work that must be resolved before acceptance.
 
-Technology decisions are now consolidated across ADR-005, ADR-006, and ADR-008. ADR-008 is the comprehensive inventory and adoption roadmap; it explicitly distinguishes foundation technologies from future candidates and non-selections. The direct-dependency manifest audit at this checkpoint found no third-party dependency absent from the inventory.
+Technology decisions are now consolidated across ADR-005, ADR-006, and ADR-008. ADR-008 is the comprehensive inventory and adoption roadmap; it explicitly distinguishes foundation technologies from future candidates and non-selections. The direct-dependency manifest audit at checkpoint 034c41a65a8686c3c57dbaa5878c935333734eaf found no third-party dependency absent from the inventory.
 
 ## Executed CI evidence
 
@@ -23,7 +23,7 @@ Governance Validation workflow: 37146076949 — success
 
 These runs are retained as historical evidence for checkpoint af213f8a7618e505de9a31ce5d3fa7ef4e6a0dd0. They do not certify the strengthened governance automation or later changes.
 
-Fresh CI runs were triggered for technology-inventory governance checkpoint 6519ad6d5b2de14571e8c6774757144fa2098aa3. Their results must be inspected before being used as acceptance evidence.
+Fresh CI runs were triggered for technology-inventory governance checkpoint 034c41a65a8686c3c57dbaa5878c935333734eaf. Their results must be inspected before being used as acceptance evidence.
 
 ## Corrective findings
 
