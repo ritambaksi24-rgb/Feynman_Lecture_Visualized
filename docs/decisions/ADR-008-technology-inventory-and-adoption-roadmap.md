@@ -115,7 +115,7 @@ The following technologies have been discussed as possible future content/author
 
 Any AI/content-intelligence layer must preserve the project's source-of-truth, provenance, security, and human-review requirements.
 
-### G. Technologies discussed but not adopted as core architecture
+### G. Explicit non-selections
 
 | Technology | Treatment |
 | --- | --- |
