@@ -1,141 +1,229 @@
-# Step 1.5 Quality Gate
+# Project Quality Gate
 
-## Purpose
+## 1. Purpose
 
-This gate determines whether the project governance foundation is strong enough to allow Step 2 implementation.
+This is the permanent quality-gate framework for the entire project.
 
-The inherited project rule remains:
+It is not tied to Step 1, Step 1.5, Step 2, or any specific implementation technology.
 
-> **Minimum 95/100 and zero unresolved critical defects.**
+Every material project stage uses this framework. A stage-specific review provides the concrete Definition of Done, acceptance criteria, evidence matrix, applicable weighting, deductions, and final result.
 
-## Step 1.5 scoring model
+## 2. Applicability
 
-| Dimension | Weight |
-| --- | ---: |
-| Durable project memory and context recovery | 15 |
-| Constitutional rules and source-of-truth hierarchy | 15 |
-| Evidence-based verification and claim discipline | 15 |
-| 95/100 gate, defect control, and progression discipline | 15 |
-| AI coding-agent operating rules | 10 |
-| Figma AI / design-agent operating rules | 10 |
-| Decision, ADR, and change control | 5 |
-| Executable governance enforcement | 10 |
-| Documentation coherence and discoverability | 5 |
-| **Total** | **100** |
+The gate applies to:
 
-## Mandatory pass conditions
+- architecture stages;
+- infrastructure and foundation stages;
+- scientific-domain stages;
+- computation stages;
+- Scientific Exploration Engine stages;
+- visualization and rendering stages;
+- design-system stages;
+- Figma and design-integration stages;
+- content and editorial stages;
+- integration milestones;
+- security and remediation work;
+- accessibility work;
+- performance work;
+- release and publication milestones;
+- material cross-cutting refactors.
 
-All of these are required:
+A small local change may use normal verification without opening a full stage gate. A material change that affects an accepted invariant reopens the applicable gate.
 
-1. Score is at least 95/100.
-2. There are zero unresolved critical defects.
-3. Governance documents are mutually consistent.
-4. The agent startup sequence is explicit.
-5. The source-of-truth hierarchy is explicit.
-6. Strong claims require verification evidence.
-7. Figma AI agents have explicit repository rules.
-8. The change protocol prevents skipping inspection, testing, adversarial review, or the gate.
-9. At least one repository-level automated governance check exists.
-10. The current state records the gate result and exact evidence.
+## 3. Hard acceptance rule
 
-## Evidence requirements
+A stage may advance only when:
 
-A governance score must be based on actual repository inspection.
+> Score >=95/100 AND zero unresolved Critical defects AND sufficient evidence for every mandatory criterion.
 
-Acceptable evidence includes:
+These conditions are conjunctive.
 
-- file existence checks;
-- automated governance validator output;
-- internal link/reference inspection;
-- exact-diff review;
-- contradiction search;
-- branch/commit inspection;
-- manual adversarial review;
-- applicable CI/workflow validation.
+- 94.99 does not pass.
+- 95.00 with a Critical defect does not pass.
+- 100 with missing mandatory evidence does not pass.
+- A previously passed gate can be reopened.
 
-For this stage, a full application build cannot be required because the Step 1.5 branch is a governance foundation and the application runtime has not yet been restored/implemented on this branch.
+## 4. Gate architecture
 
-## Adversarial review
+Every stage gate has four layers.
 
-The reviewer must actively try to find:
+### Layer A — Mandatory blockers
 
-- rules that contradict the architecture;
-- rules that are too vague for an AI agent to follow;
-- missing Figma-specific behavior;
-- places where an agent can claim "complete" without evidence;
-- places where a failed gate can be bypassed;
-- missing current-state recovery instructions;
-- duplicate sources of truth;
-- governance documents that depend on undocumented conversation context;
-- automation that validates prose but does not reflect the intended gate.
+These apply to every stage:
 
-## Critical defects
+- unresolved Critical defect;
+- fabricated scientific output;
+- broken or silently changed source/provenance boundary;
+- unreviewed change to permanent governance rules;
+- known security blocker ignored;
+- broken contract relied upon by consumers;
+- verification evidence falsely represented as collected;
+- acceptance criteria weakened solely to obtain a pass.
 
-Any of these block progression:
+A mandatory blocker is a gate failure regardless of score.
 
-- contradictory source-of-truth rules;
-- missing 95/100 gate;
-- no durable current-state record;
-- no defect ledger;
-- no evidence discipline;
-- Figma AI explicitly or implicitly allowed to bypass repository rules;
-- validator/workflow knowingly passing when a mandatory governance file is missing;
-- a rule claiming enforcement that the repository does not actually perform.
+### Layer B — Universal quality dimensions
 
-## Gate procedure
+Every stage review MUST evaluate these dimensions:
 
-```text
-Recover state
-    ↓
-Inspect repository
-    ↓
-Inspect exact change
-    ↓
-Run governance validator
-    ↓
-Adversarial review
-    ↓
-Check contradictions
-    ↓
-Score independently
-    ↓
-Record evidence
-    ↓
-≥95 + zero critical defects
-    ↓
-Update CURRENT-STATE
-    ↓
-Commit
-```
+| Dimension | Default reference weight | Typical evidence |
+| --- | ---: | --- |
+| Requirements, scope, and source fidelity | 10 | approved scope, source mapping, acceptance criteria |
+| Architecture and boundary integrity | 15 | dependency inspection, contracts, ADRs, boundary tests |
+| Correctness | 20 | functional, mathematical, scientific, or domain validation |
+| Modularity and maintainability | 10 | ownership, reuse, duplication and dead-code review |
+| Design system, UX, and interaction quality | 10 | component/token review, states, responsive behavior |
+| Accessibility | 10 | automated checks and manual review |
+| Security, provenance, and rights | 10 | security review, provenance and licensing records |
+| Testing and verification evidence | 10 | unit, contract, integration, scientific, and visual evidence |
+| Performance and reliability | 5 | benchmarks, resource, error, and cancellation checks |
+| Total reference model | 100 | |
 
-## Score discipline
+The reference weights are a baseline, not permission to ignore stage semantics.
 
-Never award points because a document says the desired property exists.
+### Layer C — Stage-specific weighting
 
-A point is awarded only when the documented rule is present, coherent, and supported by the required level of repository evidence.
+A stage review may adjust the reference weights to reflect its actual responsibilities.
 
-A score must identify deductions rather than defaulting to 100.
+Examples:
 
-## Gate status vocabulary
+- a scientific-model stage may increase Correctness;
+- a token-system stage may increase Design System and Figma reconciliation evidence;
+- a release stage may increase Security, provenance, reliability, and deployment evidence.
 
-- **NOT_STARTED**
-- **IN_PROGRESS**
-- **IMPLEMENTED_PENDING_VERIFICATION**
-- **VERIFIED_PASS**
-- **BLOCKED**
-- **REOPENED**
+The stage review MUST:
 
-## Reopening
+1. evaluate all relevant universal dimensions;
+2. preserve every mandatory blocker;
+3. total exactly 100 points;
+4. explain weight changes;
+5. record explicit deductions;
+6. map evidence to scored dimensions.
 
-A governance gate automatically reopens when:
+### Layer D — Verification boundary
 
-- a non-negotiable rule changes;
-- a new AI agent pathway bypasses the operating protocol;
-- a Figma/code source-of-truth conflict is introduced;
-- validator coverage is weakened;
-- a critical governance defect is discovered;
-- a later architecture change invalidates a governance invariant.
+The stage review MUST explicitly state what the score does and does not certify.
 
-## Relationship to Step 1 architecture gate
+Passing one stage never certifies unrelated future subsystems.
 
-Step 1 architecture acceptance and Step 1.5 governance acceptance are separate gates. Passing one does not imply passing the other.
+## 5. Stage-specific review
+
+Every material stage should have a review based on STAGE-GATE-TEMPLATE.md.
+
+Recommended naming:
+
+docs/governance/STEP-N-QUALITY-REVIEW.md
+
+or an equivalent milestone-specific name.
+
+A stage review contains:
+
+- stage identity;
+- baseline and review commits;
+- objective;
+- scope;
+- Definition of Done;
+- acceptance criteria;
+- evidence matrix;
+- scoring weights;
+- deductions;
+- defects;
+- adversarial review;
+- final decision;
+- verification boundary;
+- next permitted scope.
+
+The permanent Quality Gate must not accumulate stage-specific scoring tables.
+
+## 6. Evidence
+
+Depending on the stage, acceptable evidence can include:
+
+- repository and file inspection;
+- exact diff review;
+- architecture and dependency analysis;
+- schema or contract validation;
+- type checking;
+- unit tests;
+- property-based tests;
+- integration and end-to-end tests;
+- scientific reference and invariant validation;
+- accessibility testing and manual keyboard review;
+- visual review;
+- Figma and token reconciliation;
+- benchmark and profile data;
+- security, dependency, and licensing checks;
+- release, build, and deployment checks.
+
+No evidence may be claimed without actually collecting it.
+
+## 7. Scoring discipline
+
+A stage score must be reproducible from its recorded evidence.
+
+The reviewer MUST:
+
+1. score each dimension;
+2. state the evidence;
+3. state each deduction;
+4. identify uncertainty;
+5. identify open defects;
+6. calculate the total without upward rounding.
+
+Points are not awarded because a document says the desired property exists.
+
+## 8. Adversarial review
+
+Every material stage requires an explicit attempt to find failure modes.
+
+Review, as applicable:
+
+- contract bypass;
+- duplicate implementation;
+- silent fallback;
+- fabricated or untraceable scientific data;
+- theme or state regressions;
+- Figma and repository token drift;
+- keyboard and accessibility failures;
+- resource-exhaustion paths;
+- renderer leakage into scientific semantics;
+- inability to substitute a backend or renderer;
+- provenance and licensing gaps;
+- AI-agent ambiguity or gate bypass.
+
+## 9. Gate states
+
+- NOT_STARTED
+- IN_PROGRESS
+- IMPLEMENTED_PENDING_VERIFICATION
+- VERIFIED_PASS
+- BLOCKED
+- REOPENED
+
+Only VERIFIED_PASS permits stage progression.
+
+## 10. Reopening
+
+Reopen the applicable gate when:
+
+- an accepted invariant changes;
+- a material contract changes;
+- a Critical defect appears;
+- verification evidence becomes invalid or stale;
+- permanent governance rules change materially;
+- implementation diverges from accepted architecture;
+- a Figma and repository source-of-truth conflict affects an accepted design-system decision.
+
+## 11. Relationship to Current State
+
+CURRENT-STATE.md records the living result.
+
+The stage-specific review records detailed evidence.
+
+QUALITY-GATE.md defines the permanent method.
+
+These three roles must remain separate.
+
+## 12. Governance principle
+
+> The Quality Gate defines how a project earns permission to move forward; it does not grant permission merely because documentation exists.

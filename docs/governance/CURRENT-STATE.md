@@ -1,96 +1,126 @@
 # Current Project State
 
-**Purpose:** Durable state checkpoint for humans and AI agents.  
-**Last baseline commit before Step 1.5:** `3eba527682f6875d760078b84a2ac6a4e89d40fc`
+Purpose: This is the living project-state deliverable for the entire lifecycle of Feynman Lectures Visualized.
 
-## Active stage
+It is not a Step 1.5-only document.
 
-**Step 1.5 — AI-Resilient Project Governance**
+## 1. Current stage
 
-**Status:** VERIFIED_PASS
+Stage: Step 1.5 — AI-Resilient Project Governance
+Status: VERIFIED_PASS
+Last verified commit: e3fdbb533c7414f5fed35de77541a372618c34be
 
-## Completed before this stage
+## 2. Last accepted baseline
 
-- Step 1 foundational architecture specification exists.
-- Architecture index links are restored.
-- Architecture covers content, scientific models, computation, exploration, visualization, design system, Figma, contracts, security, provenance, accessibility, extensions, diagnostics, technology selection, and release architecture.
-- Step 1 architecture was previously reviewed against its architecture rubric.
+Previous baseline: 3eba527682f6875d760078b84a2ac6a4e89d40fc
+Previous stage: Step 1 — Foundational Architecture Revision
 
-## Step 1.5 objective
+## 3. Current objective
 
-Make project rules persistent and recoverable without relying on conversation context.
+The current objective is the next explicitly approved task recorded for the active stage.
 
-The governance layer must control:
+When a new stage begins, this section is rewritten to describe that stage's objective. It must never be inferred from conversation history.
 
-- AI context recovery;
-- source-of-truth precedence;
-- 95/100 progression gates;
-- defect visibility;
-- decision and ADR discipline;
-- evidence-based completion claims;
-- Figma AI agent behavior;
-- change sequencing;
-- future automation of architectural enforcement.
+## 4. Active stage Definition of Done
 
-## Step 1.5 deliverables
+The active stage links to its stage-specific review or equivalent acceptance record.
 
-- `AGENTS.md`
-- `docs/governance/README.md`
-- `docs/governance/PROJECT-CONSTITUTION.md`
-- `docs/governance/CURRENT-STATE.md`
-- `docs/governance/QUALITY-GATE.md`
-- `docs/governance/DEFECT-LEDGER.md`
-- `docs/governance/DECISION-POLICY.md`
-- `docs/governance/VERIFICATION-POLICY.md`
-- `docs/governance/CHANGE-PROTOCOL.md`
-- `docs/governance/FIGMA-AI-AGENTS.md`
-- `docs/decisions/ADR-004-step-1-5-ai-resilient-project-governance.md`
-- `.github/PULL_REQUEST_TEMPLATE.md`
-- `.github/workflows/governance.yml`
-- `tooling/governance/validate-governance.py`
-- `docs/governance/STEP-1-5-QUALITY-REVIEW.md`
+Current: STEP-1-5-QUALITY-REVIEW.md
 
-## Not completed by Step 1.5
+Future stages must add their own stage-specific review rather than modifying the permanent Quality Gate.
 
-These remain later implementation work:
+## 5. Verified accomplishments
+
+### Step 1 baseline
+
+- Foundational architecture specification established.
+- Architecture index links restored.
+- Content, scientific model, computation, exploration, visualization, design-system, Figma, contract, security, provenance, accessibility, extension, diagnostics, technology-selection, and release architecture documented.
+
+### Governance foundation
+
+- Persistent AI-agent operating contract established.
+- Permanent project constitution established.
+- Living current-state checkpoint established.
+- Universal project quality-gate framework established for all stages.
+- Stage-gate template established.
+- Defect ledger established.
+- Decision and ADR policy established.
+- Verification and claim-discipline policy established.
+- Change protocol established.
+- Figma AI agent rules established.
+- Repository-level governance validator and CI workflow established.
+
+## 6. Not yet verified / not yet implemented
+
+These items are outside the verified scope of the governance stage:
 
 - application/package foundation;
-- runtime scientific model implementation;
-- exploration engine implementation;
+- runtime scientific-model implementation;
+- Scientific Exploration Engine implementation;
 - renderer implementation;
 - complete design-token build pipeline;
 - complete Figma synchronization automation;
-- production CI for application/test/build workloads.
+- application-level scientific, accessibility, performance, visual, and end-to-end verification.
 
-Step 1.5 must not be described as implementation of Step 2.
+## 7. Open defects
 
-## Open defects
+Canonical source: DEFECT-LEDGER.md.
 
-Canonical source: `DEFECT-LEDGER.md`.
+Current Critical defects: 0
 
-At the time this checkpoint is written, no known critical governance defect is intentionally accepted.
+Any new Critical defect changes this state and blocks progression immediately.
 
-Independent verification recorded: governance workflow run `37140784960` passed on commit `66fe93ea55dbdfdafc09cd314a547c7dba322d77`. The Step 1.5 review scored 98/100 with zero unresolved critical defects. This verification covers the governance control plane only; it does not certify Step 2 or application runtime behavior.
+## 8. Current gate record
 
-## Step 1.5 verification result
+Gate: Step 1.5 stage-specific gate
+Result: 98/100
+Critical defects: 0 unresolved
+Evidence record: STEP-1-5-QUALITY-REVIEW.md
 
-**Score:** 98/100
+The permanent QUALITY-GATE.md defines how every stage gate works. The stage-specific review contains the concrete Step 1.5 scoring and evidence.
 
-**Critical defects:** 0 unresolved
+## 9. Next permitted scope
 
-**Evidence:**
+The next stage is determined by the roadmap and its approved stage definition.
 
-- Exact two-commit comparison from `architecture/foundation-step-1` to the Step 1.5 branch was inspected.
-- Governance validator passed in GitHub Actions workflow run `37140784960`.
-- Validator output confirmed all 13 required governance files were present and the declared invariants passed.
-- Adversarial review covered source-of-truth conflicts, gate bypasses, unsupported completion claims, Figma/code drift, missing current-state recovery, duplicate sources of truth, and screenshot-only acceptance.
-- Figma-specific rules were reviewed as part of the acceptance check.
+No work may begin solely because an AI agent says it is the next step. The stage and task must be recorded here or in an approved stage plan.
 
-**Verification boundary:** governance structure and agent/design-agent operating rules only. No application build, runtime scientific validation, performance validation, or full visual validation is claimed.
+## 10. Forbidden assumptions
 
-## Next-stage constraints
+Future contributors must not assume:
 
-- Step 1.5 is verified; Step 2 implementation must still follow the next-stage gate and change protocol.
-- Do not add application features merely because the governance documents exist.
-- Do not treat Figma AI output as architecture approval.
-- Any material governance change reopens the Step 1.5 gate.
+- previous AI claims remain correct;
+- documentation proves implementation;
+- a screenshot proves functionality;
+- a visual mock proves scientific meaning;
+- Figma is canonical for repository tokens;
+- an existing abstraction is correct without inspection;
+- a stage is passed without its recorded evidence.
+
+## 11. State update protocol
+
+Update this file when:
+
+- a stage starts;
+- a stage is passed or fails;
+- a Critical or Major defect changes status;
+- a material contract or architecture decision changes;
+- a major implementation milestone is verified;
+- release state changes.
+
+Every update must preserve traceability to the relevant commit, test, ADR, review, or evidence artifact.
+
+## 12. Context-reset rule
+
+A new agent must be able to answer these questions from this file:
+
+1. Where are we?
+2. What is verified?
+3. What is not verified?
+4. What defects are open?
+5. What gate applies?
+6. What is the next permitted scope?
+7. What must not be assumed?
+
+If any answer cannot be recovered from the repository, update the state before continuing material work.
