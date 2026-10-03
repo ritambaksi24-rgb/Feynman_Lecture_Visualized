@@ -2,7 +2,7 @@
 
 Project: Feynman Lectures Visualized
 Status: APPROVED FOUNDATION RULESET
-Revision: 2026-10-03
+Revision: 2026-10-04
 
 ## Article 1 — Purpose
 
@@ -144,7 +144,7 @@ Agents MUST NOT:
 - claim evidence that was not collected;
 - treat screenshots or generated output as universal proof;
 - invent scientific, legal, licensing, source, or repository facts;
-- rely on previous AI statements where repository inspection is possible.
+- treat branch-protection policy documents as proof that GitHub enforcement is active.
 
 ## Article 11 — Quality
 
@@ -155,6 +155,7 @@ Agents MUST NOT:
 5. Numerical scores must be evidence-backed.
 6. A later change may reopen a previously passed gate.
 7. Important quality dimensions must remain visible; an average must not hide a failed critical dimension.
+8. The permanent QUALITY-GATE.md defines the gate method and hard acceptance authority. Stage-specific reviews apply it and may not weaken it. CURRENT-STATE.md records the result but cannot override it.
 
 ## Article 12 — Truth and evidence
 
@@ -163,7 +164,7 @@ Use these states:
 - PLANNED — intended but not implemented.
 - IMPLEMENTED — repository content exists.
 - TESTED — an applicable check was executed.
-- VERIFIED — evidence was reviewed against an acceptance criterion.
+- VERIFIED — evidence was reviewed against an explicit acceptance criterion.
 - RELEASED — verified and intentionally published.
 
 Documentation does not upgrade a state.
@@ -197,7 +198,15 @@ docs/architecture/
 docs/decisions/
 ~~~
 
-## Article 15 — Stage progression
+## Article 15 — Repository enforcement
+
+Protected integration branches MUST reject merges unless the documented required status checks are successful and the branch rules require pull requests.
+
+The project-level minimum configuration is recorded in docs/governance/BRANCH-PROTECTION.md.
+
+Repository files and CI can define and test the intended checks, but only GitHub repository rules actually enforce them. The enforcement state must be explicitly verified before a stage may be accepted.
+
+## Article 16 — Stage progression
 
 A stage may advance only when:
 
@@ -206,7 +215,8 @@ A stage may advance only when:
 - zero unresolved Critical defects remain;
 - required evidence is recorded;
 - CURRENT-STATE.md is updated;
-- there is no unreviewed material contradiction with architecture or contracts.
+- there is no unreviewed material contradiction with architecture or contracts;
+- required protected-branch repository controls are active for the integration branch receiving the stage result.
 
 ## Final constitutional rule
 

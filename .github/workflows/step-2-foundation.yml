@@ -1,14 +1,20 @@
 name: Step 2 foundation
+
 on:
   push:
     branches: ["architecture/step-2-foundation"]
   pull_request:
     branches: ["architecture/foundation-step-1"]
+  merge_group:
+
 jobs:
-  foundation:
+  step-2-foundation:
+    name: Step 2 foundation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22

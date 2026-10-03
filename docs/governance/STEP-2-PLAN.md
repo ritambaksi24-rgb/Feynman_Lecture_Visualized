@@ -68,6 +68,44 @@ scientific model → computation → exploration state → visualization state �
 
 The prototype must expose the same scientific state to at least a numerical readout and a visualization, with reset/recompute behavior and explicit provenance/version metadata.
 
+## Exploration-engine boundary
+
+The Step 2 Scientific Exploration Engine is only the reusable semantic/reactive kernel.
+
+### Core capabilities in Step 2
+
+- constrained mathematical expressions;
+- named variables and constants;
+- parameters and bounded parameter updates;
+- dependency graph construction and cycle rejection;
+- deterministic derived-value recomputation;
+- exploration snapshots/reset;
+- versioned exploration state;
+- scientific experiment state handoff to visualization contracts.
+
+### Explicitly outside the Step 2 kernel
+
+- general-purpose computer algebra;
+- symbolic integration or differentiation;
+- general equation solving;
+- theorem proving;
+- dynamic code execution;
+- a general geometry engine;
+- a generic spreadsheet/notebook product;
+- unrestricted data-science/statistics tooling;
+- a general charting platform;
+- a general-purpose unit-conversion package;
+- a 3D scene graph;
+- a generic scripting/plugin runtime.
+
+Those capabilities may be introduced later only as separately bounded, versioned capability extensions with their own ADR, contract, security, performance, and verification evidence.
+
+## Technology decision boundary
+
+Foundational choices are recorded in ADR-005 and ADR-006.
+
+A new foundational runtime dependency, state mechanism, renderer family, expression engine, or authoring platform requires the decision process before implementation. "Convenient" is not an accepted architectural criterion.
+
 ## Modularity rule
 
 Use packages only where they represent a stable architectural boundary or independent testing/replacement value. Do not create micro-packages for individual helpers or JSX fragments.
@@ -87,6 +125,7 @@ Step 2 does not attempt:
 - full DFT/Hartree-Fock/relativistic computation;
 - every UI component;
 - renderer-specific scientific semantics;
+- unrestricted notebook/CAS functionality;
 - wholesale reproduction of copyrighted Feynman text or media.
 
 ## Stage evidence requirements
@@ -105,7 +144,9 @@ Step 2 cannot pass from documentation alone. The final review must contain execu
 - renderer substitution seam;
 - provenance/reproducibility record;
 - end-to-end scientific prototype;
-- adversarial boundary review.
+- adversarial boundary review;
+- repository enforcement policy applied to protected integration branches;
+- technology decisions and exploration scope reconciled against ADR-006/ADR-007.
 
 ## Checkpoints
 

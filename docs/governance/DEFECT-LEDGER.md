@@ -28,6 +28,12 @@ Do not rely on chat messages, issue titles, or memory as the sole record of a de
 | GOV-001 | Informational | RESOLVED | Context | AI work previously relied too heavily on conversational memory. | Step 1.5 establishes repository governance memory. |
 | GOV-002 | Major | RESOLVED | Evidence | Previous stage scoring could be mistaken for implementation proof. | Verification policy separates intent, implementation, testing, and verification. |
 | GOV-003 | Major | RESOLVED | Figma | Figma AI agent behavior was not governed with repository-specific rules. | Dedicated Figma AI agent contract added. |
+| GOV-004 | Major | RESOLVED | Evidence/state | Current-state and Step 2 quality-review checkpoint references were able to drift during successive implementation/documentation commits. | Validator now requires the current checkpoint and stage-review checkpoint to match and verifies referenced commits are in history. |
+| GOV-005 | Major | RESOLVED | Governance automation | Governance validation mainly checked file presence and selected phrases and did not validate cross-document consistency, stage status semantics, or commit ancestry. | Validator strengthened with structural, cross-document, workflow, and Git-history checks. |
+| GOV-006 | Major | BLOCKED | Repository enforcement | Protected integration branches had no verified branch protection or required status checks. | Repository policy and stable validation workflows added. A repository admin must apply the documented GitHub branch rules; this cannot be created by repository file edits alone. |
+| GOV-007 | Major | RESOLVED | Technology decisions | Foundational technology decisions were distributed across prose and remained ambiguous for state, visualization, expression evaluation, testing, styling, and offline tooling. | ADR-006 establishes accepted foundation choices and explicit deferred/prohibited choices. |
+| GOV-008 | Major | RESOLVED | Exploration scope | ADR-003 described a wide exploration platform surface without a sufficiently hard kernel boundary. | ADR-006 limits the core to a semantic/reactive exploration kernel and requires separately versioned capability extensions. |
+| DS-001 | Major | OPEN | Design system / browser visual quality | The current Step 2 token palette, semantic layering, component-state styling, and browser composition do not yet meet the project's intended scientific product visual standard. | Rework primitive/semantic/visualization token architecture and prototype composition before final Step 2 gate. |
 
 ## Rules for new entries
 

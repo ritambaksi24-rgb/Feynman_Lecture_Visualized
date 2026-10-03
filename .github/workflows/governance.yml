@@ -2,31 +2,19 @@ name: Governance Validation
 
 on:
   push:
-    branches:
-      - "**"
-    paths:
-      - "AGENTS.md"
-      - "docs/governance/**"
-      - "docs/decisions/ADR-004-step-1-5-ai-resilient-project-governance.md"
-      - "tooling/governance/validate-governance.py"
-      - ".github/workflows/governance.yml"
-      - ".github/PULL_REQUEST_TEMPLATE.md"
+    branches: ["**"]
   pull_request:
-    paths:
-      - "AGENTS.md"
-      - "docs/governance/**"
-      - "docs/decisions/ADR-004-step-1-5-ai-resilient-project-governance.md"
-      - "tooling/governance/validate-governance.py"
-      - ".github/workflows/governance.yml"
-      - ".github/PULL_REQUEST_TEMPLATE.md"
+  merge_group:
 
 jobs:
-  validate:
-    name: Validate repository governance
+  governance-validation:
+    name: Governance validation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Validate governance invariants
         run: python3 tooling/governance/validate-governance.py

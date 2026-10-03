@@ -4,78 +4,50 @@ Status: IMPLEMENTED_PENDING_VERIFICATION
 Baseline commit: e35acff00a5c45d3509a62294bc24834374bad57
 Current implementation checkpoint: af213f8a7618e505de9a31ce5d3fa7ef4e6a0dd0
 
+## Gate authority
+
+This file is a stage-specific application of the permanent `docs/governance/QUALITY-GATE.md`. It may tailor evidence and scoring for Step 2, but it cannot weaken, replace, or reinterpret the permanent hard gate.
+
 ## Implementation result
 
-The approved Step 2 implementation scope is established as a coherent executable foundation covering all 26 approved areas:
-
-1. Repository / Build Foundation
-2. Architecture Enforcement
-3. Contract & Schema Infrastructure
-4. Design Token System
-5. Light / Dark Themes
-6. Base UI Foundation
-7. Figma Foundation
-8. Scientific Domain Foundation
-9. Computation Foundation
-10. Scientific Exploration Engine Kernel
-11. Mathematical Canvas Foundation
-12. Scientific Visualization Foundation
-13. Renderer Abstraction
-14. First Renderer Proof
-15. Scientific Data / Provenance
-16. State / Reactivity
-17. Accessibility
-18. Security
-19. Testing Infrastructure
-20. Performance Infrastructure
-21. Diagnostics / Failure Handling
-22. Capability Registry
-23. Authoring Tooling
-24. Technology ADRs
-25. Developer Documentation
-26. End-to-End Scientific Prototype
+The Step 2 implementation establishes an executable foundation, but verification has exposed additional governance, technology-boundary, and design-system quality work that must be resolved before acceptance.
 
 ## Executed CI evidence
 
-The final Step 2 foundation checkpoint passed all configured CI checks.
+The last pre-correction Step 2 foundation checkpoint passed all configured CI checks.
 
 Step 2 foundation workflow: 37146076959 — success
 Governance Validation workflow: 37146076949 — success
 
-The foundation workflow verified:
+These runs are retained as historical evidence for checkpoint af213f8a7618e505de9a31ce5d3fa7ef4e6a0dd0. They do not certify the strengthened governance automation or the post-checkpoint design changes.
 
-- npm ci with the committed lockfile;
-- permanent governance validation;
-- DTCG token validation across 19 token files;
-- contract/schema validation;
-- architecture boundary validation;
-- runtime-safety validation;
-- application accessibility baseline validation;
-- TypeScript project-reference compilation;
-- 9 core scientific/infrastructure tests;
-- 1 performance-budget test;
-- production application build;
-- built-output smoke validation.
+## Corrective findings
 
-## Additional architecture evidence
+The following findings are recorded in DEFECT-LEDGER.md:
 
-STEP-2-ADVERSARIAL-ARCHITECTURE-REVIEW.md records an adversarial review with no Critical architectural defect found.
+- GOV-004: checkpoint-reference drift protection was insufficient.
+- GOV-005: governance validation was too shallow.
+- GOV-006: repository branch protection and required checks are not yet externally verified.
+- GOV-007: foundational technology decisions needed explicit consolidation.
+- GOV-008: Scientific Exploration Engine scope needed a hard kernel boundary.
+- DS-001: current Step 2 design-system/browser visual quality needs a corrective pass.
 
-The review covers package-boundary direction, scientific/UI separation, renderer neutrality, safe expression execution, state/reactivity, provenance, capability resolution, token-generation normalization, and verification-discipline controls.
+GOV-004, GOV-005, GOV-007, and GOV-008 are addressed by repository changes in this checkpoint. GOV-006 remains externally blocked until the repository rules are applied by a GitHub repository administrator. DS-001 remains open.
 
 ## Remaining acceptance evidence
 
-The stage is deliberately not marked VERIFIED_PASS. The remaining required evidence is:
+The stage is deliberately not marked VERIFIED_PASS. Required evidence remains:
 
 1. Browser interaction review of the built prototype.
 2. Manual browser/assistive-technology accessibility review.
 3. Direct reconciliation against a concrete Figma file and its variables/components.
-
-These are evidence dependencies, not known implementation failures.
+4. Repository branch-protection/status-check configuration applied to protected integration branches.
+5. Closure of DS-001 through the design-system/browser visual corrective pass.
+6. Verification that the Step 2 exploration kernel remains within ADR-006 and that future capability work is separated by ADR/contract.
 
 ## Gate decision
 
-No final score is assigned until all mandatory evidence is present.
+No final score is assigned until all mandatory evidence and blockers are resolved.
 
 The permanent QUALITY-GATE.md requires:
 - score >=95/100;

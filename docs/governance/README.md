@@ -17,6 +17,7 @@ These files are not a Step 1.5 implementation artifact. They govern the project 
 | [Verification Policy](./VERIFICATION-POLICY.md) | Permanent | Evidence standards and rules for what agents may claim. |
 | [Change Protocol](./CHANGE-PROTOCOL.md) | Permanent | Required lifecycle for material changes. |
 | [Figma AI Agents](./FIGMA-AI-AGENTS.md) | Permanent | Repository-specific rules for Figma AI and Figma-connected agents. |
+| [Branch Protection](./BRANCH-PROTECTION.md) | Permanent | Required GitHub protected-branch and status-check configuration. |
 | [Step 1.5 Quality Review](./STEP-1-5-QUALITY-REVIEW.md) | Historical | Stage-specific acceptance record for Step 1.5. |
 
 ## Permanent versus stage-specific governance
@@ -36,6 +37,7 @@ The following remain applicable after Step 1.5:
 - Verification Policy;
 - Change Protocol;
 - Figma AI rules;
+- Branch Protection policy;
 - repository-level governance automation.
 
 These documents must remain stage-neutral.
@@ -66,6 +68,8 @@ CURRENT-STATE.md
 QUALITY-GATE.md
    ↓
 CHANGE-PROTOCOL.md
+   ↓
+Branch-protection policy
    ↓
 Relevant architecture / contract / ADR / stage review
    ↓
