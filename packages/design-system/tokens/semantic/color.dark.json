@@ -1,1 +1,66 @@
-{"$schema":"https://www.designtokens.org/schemas/2025.10/format.json","$type":"color","semantic":{"color":{"surface":{"canvas":{"$value":"{primitive.color.neutral.950}"},"container":{"$value":"{primitive.color.neutral.900}"},"containerSubtle":{"$value":"{primitive.color.neutral.850}"}},"content":{"primary":{"$value":"{primitive.color.neutral.0}"},"secondary":{"$value":"{primitive.color.neutral.200}"},"muted":{"$value":"{primitive.color.neutral.400}"},"onAccent":{"$value":"{primitive.color.neutral.0}"}},"border":{"default":{"$value":"{primitive.color.neutral.700}"},"strong":{"$value":"{primitive.color.neutral.500}"}},"action":{"accent":{"$value":"{primitive.color.teal.400}"},"accentHover":{"$value":"{primitive.color.teal.300}"},"selection":{"$value":"{primitive.color.blue.400}"}},"scientific":{"positive":{"$value":"{primitive.color.teal.400}"},"negative":{"$value":"{primitive.color.rose.400}"},"reference":{"$value":"{primitive.color.purple.400}"},"caution":{"$value":"{primitive.color.gold.300}"}}}}}
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$type": "color",
+  "semantic": {
+    "color": {
+      "surface": {
+        "canvas": {
+          "$value": "{primitive.color.neutral.900}"
+        },
+        "container": {
+          "$value": "{primitive.color.neutral.850}"
+        },
+        "containerSubtle": {
+          "$value": "{primitive.color.neutral.800}"
+        }
+      },
+      "content": {
+        "primary": {
+          "$value": "{primitive.color.neutral.0}"
+        },
+        "secondary": {
+          "$value": "{primitive.color.neutral.200}"
+        },
+        "muted": {
+          "$value": "{primitive.color.neutral.400}"
+        },
+        "onAccent": {
+          "$value": "{primitive.color.neutral.0}"
+        }
+      },
+      "border": {
+        "default": {
+          "$value": "{primitive.color.neutral.700}"
+        },
+        "strong": {
+          "$value": "{primitive.color.neutral.500}"
+        }
+      },
+      "action": {
+        "accent": {
+          "$value": "{primitive.color.teal.400}"
+        },
+        "accentHover": {
+          "$value": "{primitive.color.teal.300}"
+        },
+        "selection": {
+          "$value": "{primitive.color.blue.400}"
+        }
+      },
+      "scientific": {
+        "positive": {
+          "$value": "{primitive.color.teal.400}"
+        },
+        "negative": {
+          "$value": "{primitive.color.rose.400}"
+        },
+        "reference": {
+          "$value": "{primitive.color.purple.400}"
+        },
+        "caution": {
+          "$value": "{primitive.color.gold.300}"
+        }
+      }
+    }
+  }
+}
