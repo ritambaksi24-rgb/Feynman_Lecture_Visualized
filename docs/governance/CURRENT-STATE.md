@@ -10,7 +10,7 @@ It is not stage-specific.
 Stage: Step 2 — Implementation Foundation
 Status: IMPLEMENTED_PENDING_VERIFICATION
 Branch: architecture/step-2-foundation
-Current checkpoint: af213f8a7618e505de9a31ce5d3fa7ef4e6a0dd0
+Current checkpoint: 6519ad6d5b2de14571e8c6774757144fa2098aa3
 Previous accepted baseline: e35acff00a5c45d3509a62294bc24834374bad57
 Stage definition: STEP-2-PLAN.md
 Stage gate: STEP-2-QUALITY-REVIEW.md
@@ -22,19 +22,21 @@ Previous accepted result: 98/100, zero unresolved Critical defects.
 
 ## 3. Step 2 implementation state
 
-The Step 2 implementation exists as a bounded executable foundation. Its scientific computation and renderer seam are implemented, but the stage remains pending verification and has newly identified governance, technology-scope, and design-system quality issues recorded in the defect ledger.
+The Step 2 implementation exists as a bounded executable foundation. Its scientific computation and renderer seam are implemented, but the stage remains pending verification and has newly identified governance, technology-scope, design-system, and visual-quality work recorded in the defect ledger.
+
+The technology architecture is now consolidated in ADR-005, ADR-006, and ADR-008. ADR-008 records selected foundation technologies, approved future capabilities, candidates, explicit non-selections, and adoption rules; it does not imply that future technologies are installed.
 
 ## 4. Executed verification evidence
 
-Latest Step 2 foundation workflow before the governance correction:
+Latest fully successful pre-correction Step 2 foundation workflow:
 - Run: 37146076959
 - Result: success
 
-Latest Governance Validation before the governance correction:
+Latest fully successful pre-correction Governance Validation:
 - Run: 37146076949
 - Result: success
 
-These runs remain historical evidence for the prior checkpoint. The governance validator and workflows have since been strengthened, so these runs do not prove the new governance controls.
+Technology-inventory governance changes at checkpoint 6519ad6d5b2de14571e8c6774757144fa2098aa3 triggered fresh CI runs; their results must be checked before using them as acceptance evidence.
 
 ## 5. Acceptance blockers and required evidence
 
@@ -46,7 +48,7 @@ Required remaining evidence:
 - direct reconciliation against a concrete Figma file/variable/component set;
 - repository branch-protection/status-check controls applied to protected integration branches;
 - design-system and browser visual corrective pass;
-- verification of the bounded exploration-engine scope and technology decisions in ADR-006/ADR-007.
+- verification of the bounded exploration-engine scope and technology decisions in ADR-006/ADR-008.
 
 ## 6. Open defects
 
@@ -68,11 +70,12 @@ No final score is assigned until all mandatory evidence is present. Progression 
 - A stage-specific quality review applies that framework to one stage and cannot weaken it.
 - CURRENT-STATE.md records the live result and cannot override the gate.
 - Approved ADRs record architecture and technology decisions; a later ADR is required to supersede an earlier decision.
+- ADR-008 is the auditable technology inventory; listing a future technology is not evidence that it is installed or verified.
 - GitHub branch protection is an external repository control; source-controlled policy documents and workflows define the required configuration, but repository commits alone do not create the protection rule.
 
 ## 9. Forbidden assumptions
 
-Do not infer browser correctness from build success, scientific correctness from visual plausibility, Figma synchronization from documentation alone, branch protection from a policy document, or final stage acceptance from CI alone.
+Do not infer browser correctness from build success, scientific correctness from visual plausibility, Figma synchronization from documentation alone, branch protection from a policy document, future dependency installation from ADR-008, or final stage acceptance from CI alone.
 
 ## 10. Context reset
 
