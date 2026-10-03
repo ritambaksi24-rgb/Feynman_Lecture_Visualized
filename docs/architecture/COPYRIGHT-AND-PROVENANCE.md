@@ -1,82 +1,47 @@
 # Copyright and Provenance
 
-## 1. Purpose
+This project uses *The Feynman Lectures on Physics* as its conceptual source of truth while creating an original explanatory and visualization layer.
 
-This project uses *The Feynman Lectures on Physics* as its conceptual source of truth while creating an original visualization and explanatory layer.
+This is a project policy, not legal advice.
 
-This document is a project policy, not legal advice.
+## Source relationship
 
-## 2. Source relationship
+The official Feynman Lectures website is a source reference for chapter and section structure:
 
-The official Feynman Lectures website is the source reference for chapter and section structure. The project should link to the relevant source rather than treating the source website as a content repository to be mirrored.
-
-Reference:
 https://www.feynmanlectures.caltech.edu/
 
-## 3. Public-content rule
+A source URL is provenance metadata; it is not a license to reproduce the source.
 
-Unless the project has a clear right or permission to reproduce material, the public repository and application should not redistribute:
+## Public-content policy
 
-- complete chapters or sections of the Feynman text;
+Unless the project has an explicit right or permission, do not distribute:
+
+- complete Feynman chapters or sections;
+- a scraped corpus of the source work;
 - scans or copies of book pages;
-- original Feynman figures or other copyrighted site assets;
-- a scraped corpus of the source work.
+- original copyrighted site figures;
+- source assets whose rights are not established.
 
-Short quotations may be used only where appropriate and legally permissible, with attribution and source linkage.
+Short quotations are used only where legally appropriate and with attribution/source linkage.
 
-## 4. Original project content
+## Original project material
 
-The project should prefer:
+Prefer original explanations, original diagrams, original simulations, original animations, independently derived scientific models, and properly licensed datasets/assets.
 
-- original explanations;
-- original diagrams;
-- original simulations;
-- original animations;
-- independently derived scientific models;
-- properly licensed external datasets/assets.
+## Provenance
 
-## 5. Provenance record
+Each content unit records its source relationship. Provenance does not grant reproduction rights.
 
-Each content unit should be able to identify its source relationship, for example:
+For every shipped external/generated asset record origin, creator/provider, license or permission basis, source URL where relevant, transformation history where relevant, and version/date.
 
-~~~json
-{
-  "source": {
-    "work": "The Feynman Lectures on Physics",
-    "volume": "I",
-    "chapter": "1",
-    "section": "1-2",
-    "url": "https://www.feynmanlectures.caltech.edu/I_01.html"
-  }
-}
-~~~
+Scientific results record model/version, parameters, units, dataset source, transformations, numerical method, and random seed where appropriate.
 
-The source relationship is metadata; it is not permission to reproduce the source material.
+## Rights review
 
-## 6. Asset provenance
+Material containing substantial third-party content is not public release material until its rights status is documented.
 
-Every shipped image, animation, dataset, font, icon, and third-party artifact must have a documented provenance/licensing status appropriate to the repository's intended distribution.
+## Publication review
 
-## 7. Rights review gate
+Before release, audit source text, figures, animation assets, datasets, fonts, icons, dependencies, generated artifacts, and repository history.
 
-A content item with substantial third-party material does not enter the public release set until its rights status is documented and, where needed, permission is obtained.
-
-## 8. Publication review
-
-Before public release, review:
-
-- source text;
-- figures/images;
-- animation assets;
-- datasets;
-- fonts/icons;
-- dependencies and their licenses;
-- generated artifacts.
-
-## 9. Change rule
-
-If a future requirement calls for substantial reproduction of Feynman source material, stop publication of that material and perform a dedicated rights review before implementation.
-
-## 10. Attribution
-
-The project should clearly attribute *The Feynman Lectures on Physics* as the conceptual source while distinguishing the project's original explanatory and visualization work.
+A request to reproduce substantial source text or original Feynman figures triggers dedicated rights review.
