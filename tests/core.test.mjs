@@ -5,7 +5,7 @@ import {integrate} from "../packages/computation/dist/index.js";
 import {parseExpression,evaluateExpression,ReactiveGraph,ExplorationStore} from "../packages/exploration/dist/index.js";
 import {DependencyGraph,DependencyCycleError} from "../packages/exploration/dist/index.js";
 import {InMemoryCapabilityRegistry,validateProvenance,FeynmanError} from "../packages/contracts/dist/index.js";
-import {assertRendererState} from "../packages/visualization/dist/index.js";
+import {assertRendererState,MemoryScientificRenderer} from "../packages/visualization/dist/index.js";
 
 test("harmonic oscillator matches analytic position and conserves energy",()=>{
   const model=createHarmonicOscillator({mass:1,springConstant:1});
@@ -30,14 +30,12 @@ test("dependency graph rejects cycles",()=>{
 });
 
 test("reactive graph invalidates dependents",()=>{
-  const graph=new ReactiveGraph();
-  graph.addValue("x",2);graph.addValue("y",3);
-  graph.addDerived("sum",["x","y"],v=>v.x+v.y);
-  graph.addDerived("double",["sum"],v=>2*v.sum);
+  const graph=new ReactiveGraph();graph.addValue("x",2);graph.addValue("y",3);
+  graph.addDerived("sum",["x","y"],v=>v.x+v.y);graph.addDerived("double",["sum"],v=>2*v.sum);
   assert.equal(graph.get("double"),10);graph.setValue("x",5);assert.equal(graph.get("double"),16);
 });
 
-test("exploration store publishes immutable snapshots",()=>{
+test("exploration store publishes snapshots",()=>{
   const store=new ExplorationStore();let received;
   const unsubscribe=store.subscribe(snapshot=>{received=snapshot});
   store.set("x",4);assert.equal(received.values.x,4);unsubscribe();
@@ -51,9 +49,10 @@ test("registry resolves exact versions",()=>{
   assert.throws(()=>registry.register({descriptor:{id:"renderer.svg",version:"1.0.0",kind:"renderer",description:"duplicate"},create:()=>value}),/Duplicate capability/);
 });
 
-test("provenance is validated",()=>{
+test("provenance round-trips and validates",()=>{
   const record={recordVersion:"1.0.0",sources:[{kind:"model",id:"model.harmonic-oscillator",version:"1.0.0"}],contentVersion:"prototype",modelVersion:"1.0.0",explorationVersion:"1.0.0",algorithm:"velocity-verlet",numericalSettings:{steps:100,dt:0.01},classification:"numerical-tolerance"};
-  validateProvenance(record);assert.throws(()=>validateProvenance({...record,sources:[]}),/Invalid provenance/);
+  const restored=JSON.parse(JSON.stringify(record));
+  validateProvenance(restored);assert.throws(()=>validateProvenance({...record,sources:[]}),/Invalid provenance/);
 });
 
 test("resource and cancellation errors are typed",()=>{
@@ -63,8 +62,11 @@ test("resource and cancellation errors are typed",()=>{
   assert.throws(()=>integrate(model,10,0.001,controller.signal),e=>e instanceof FeynmanError&&e.kind==="cancelled");
 });
 
-test("renderer-neutral state rejects malformed numeric series",()=>{
-  const good={visualizationId:"v",version:"1.0.0",title:"plot",dimensions:[],series:[{id:"s",label:"s",x:[0,1],y:[0,1]}]};
-  assert.doesNotThrow(()=>assertRendererState(good));
-  assert.throws(()=>assertRendererState({...good,series:[{id:"s",label:"s",x:[0],y:[Number.NaN]}]}),/non-finite/);
+test("renderer implementations share the renderer-neutral contract",()=>{
+  const state={visualizationId:"v",version:"1.0.0",title:"plot",dimensions:[],series:[{id:"s",label:"s",x:[0,1],y:[0,1]}]};
+  const renderer=new MemoryScientificRenderer();renderer.mount(null);renderer.render(state);
+  assert.deepEqual(renderer.renderedState,state);
+  assert.doesNotThrow(()=>assertRendererState(state));
+  assert.throws(()=>assertRendererState({...state,series:[{id:"s",label:"s",x:[0],y:[Number.NaN]}]}),/non-finite/);
+  renderer.destroy();assert.equal(renderer.renderedState,undefined);
 });

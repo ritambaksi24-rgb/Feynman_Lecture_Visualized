@@ -4,10 +4,6 @@ on:
     branches: ["architecture/step-2-foundation"]
   pull_request:
     branches: ["architecture/foundation-step-1"]
-
-permissions:
-  contents: write
-
 jobs:
   foundation:
     runs-on: ubuntu-latest
@@ -16,26 +12,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: python3 tooling/governance/validate-governance.py
-      - run: python3 tooling/tokens/validate_tokens.py
-      - run: python3 tooling/contracts/validate_contracts.py
-      - run: python3 tooling/architecture/validate_boundaries.py
-      - run: python3 tooling/security/validate_runtime_safety.py
-      - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
-      - name: Commit reproducible dependency lockfile
-        if: github.event_name == 'push'
-        run: |
-          if [ -f package-lock.json ] && [ -n "$(git status --porcelain -- package-lock.json)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add package-lock.json
-            git commit -m "chore: add reproducible dependency lockfile"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          fi
-      - run: npm run check
+          cache: npm
+      - run: npm ci
+      - run: npm run validate:governance
+      - run: npm run validate:tokens
+      - run: npm run validate:contracts
+      - run: npm run validate:architecture
+      - run: npm run validate:security
+      - run: npm run validate:accessibility
+      - run: npm run typecheck
+      - run: npm run test:core
+      - run: npm run build
+      - run: npm run validate:build
