@@ -2,7 +2,7 @@
 
 Status: IMPLEMENTED_PENDING_VERIFICATION
 Baseline commit: e35acff00a5c45d3509a62294bc24834374bad57
-Current implementation checkpoint: 6519ad6d5b2de14571e8c6774757144fa2098aa3
+Current implementation checkpoint: 4666a2e8a2c14f64506ca437f4b5facfc641650b
 
 ## Gate authority
 
@@ -12,7 +12,7 @@ This file is a stage-specific application of the permanent `docs/governance/QUAL
 
 The Step 2 implementation establishes an executable foundation, but verification has exposed additional governance, technology-boundary, and design-system quality work that must be resolved before acceptance.
 
-Technology decisions are now consolidated across ADR-005, ADR-006, and ADR-008. ADR-008 is the comprehensive inventory and adoption roadmap; it explicitly distinguishes foundation technologies from future candidates and non-selections.
+Technology decisions are now consolidated across ADR-005, ADR-006, and ADR-008. ADR-008 is the comprehensive inventory and adoption roadmap; it explicitly distinguishes foundation technologies from future candidates and non-selections. The direct-dependency manifest audit at this checkpoint found no third-party dependency absent from the inventory.
 
 ## Executed CI evidence
 
