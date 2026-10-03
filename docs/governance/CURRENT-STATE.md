@@ -2,6 +2,7 @@
 
 Purpose: This is the living project-state deliverable for the entire lifecycle of Feynman Lectures Visualized.
 
+It is not a Step 1.5-only document.
 It is not stage-specific.
 
 ## 1. Current stage
@@ -66,7 +67,7 @@ Known Critical defects: 0.
 
 Gate result: IMPLEMENTED_PENDING_VERIFICATION.
 
-No final score is assigned until all mandatory evidence is present. Progression remains blocked until the permanent QUALITY-GATE.md criteria are satisfied and this stage review records VERIFIED_PASS.
+No final score is assigned until all mandatory evidence is present. Progression remains blocked until the permanent QUALITY-GATE.md criteria are satisfied and the stage review records VERIFIED_PASS.
 
 ## 8. Forbidden assumptions
 
