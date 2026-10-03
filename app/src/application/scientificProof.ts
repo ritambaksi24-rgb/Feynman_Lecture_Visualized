@@ -1,7 +1,7 @@
 import type{ProvenanceRecord,VisualizationState}from"@feynman/contracts";
-import {validateProvenance}from"@feynman/contracts";
-import {runTrajectory}from"@feynman/computation";
-import {createHarmonicOscillator}from"@feynman/scientific-domain";
+import{validateProvenance}from"@feynman/contracts";
+import{runTrajectory}from"@feynman/computation";
+import{createHarmonicOscillator}from"@feynman/scientific-domain";
 
 export interface ScientificProofResult{
   readonly visualization:VisualizationState;
@@ -9,10 +9,7 @@ export interface ScientificProofResult{
   readonly energyFinal:number;
 }
 
-export async function executeHarmonicOscillatorProof(
-  initialPosition:number,
-  signal?:AbortSignal
-):Promise<ScientificProofResult>{
+export async function executeHarmonicOscillatorProof(initialPosition:number,signal?:AbortSignal):Promise<ScientificProofResult>{
   const model=createHarmonicOscillator({mass:1,springConstant:1},initialPosition);
   const provenance:ProvenanceRecord={
     recordVersion:"1.0.0",
@@ -29,12 +26,15 @@ export async function executeHarmonicOscillatorProof(
   };
   validateProvenance(provenance);
 
-  const result=await runTrajectory({
+  const baseRequest={
     requestId:"experiment.harmonic-oscillator.prototype",
     contract:{contractId:"compute.trajectory",contractVersion:"1.0.0"},
-    input:{model,steps:400,dt:0.02},
-    signal
-  });
+    input:{model,steps:400,dt:0.02}
+  } as const;
+  const result=signal===undefined
+    ? await runTrajectory(baseRequest)
+    : await runTrajectory({...baseRequest,signal});
+
   const trajectory=result.output;
   return{
     visualization:{
