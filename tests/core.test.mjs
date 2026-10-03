@@ -1,9 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createHarmonicOscillator } from "../.tsbuild/core/packages/scientific-domain/src/harmonic-oscillator.js";
-import { integrate } from "../.tsbuild/core/packages/computation/src/integrate.js";
-import { parseExpression, evaluateExpression } from "../.tsbuild/core/packages/exploration/src/expression.js";
-import { DependencyGraph, DependencyCycleError } from "../.tsbuild/core/packages/exploration/src/dependency-graph.js";
+import { createHarmonicOscillator } from "../packages/scientific-domain/dist/index.js";
+import { integrate } from "../packages/computation/dist/index.js";
+import { parseExpression, evaluateExpression } from "../packages/exploration/dist/index.js";
+import { DependencyGraph, DependencyCycleError } from "../packages/exploration/dist/index.js";
 
 test("harmonic oscillator conserves energy", () => {
   const model = createHarmonicOscillator({ mass: 1, springConstant: 1 });
