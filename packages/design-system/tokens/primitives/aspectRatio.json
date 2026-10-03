@@ -1,0 +1,17 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$type": "number",
+  "primitive": {
+    "aspectRatio": {
+      "square": {
+        "$value": 1
+      },
+      "landscape": {
+        "$value": 1.3333333333
+      },
+      "wide": {
+        "$value": 1.7777777778
+      }
+    }
+  }
+}

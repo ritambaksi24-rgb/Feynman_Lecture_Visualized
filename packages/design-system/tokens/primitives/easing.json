@@ -1,0 +1,36 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "primitive": {
+    "motion": {
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ]
+        },
+        "emphasized": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0.1,
+            1
+          ]
+        },
+        "linear": {
+          "$type": "cubicBezier",
+          "$value": [
+            0,
+            0,
+            1,
+            1
+          ]
+        }
+      }
+    }
+  }
+}

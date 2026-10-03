@@ -1,0 +1,62 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$type": "dimension",
+  "primitive": {
+    "sizing": {
+      "control": {
+        "height": {
+          "$value": {
+            "value": 40,
+            "unit": "px"
+          }
+        }
+      },
+      "font": {
+        "body": {
+          "$value": {
+            "value": 16,
+            "unit": "px"
+          }
+        },
+        "heading": {
+          "$value": {
+            "value": 48,
+            "unit": "px"
+          }
+        },
+        "metric": {
+          "$value": {
+            "value": 16,
+            "unit": "px"
+          }
+        },
+        "math": {
+          "$value": {
+            "value": 20,
+            "unit": "px"
+          }
+        }
+      },
+      "icon": {
+        "sm": {
+          "$value": {
+            "value": 16,
+            "unit": "px"
+          }
+        },
+        "md": {
+          "$value": {
+            "value": 20,
+            "unit": "px"
+          }
+        },
+        "lg": {
+          "$value": {
+            "value": 24,
+            "unit": "px"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "primitive": {
+    "typography": {
+      "body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{primitive.font.family.body}",
+          "fontSize": "{primitive.sizing.font.body}",
+          "fontWeight": "{primitive.font.weight.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "px"
+          },
+          "lineHeight": 1.5
+        }
+      },
+      "heading": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{primitive.font.family.serif}",
+          "fontSize": "{primitive.sizing.font.heading}",
+          "fontWeight": "{primitive.font.weight.bold}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "px"
+          },
+          "lineHeight": 1.15
+        }
+      },
+      "metric": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{primitive.font.family.mono}",
+          "fontSize": "{primitive.sizing.font.metric}",
+          "fontWeight": "{primitive.font.weight.semibold}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "px"
+          },
+          "lineHeight": 1.25
+        }
+      },
+      "math": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{primitive.font.family.serif}",
+          "fontSize": "{primitive.sizing.font.math}",
+          "fontWeight": "{primitive.font.weight.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "px"
+          },
+          "lineHeight": 1.4
+        }
+      }
+    }
+  }
+}
