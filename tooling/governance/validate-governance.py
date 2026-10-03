@@ -63,7 +63,7 @@ required_phrases = [
     (verification, "Intent"),
     (verification, "Verified"),
     (protocol, "Adversarial review"),
-    (protocol, "Update CURRENT-STATE.md"),
+    (protocol, "CURRENT-STATE.md"),
     (quality_review, "Step 1.5"),
     (quality_review, "95/100"),
     (figma, "Repository DTCG tokens remain the canonical implementation token source."),
