@@ -95,6 +95,13 @@ required_rules = [
     (repository_workflow, "pull_request"),
     (repository_workflow, "merge_group"),
     (governance_workflow, "pull_request"),
+    (technology_inventory, "KaTeX"),
+    (technology_inventory, "Math.js"),
+    (technology_inventory, "Rete.js"),
+    (technology_inventory, "D3.js"),
+    (technology_inventory, "Three.js"),
+    (technology_inventory, "Playwright"),
+    (technology_inventory, "explicit non-selections"),
 ]
 
 for content, phrase in required_rules:
