@@ -2,41 +2,88 @@
 
 Status: IMPLEMENTED_PENDING_VERIFICATION
 Baseline commit: e35acff00a5c45d3509a62294bc24834374bad57
-Current implementation checkpoint: branch head
+Current implementation checkpoint: 5ee8ca7ada2165f042d09a69c56f97cb999dda7b
 
-## Implementation status
+## Implementation result
 
-The Step 2 implementation scope is established as a coherent foundation across repository/build, architecture enforcement, contracts/schemas, design tokens, Light/Dark themes, Base UI, Figma handoff, scientific domain, computation, exploration, mathematical-canvas definition, visualization, renderer abstraction, provenance, state/reactivity, accessibility, security, testing, performance, diagnostics, capability registry, authoring, technology records, developer documentation, and an end-to-end scientific prototype.
+The approved Step 2 implementation scope is established as a coherent executable foundation covering all 26 approved areas:
 
-## Executed evidence
+1. Repository / Build Foundation
+2. Architecture Enforcement
+3. Contract & Schema Infrastructure
+4. Design Token System
+5. Light / Dark Themes
+6. Base UI Foundation
+7. Figma Foundation
+8. Scientific Domain Foundation
+9. Computation Foundation
+10. Scientific Exploration Engine Kernel
+11. Mathematical Canvas Foundation
+12. Scientific Visualization Foundation
+13. Renderer Abstraction
+14. First Renderer Proof
+15. Scientific Data / Provenance
+16. State / Reactivity
+17. Accessibility
+18. Security
+19. Testing Infrastructure
+20. Performance Infrastructure
+21. Diagnostics / Failure Handling
+22. Capability Registry
+23. Authoring Tooling
+24. Technology ADRs
+25. Developer Documentation
+26. End-to-End Scientific Prototype
 
-The latest successful CI checkpoint established that:
+## Executed CI evidence
 
-- governance validation passes;
-- DTCG token validation passes across 19 token files;
-- contract/schema validation passes;
-- architecture boundary validation passes;
-- runtime safety validation passes;
-- dependency installation succeeds;
-- the core TypeScript build and test pipeline is wired;
-- the Step 2 implementation is continuously checked by PR and branch workflows.
+The latest Step 2 foundation workflow for checkpoint 5ee8ca7ada2165f042d09a69c56f97cb999dda7b passed all configured checks.
 
-## Evidence still required for final gate
+Workflow run: 37145979192
+Result: success
 
-The stage is not marked VERIFIED_PASS because the final acceptance evidence must still include:
+The run verified:
 
-- final CI on the exact accepted review checkpoint after all implementation changes;
-- browser interaction review of the built application;
-- manual accessibility review;
-- a second concrete renderer substitution test;
-- provenance reconstruction/round-trip test;
-- direct Figma variable/file reconciliation;
-- final adversarial architecture review.
+- npm ci
+- permanent governance validation
+- DTCG token validation across 19 token files
+- contract/schema validation
+- architecture boundary validation
+- runtime-safety validation
+- application accessibility baseline validation
+- TypeScript project-reference compilation
+- 9 core scientific/infrastructure tests
+- 1 performance budget test
+- production application build
+- built-output smoke validation
 
-## Gate rule
+PR validation on the same checkpoint also passed:
+- Step 2 foundation PR workflow: 37145982273 — success
+- Governance Validation: 37145982268 — success
 
-No final score is assigned while mandatory evidence is missing. Progression requires >=95/100, zero unresolved Critical defects, and sufficient evidence for every mandatory criterion under the permanent QUALITY-GATE.md.
+## Additional review evidence
 
-## Verification boundary
+STEP-2-ADVERSARIAL-ARCHITECTURE-REVIEW.md records the adversarial architecture review. No Critical architectural defect was found.
 
-Passing CI validates the executable checks it runs. It does not by itself certify the complete Step 2 stage gate.
+The review verified package boundary direction, scientific/UI separation, renderer neutrality, safe expression handling, state/reactivity structure, provenance handling, capability resolution, and token-generation naming normalization.
+
+## Mandatory final-gate evidence still missing
+
+The final Step 2 gate is intentionally not closed. Three evidence items remain:
+
+1. Browser interaction review of the built prototype.
+2. Manual browser/assistive-technology accessibility review.
+3. Direct reconciliation against a concrete Figma file and its variables/components.
+
+These are verification/evidence dependencies, not known implementation failures.
+
+## Gate decision
+
+No final score is assigned until the remaining evidence is collected.
+
+The permanent QUALITY-GATE.md requires:
+- score >=95/100;
+- zero unresolved Critical defects;
+- sufficient evidence for every mandatory criterion.
+
+Until those conditions are recorded here, Step 2 remains IMPLEMENTED_PENDING_VERIFICATION and progression to Step 3 is blocked.
