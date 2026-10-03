@@ -1,89 +1,80 @@
 # 10 — Data-Flow Rules
 
-## Canonical flow
+## 1. Canonical flow
 
 ~~~text
 Source Reference
-      ↓
+   ↓
 Content Data
-      ↓
-Exploration Definition
-      ↓
+   ↓
 Scientific Configuration
-      ↓
+   ↓
 Scientific Computation
-      ↓
-Scientific State
-      ↓
+   ↓
+Derived State
+   ↓
 Visualization State
-      ↓
+   ↓
 Presentation
 ~~~
 
-## Canonical versus derived state
+## 2. One-way ownership
 
-Canonical state includes content definitions, model parameters, experiment configuration, and user-controlled exploration state.
+Each piece of state has one clear owner. Consumers receive values through explicit contracts rather than mutating upstream state directly.
 
-Derived state includes computed quantities, sampled trajectories, plot data, mesh buffers, camera transforms, and layout results.
+## 3. Content immutability
 
-Every derived node has an explicit dependency on its source.
+Published content definitions behave as immutable input during runtime.
 
-## Reactive dependency graph
+User interaction may select or parameterize content; it must not mutate the canonical chapter definition.
 
-~~~text
-parameters
-    ↓
-expressions / model inputs
-    ↓
-computed quantities
-    ↓
-plots / tables / visualizations
-~~~
+## 4. Scientific state
 
-Changing a parameter invalidates only affected graph nodes.
+Scientific state is represented independently from rendering state where feasible.
 
-## Ownership
+For example, particle positions are scientific state; mesh transforms and material instances are rendering state.
 
-Each mutable piece of state has one authoritative owner.
+## 5. Interaction
 
-## Content immutability
+Interaction events update domain or presentation state through explicit actions. Scientific mutations must not be hidden inside generic UI handlers.
 
-Canonical content is read-only during runtime.
+## 6. Derived data
 
-## Scientific state versus rendering state
+Derived values are computed from canonical state rather than copied into multiple unrelated stores. Caching is allowed when invalidation rules are explicit.
 
-Scientific state remains independent from mesh/material/canvas/rendering objects.
+## 7. URL and persistence
 
-## Interaction
+URL state and persisted preferences contain identifiers and parameters, not renderer object graphs.
 
-UI events modify exploration/application state through explicit actions. They do not call scientific algorithms ad hoc.
+## 8. Async computation
 
-## Async computation
+Long-running computations expose input, progress where meaningful, cancellation, success, and failure.
 
-Long-running computation returns explicit status:
+## 9. Error propagation
+
+Errors preserve context:
 
 ~~~text
-idle → running → complete
-             ↘ cancelled
-             ↘ failed
+scientific error
+  → computation result
+  → visualization error state
+  → accessible UI message
 ~~~
 
-## Persistence
+Do not swallow numerical or loading failures.
 
-Persist identifiers, parameters, preferences, and versioned configurations—not renderer object graphs.
+## 10. Serialization
 
-## URL state
+Persisted scientific configurations use explicit versioned schemas.
 
-URLs may encode stable content IDs and safe exploration parameters. Large scientific arrays and secrets do not belong in URLs.
+## 11. Reproducibility
 
-## Serialization
+A visualization generated from a scientific model must be reproducible from documented inputs and version information.
 
-Persisted/exchanged scientific and exploration data uses versioned schemas.
+## 12. Performance
 
-## Error propagation
+Avoid unnecessary conversions between representations. Prefer stable typed contracts over repeated serialization of large scientific arrays for trivial UI changes.
 
-Errors preserve domain context and become accessible application states.
+## 13. Data provenance
 
-## Reproducibility
-
-A saved exploration records model/content versions, parameter values, and random seeds where relevant.
+External datasets retain source, license, units, transformation steps, and relevant version/date metadata.

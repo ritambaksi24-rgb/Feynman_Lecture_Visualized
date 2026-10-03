@@ -1,165 +1,117 @@
 # 14 — Future Extensibility Tests
 
-## Purpose
+## 1. Purpose
 
-These tests challenge architecture boundaries against future requirements before those requirements exist.
+These tests challenge the architecture against future requirements before those requirements exist.
 
-## Core scenarios
+## 2. New chapter test
 
-### T1 — New chapter
+**Scenario:** Add Chapter 2 with a substantially different scientific vocabulary.
 
-Add Chapter 2 with new scientific concepts.
+Expected result: add new content, reuse chapter navigation and presentation infrastructure, add only genuinely new models and visualizations, and avoid duplicating the application shell.
 
-**Pass:** mostly new content/model/exploration/visualization definitions with shared application infrastructure.
+Failure: Chapter 2 requires copying Chapter 1 page architecture.
 
-**Fail:** copy Chapter 1 page architecture.
+## 3. New visualization engine test
 
-### T2 — New renderer
+**Scenario:** Add a renderer other than Three.js.
 
-Add a renderer other than Three.js.
+Expected result: implement a new renderer adapter/capability while reusing existing content and scientific model contracts.
 
-**Pass:** implement an adapter against the renderer contract.
+Failure: content files import Three.js APIs or the new renderer requires rewriting source content.
 
-**Fail:** content or scientific models import renderer code.
+## 4. New scientific model test
 
-### T3 — New mathematical backend
+**Scenario:** Add a numerical model with no existing UI equivalent.
 
-Replace the expression/plot engine.
+Expected result: the model is implemented and scientifically tested independently; a visualization consumes its state.
 
-**Pass:** exploration contracts remain stable.
+Failure: physics logic must be embedded in a React component.
 
-**Fail:** chapter content is rewritten around vendor APIs.
+## 5. New mathematical capability test
 
-### T4 — New scientific model
+**Scenario:** Add interactive geometry or symbolic manipulation.
 
-Add a numerical model without existing UI support.
+Expected result: the mathematical subsystem exposes a stable capability contract; existing chapter content remains renderer-independent.
 
-**Pass:** model is tested independently and connected to exploration/visualization.
+Failure: the new math engine becomes a global dependency of all chapters.
 
-**Fail:** physics logic is embedded in React.
+## 6. Theme test
 
-### T5 — Parameter reactivity
+**Scenario:** Add a visualization that runs in both themes.
 
-Change one model parameter.
+Expected result: Light and Dark modes remain legible without component-specific color hacks.
 
-**Pass:** dependent expressions, plots, tables, and visualizations update through the dependency graph.
+Failure: raw colors must be inserted into the visualization to recover visibility.
 
-**Fail:** duplicated manual synchronization is required.
+## 7. Localization test
 
-### T6 — Reproducible experiment
+**Scenario:** Add a second language for one chapter.
 
-Save and restore an experiment.
+Expected result: localized content shares the same scientific model and visualization IDs.
 
-**Pass:** same versions/parameters reconstruct the same result within tolerance.
+Failure: translation requires duplicating scientific implementation.
 
-### T7 — Theme
+## 8. Accessibility test
 
-Open the same exploration in Light and Dark.
+**Scenario:** Disable animation or use keyboard-only interaction.
 
-**Pass:** controls, equations, plots, annotations, and scientific scene remain legible without color hacks.
+Expected result: essential information remains understandable and controls remain operable.
 
-### T8 — Accessibility
+Failure: core educational content exists only inside pointer-driven animation.
 
-Use keyboard-only controls and reduced-motion settings.
+## 9. Data-source test
 
-**Pass:** core information and interaction remain available.
+**Scenario:** Replace an external dataset with a newer licensed dataset.
 
-### T9 — Localization
+Expected result: update the data adapter/provenance metadata without rewriting visualization components.
 
-Add another language.
+## 10. Performance test
 
-**Pass:** display content changes while model/exploration/visualization IDs remain stable.
+**Scenario:** A visualization grows from hundreds to millions of data points.
 
-### T10 — Dataset replacement
+Expected result: computation/rendering strategies can change independently; workers, GPU buffers, level-of-detail, sampling, or precomputation can be introduced without changing chapter content.
 
-Replace an external dataset with a newer licensed version.
+## 11. Figma alignment test
 
-**Pass:** update data adapter/provenance without rewriting visual encodings.
+**Scenario:** Change a global semantic token.
 
-### T11 — Large simulation
+Expected result: Figma tokens/components and application components can be updated systematically.
 
-Scale to millions of elements.
+Failure: each screen contains unique hardcoded style values.
 
-**Pass:** computation and rendering strategies can evolve independently.
+## 12. Dependency replacement test
 
-### T12 — HTTP service addition
+**Scenario:** Replace a foundational library.
 
-Add a server for saved experiments or remote computation.
+Expected result: affected adapters/components are isolated behind contracts; content and scientific models remain unchanged.
 
-**Pass:** internal contracts remain valid and the new service has an explicit external API contract.
+## 13. Publication test
 
-### T13 — HTTP service removal
+**Scenario:** Publish the repository and application publicly.
 
-Remove the server for a static deployment.
+Expected result: provenance is documented, source links are present, copyrighted material is not unintentionally redistributed, dependency licenses are tracked, and generated assets have known ownership/licensing.
 
-**Pass:** core reading and client-side scientific experiences remain functional.
+## 14. Architecture survival criterion
 
-### T14 — Dependency replacement
-
-Replace UI, renderer, or math dependency.
-
-**Pass:** affected adapters/foundation layers change while content/domain contracts remain intact.
-
-### T15 — Figma token change
-
-Change a semantic token.
-
-**Pass:** token reconciliation updates Figma/runtime systematically.
-
-### T16 — Failure injection
-
-Force numerical error, timeout, invalid input, cancellation, or renderer failure.
-
-**Pass:** explicit failure state is shown and fake/stale output is not silently substituted.
-
-### T17 — Contract evolution
-
-Add a backward-compatible persisted field.
-
-**Pass:** compatible readers continue to work.
-
-### T18 — Breaking contract change
-
-Change required structure or output meaning.
-
-**Pass:** version/migration policy is invoked.
-
-### T19 — Expression safety
-
-Submit malformed, pathological, or malicious expressions.
-
-**Pass:** parser/evaluator rejects or bounds them without arbitrary code execution.
-
-### T20 — Multi-view consistency
-
-Change one exploration parameter while calculator, graph, table, and 3D visualization are visible.
-
-**Pass:** all dependent views reflect the same evaluated snapshot/version.
-
-### T21 — Cancel and supersede
-
-Start a long-running simulation, change parameters, then start another.
-
-**Pass:** obsolete computation cannot overwrite current state.
-
-### T22 — Renderer failure isolation
-
-Break one renderer while other views are active.
-
-**Pass:** unaffected views remain functional and failure is explicit.
-
-## Survival criterion
-
-Healthy extensions are primarily:
+The preferred extension pattern is:
 
 ~~~text
-new content
-+ new schema
+new data
 + new model
-+ new computation
-+ new exploration definition
-+ new visualization
 + new adapter
++ new composition
 ~~~
 
-not page copying and special cases.
+rather than:
+
+~~~text
+copy old page
++ add special condition
++ add hardcoded styles
++ add renderer-specific logic
+~~~
+
+## 15. Gate relationship
+
+Every major new subsystem is evaluated against these tests before it is declared architectural infrastructure.

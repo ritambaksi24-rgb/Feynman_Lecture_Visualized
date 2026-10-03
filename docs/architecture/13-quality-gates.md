@@ -1,10 +1,10 @@
 # 13 — Quality Gates
 
-## Hard gate
+## 1. Hard gate
 
-No later stage starts until the active stage reaches **≥95/100** and has **zero unresolved critical defects**.
+No later stage starts until the active stage scores **at least 95/100** and has **zero unresolved critical defects**.
 
-## Step 1 rubric
+## 2. Scoring model
 
 | Area | Weight |
 | --- | ---: |
@@ -19,63 +19,64 @@ No later stage starts until the active stage reaches **≥95/100** and has **zer
 | Naming/organization | 5 |
 | **Total** | **100** |
 
-The rubric remains fixed for Step 1, while the evidence beneath each category may expand as architecture requirements expand.
+## 3. Interpretation
 
-## Gate levels
+- **95–100:** Pass.
+- **90–94.99:** Stop; improve and re-audit.
+- **<90:** Stop; substantial rework is required.
 
-- **95–100:** pass.
-- **90–94.99:** stop and remediate.
-- **<90:** substantial rework.
-- Any critical defect: fail regardless of score.
+A numerical score above 95 does not override a critical defect.
 
-## Critical defects
+## 4. Critical defects
 
-Examples:
+Examples include:
 
-- source material is redistributed without a rights basis;
-- scientific model depends on a renderer or React;
-- fabricated scientific data is presented as real;
-- Light/Dark support requires architectural rework;
-- exploration engine has multiple conflicting sources of truth;
-- stable contracts are undocumented;
-- schema/API versions are ambiguous or silently incompatible;
-- consumers depend on implementation internals;
-- unsafe arbitrary expression execution is possible;
-- dependency licensing/security blockers are ignored;
-- accessibility-critical interaction works only through pointer/hover;
-- runtime failure displays plausible scientific output;
-- Figma and code have uncontrolled competing token sources.
+- source/copyright boundary undefined for public content;
+- scientific model coupled directly to a renderer;
+- production visualization using fabricated scientific data without disclosure;
+- Light/Dark architecture absent;
+- content inseparable from page implementation;
+- foundational dependency creating uncontrolled coupling;
+- known licensing/security blocker ignored.
 
-## Evidence
+## 5. Evidence
 
-Evidence may include repository inspection, schema validation, type checking, contract tests, scientific tests, property-based tests, visual regression, accessibility tests, dependency/license audit, performance profiling, Figma review, and publication review.
+Scores are supported by repository inspection, architecture diagrams, tests, type checks, dependency analysis, design review, visual review, and scientific validation as applicable.
 
-## Gate procedure
+## 6. Gate procedure
 
 ~~~text
-Implement / revise
-      ↓
+Build
+  ↓
 Inspect
-      ↓
-Validate
-      ↓
-Adversarial review
-      ↓
+  ↓
+Test
+  ↓
 Score
-      ↓
+  ↓
+Identify defects
+  ↓
 Fix
-      ↓
+  ↓
 Re-score
-      ↓
+  ↓
 ≥95 + no critical defects
-      ↓
+  ↓
 Proceed
 ~~~
 
-## Regression
+## 7. Regression rule
 
-Changes to approved contracts, boundaries, scientific models, token authority, dependency strategy, or execution architecture reopen the relevant gate.
+A later change that materially alters a previous architectural decision reopens the relevant gate.
 
-## Score integrity
+## 8. Review independence
 
-Scores describe a stated revision only. A later revision requires a new audit.
+At least one review pass actively searches for failure modes rather than only confirming intended behavior.
+
+## 9. Quality categories
+
+Implementation gates may include functionality, architecture, scientific correctness, accessibility, performance, visual consistency, licensing/provenance, and maintainability.
+
+## 10. Definition of done
+
+Done means validated against the applicable gate, not merely merged or visually complete.

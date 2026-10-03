@@ -1,8 +1,12 @@
 # 11 — Naming Conventions
 
-## Stable identity
+## 1. General rule
 
-Stable identifiers use lowercase kebab-case:
+Names express domain meaning and remain stable enough to be referenced by content, documentation, design, and code.
+
+## 2. IDs
+
+Content and scientific model IDs use stable kebab-case identifiers:
 
 ~~~text
 volume-1
@@ -10,82 +14,79 @@ chapter-01
 section-1-2
 idea-molecular-motion
 model-brownian-motion
-exploration-diffusion
 visualization-particle-diffusion
-renderer-three
 ~~~
 
-## API and contract names
+IDs do not encode UI layout.
 
-Contract names express capability and semantics:
+## 3. Files
+
+Use kebab-case for content, configuration, and documentation files.
+
+Executable source follows the language ecosystem's conventions; React component files may use PascalCase when appropriate.
+
+## 4. Components
+
+Component names describe semantic responsibilities:
 
 ~~~text
-ScientificModel
-Computation
-Exploration
-Visualization
-Renderer
-ContentRepository
+ScientificParameterControl
+EquationBlock
+VisualizationPanel
+ChapterNavigation
 ~~~
 
-HTTP resources use noun-oriented paths when a server exists.
+Avoid generic names such as Thing, Box, or SectionComponent.
 
-## Files
+## 5. Tokens
 
-Documentation, content, configuration, and schema files use kebab-case.
+Token names describe meaning, not implementation.
 
-Language ecosystem conventions apply to executable source; React components may use PascalCase.
-
-## Tokens
-
-Semantic tokens express meaning:
+Good semantic names include:
 
 ~~~text
 color.text.primary
 surface.canvas
 visualization.axis.x
 visualization.phase.positive
-exploration.control.value
 ~~~
 
-Avoid implementation names such as blue-500 in semantic layers.
+Avoid implementation-specific names such as blue-500 or panel-gray in semantic layers.
 
-## Scientific identifiers
+## 6. Scientific variables
 
-Variables follow discipline conventions while avoiding ambiguous abbreviations. Units are encoded by types/schema or explicit metadata.
+Scientific names follow conventional discipline notation where useful, while implementation identifiers remain readable and unambiguous.
 
-## Functions
+Use explicit units in types or naming where required.
 
-Functions describe actions or calculations:
+## 7. Functions
+
+Function names express actions or calculations:
 
 ~~~text
-evaluateExpression()
 calculateDiffusionCoefficient()
-advanceSimulation()
+integrateTrajectory()
 deriveVelocity()
-mapScientificState()
+mapParticleStateToVisuals()
 ~~~
 
-## Events
+## 8. Booleans
 
-Events describe domain occurrences:
+Boolean names read as predicates: isPlaying, isLoading, hasError, canReset.
+
+## 9. Renderer identifiers
+
+Renderer names identify capabilities:
 
 ~~~text
-parameter.changed
-simulation.started
-simulation.completed
-simulation.failed
-theme.changed
+three-js
+math-canvas
+svg
+manim
 ~~~
 
-## Version fields
+They must not leak into content identifiers.
 
-Use explicit schemaVersion, modelVersion, apiVersion, and visualizationVersion fields. Versions are independent and must not be conflated.
+## 10. Naming change rule
 
-## Renderer leakage
-
-Content IDs must not contain renderer technology names.
-
-## Renaming
-
-Renaming a stable content/model/contract ID is a migration, not a cosmetic change.
+Renaming a stable content ID or scientific model ID is a migration, not a cosmetic refactor, because references may exist outside source code.
