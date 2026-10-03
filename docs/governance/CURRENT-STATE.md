@@ -88,9 +88,9 @@ Independent verification recorded: governance workflow run `37140661017` passed 
 
 **Verification boundary:** governance structure and agent/design-agent operating rules only. No application build, runtime scientific validation, performance validation, or full visual validation is claimed.
 
-## Forbidden next steps until gate passes
+## Next-stage constraints
 
-- Do not begin Step 2 implementation.
+- Step 1.5 is verified; Step 2 implementation must still follow the next-stage gate and change protocol.
 - Do not add application features merely because the governance documents exist.
 - Do not treat Figma AI output as architecture approval.
-- Do not mark Step 1.5 VERIFIED without reviewing the actual diff and executing governance validation.
+- Any material governance change reopens the Step 1.5 gate.

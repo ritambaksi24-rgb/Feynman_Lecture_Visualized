@@ -2,8 +2,8 @@
 
 **Stage:** Step 1.5 — AI-Resilient Project Governance  
 **Status:** VERIFIED_PASS  
-**Baseline:** \`3eba527682f6875d760078b84a2ac6a4e89d40fc\`  
-**Current checkpoint:** \`ca96b48d6eaf677f40d47c0cc6277ed0022694f6\`
+**Baseline:** `3eba527682f6875d760078b84a2ac6a4e89d40fc`  
+**Verified governance checkpoint:** `8fb7241ad6608d35e2209eb5bc16a3e4f3da9e1f`
 
 ## Scope
 
@@ -17,7 +17,7 @@ This review evaluates the repository governance control plane introduced by Step
 - Consistency inspection of source-of-truth, quality-gate, Figma-agent, decision, verification, and change-protocol rules.
 - Automated governance validator included in \`tooling/governance/validate-governance.py\`.
 - GitHub Actions workflow included in \`.github/workflows/governance.yml\`.
-- Independent workflow execution remains a required acceptance evidence item for final verification of this stage.
+- Independent workflow execution was completed successfully in GitHub Actions run `37140661017`.
 
 ## Scoring
 
@@ -44,7 +44,7 @@ The review is marked **VERIFIED_PASS** because all conditions below are now evid
 4. No unresolved Critical defect exists.
 5. The independently assigned score is at least 95/100.
 6. \`CURRENT-STATE.md\` records the evidence and final commit.
-7. Step 2 remains blocked until these conditions are met.
+7. Step 2 is governed by its own next-stage quality gate; any material Step 1.5 governance change reopens this gate.
 
 ## Important limitation
 
