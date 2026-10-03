@@ -8,121 +8,65 @@ It is not stage-specific.
 ## 1. Current stage
 
 Stage: Step 2 — Implementation Foundation
-Status: IN_PROGRESS
+Status: IMPLEMENTED_PENDING_VERIFICATION
 Branch: architecture/step-2-foundation
-Baseline commit: e35acff00a5c45d3509a62294bc24834374bad57
+Current checkpoint: bce8e1192bf403adea14f2577a168ee638ba0529
+Previous accepted baseline: e35acff00a5c45d3509a62294bc24834374bad57
 Stage definition: STEP-2-PLAN.md
 Stage gate: STEP-2-QUALITY-REVIEW.md
 
 ## 2. Last accepted baseline
 
-Previous baseline: e35acff00a5c45d3509a62294bc24834374bad57
 Previous stage: Step 1.5 — AI-Resilient Project Governance
 Previous accepted result: 98/100, zero unresolved Critical defects.
 
-## 3. Current objective
+## 3. Step 2 implementation state
 
-Establish the first executable implementation foundation without collapsing architectural boundaries.
+The approved Step 2 implementation scope is materially established across all listed foundation areas. The executable repository now contains package boundaries, contracts and schemas, DTCG token infrastructure, Light/Dark semantics, Base UI integration, Figma handoff contract, scientific domain, computation, exploration kernel, mathematical-canvas definition, visualization/renderer abstraction, renderer proofs, provenance, state/reactivity, accessibility/security/test/performance/diagnostic infrastructure, capability registry, authoring/tooling documentation, technology ADR, developer documentation, and the end-to-end scientific prototype.
 
-The approved scope is recorded in STEP-2-PLAN.md and follows the Step 2 implementation list.
+## 4. Executed verification evidence
 
-The stage is implemented incrementally and may not be marked VERIFIED_PASS until its stage gate is satisfied.
+Latest completed Step 2 CI for checkpoint bce8e1192bf403adea14f2577a168ee638ba0529:
+- npm ci: pass
+- governance validator: pass
+- token validator: pass (19 files)
+- contract/schema validator: pass
+- architecture validator: pass
+- runtime-safety validator: pass
+- accessibility baseline validator: pass
+- TypeScript project build: pass
+- core scientific tests: pass (9/9)
+- performance test: pass
+- application build: pass
+- built-output smoke validation: pass
 
-## 4. Active stage Definition of Done
+PR #2 CI on the same checkpoint also passed, and Governance Validation passed.
 
-The active stage uses:
-- STEP-2-PLAN.md for approved scope and sequencing;
-- STEP-2-QUALITY-REVIEW.md for concrete evidence, scoring, blockers, and final result;
-- QUALITY-GATE.md as the permanent acceptance method.
+## 5. Remaining acceptance evidence
 
-## 5. Verified accomplishments
+Step 2 is not VERIFIED_PASS yet because the final gate still requires:
+- browser interaction review of the built prototype;
+- manual accessibility review;
+- direct reconciliation against a concrete Figma file/variable set.
 
-Accepted foundations:
-- Step 1 foundational architecture specification.
-- Step 1.5 permanent AI-resilient governance.
-- Permanent quality-gate framework and reusable stage-gate template.
-- Figma AI project operating rules.
-- Governance validation workflow.
+The adversarial architecture review is complete with no Critical architectural defect found.
 
-Step 2 verified accomplishments:
-- implementation branch created from the accepted baseline;
-- executable package/domain boundaries added;
-- initial token, contract, computation, exploration, visualization, UI, tooling, and prototype foundations added;
-- CI governance and Step 2 validation jobs established.
-
-These are checkpoint facts only; they do not constitute final stage acceptance.
-
-## 6. Not yet verified / not yet implemented
-
-The following remain unverified until executed evidence is recorded:
-- reproducible dependency installation and committed lockfile;
-- complete build/typecheck;
-- complete token/reference validation against the full DTCG specification;
-- complete Light/Dark verification;
-- browser and accessibility verification;
-- scientific numerical/invariant validation;
-- expression security/resource-bound validation beyond static checks;
-- state/reactivity cancellation and invalidation evidence;
-- renderer substitution evidence;
-- provenance reconstruction evidence;
-- performance measurements;
-- complete Figma reconciliation;
-- final adversarial architecture review.
-
-## 7. Open defects
+## 6. Open defects
 
 Canonical source: DEFECT-LEDGER.md.
 
-Current Critical defects: 0 known at this checkpoint.
+Known Critical defects: 0.
 
-Any new Critical defect changes this state and blocks progression immediately.
+## 7. Gate
 
-## 8. Current gate record
+Gate result: IMPLEMENTED_PENDING_VERIFICATION.
 
-Gate: Step 2 stage-specific gate
-Result: IN_PROGRESS
-Critical defects: 0 known at this checkpoint
-Evidence record: STEP-2-QUALITY-REVIEW.md
+No score is assigned until all mandatory evidence is present. Progression is prohibited until VERIFIED_PASS under the permanent QUALITY-GATE.md.
 
-The permanent QUALITY-GATE.md defines the acceptance method.
+## 8. Forbidden assumptions
 
-## 9. Next permitted scope
+Do not infer browser correctness from build success, scientific correctness from visual plausibility, Figma synchronization from documentation, or final stage acceptance from CI alone.
 
-Implementation is permitted only within Step 2 scope recorded in STEP-2-PLAN.md.
+## 9. Context reset
 
-Subsequent stages remain blocked until Step 2 reaches VERIFIED_PASS.
-
-## 10. Forbidden assumptions
-
-Future contributors must not assume:
-- implementation files imply verified behavior;
-- package installation or builds succeeded without executed evidence;
-- DTCG validity without validation;
-- scientific correctness without model/invariant evidence;
-- renderer correctness from visual appearance alone;
-- Figma design intent is application or scientific truth;
-- the final Step 2 gate has passed before STEP-2-QUALITY-REVIEW.md records required evidence.
-
-## 11. State update protocol
-
-Update this file when:
-- Step 2 starts or its scope materially changes;
-- a major implementation checkpoint is verified;
-- a contract or architecture decision changes;
-- a Critical or Major defect changes status;
-- a stage gate is passed, blocked, or reopened.
-
-Every update must preserve traceability to the relevant commit, test, ADR, review, or evidence artifact.
-
-## 12. Context-reset rule
-
-A new agent must be able to answer:
-1. Where are we?
-2. What is verified?
-3. What is not verified?
-4. What defects are open?
-5. What gate applies?
-6. What is the permitted scope?
-7. What must not be assumed?
-
-If any answer cannot be recovered from the repository, update the state before continuing material work.
+A new agent must be able to recover the current stage, verified evidence, remaining evidence blockers, defects, gate state, and permitted scope from this file alone.
