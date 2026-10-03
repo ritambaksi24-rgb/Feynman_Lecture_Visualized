@@ -38,11 +38,19 @@ export interface VisualizationSeries{
   readonly y:readonly number[];
 }
 
+export interface VisualizationViewport{
+  readonly xMin:number;
+  readonly xMax:number;
+  readonly yMin:number;
+  readonly yMax:number;
+}
+
 export interface VisualizationState{
   readonly visualizationId:string;
   readonly version:string;
   readonly title:string;
   readonly dimensions:readonly VisualizationDimension[];
+  readonly viewport:VisualizationViewport;
   readonly series:readonly VisualizationSeries[];
   readonly provenance?:ProvenanceRecord;
 }

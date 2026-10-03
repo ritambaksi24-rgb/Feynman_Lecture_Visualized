@@ -5,7 +5,7 @@ import {integrate} from "../packages/computation/dist/index.js";
 import {parseExpression,evaluateExpression,ReactiveGraph,ExplorationStore} from "../packages/exploration/dist/index.js";
 import {DependencyGraph,DependencyCycleError} from "../packages/exploration/dist/index.js";
 import {InMemoryCapabilityRegistry,validateProvenance,FeynmanError} from "../packages/contracts/dist/index.js";
-import {assertRendererState,MemoryScientificRenderer} from "../packages/visualization/dist/index.js";
+import {assertRendererState,MemoryScientificRenderer,projectPoint} from "../packages/visualization/dist/index.js";
 
 test("harmonic oscillator matches analytic position and conserves energy",()=>{
   const model=createHarmonicOscillator({mass:1,springConstant:1});
@@ -50,8 +50,11 @@ test("resource and cancellation errors are typed",()=>{
   assert.throws(()=>integrate(model,10,0.001,controller.signal),e=>e instanceof FeynmanError&&e.kind==="cancelled");
 });
 test("renderer implementations share the renderer-neutral contract",()=>{
-  const state={visualizationId:"v",version:"1.0.0",title:"plot",dimensions:[],series:[{id:"s",label:"s",x:[0,1],y:[0,1]}]};
+  const state={visualizationId:"v",version:"1.0.0",title:"plot",dimensions:[],viewport:{xMin:0,xMax:2,yMin:-2,yMax:2},series:[{id:"s",label:"s",x:[0,1],y:[0,1]}]};
   const renderer=new MemoryScientificRenderer();renderer.mount(null);renderer.render(state);assert.deepEqual(renderer.renderedState,state);
+  assert.deepEqual(projectPoint(0,0,state.viewport),{x:20,y:220-95});
+  assert.deepEqual(projectPoint(2,2,state.viewport),{x:780,y:20});
+  assert.throws(()=>assertRendererState({...state,viewport:{xMin:1,xMax:1,yMin:-2,yMax:2}}),/viewport/);
   assert.throws(()=>assertRendererState({...state,series:[{id:"s",label:"s",x:[0],y:[Number.NaN]}]}),/non-finite/);
   renderer.destroy();assert.equal(renderer.renderedState,undefined);
 });

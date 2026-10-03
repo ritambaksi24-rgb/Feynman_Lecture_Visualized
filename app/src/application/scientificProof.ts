@@ -9,6 +9,10 @@ export interface ScientificProofResult{
   readonly energyFinal:number;
 }
 
+const TRAJECTORY_STEPS=400;
+const TRAJECTORY_DT=0.02;
+const POSITION_VIEWPORT={xMin:0,xMax:TRAJECTORY_STEPS*TRAJECTORY_DT,yMin:-2.2,yMax:2.2} as const;
+
 export async function executeHarmonicOscillatorProof(initialPosition:number,signal?:AbortSignal):Promise<ScientificProofResult>{
   const model=createHarmonicOscillator({mass:1,springConstant:1},initialPosition);
   const provenance:ProvenanceRecord={
@@ -21,7 +25,7 @@ export async function executeHarmonicOscillatorProof(initialPosition:number,sign
     modelVersion:model.version,
     explorationVersion:"1.0.0",
     algorithm:"velocity-verlet",
-    numericalSettings:{steps:400,dt:0.02},
+    numericalSettings:{steps:TRAJECTORY_STEPS,dt:TRAJECTORY_DT},
     classification:"numerical-tolerance"
   };
   validateProvenance(provenance);
@@ -29,7 +33,7 @@ export async function executeHarmonicOscillatorProof(initialPosition:number,sign
   const baseRequest={
     requestId:"experiment.harmonic-oscillator.prototype",
     contract:{contractId:"compute.trajectory",contractVersion:"1.0.0"},
-    input:{model,steps:400,dt:0.02}
+    input:{model,steps:TRAJECTORY_STEPS,dt:TRAJECTORY_DT}
   } as const;
   const result=signal===undefined
     ? await runTrajectory(baseRequest)
@@ -45,6 +49,7 @@ export async function executeHarmonicOscillatorProof(initialPosition:number,sign
         {id:"time",label:"Time",unit:"s"},
         {id:"position",label:"Position",unit:"m"}
       ],
+      viewport:POSITION_VIEWPORT,
       series:[{
         id:"position",
         label:"x(t)",
