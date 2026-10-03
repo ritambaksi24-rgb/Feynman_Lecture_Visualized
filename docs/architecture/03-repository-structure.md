@@ -1,6 +1,8 @@
 # 03 — Repository Structure
 
-## 1. Intended structure
+## Intended logical structure
+
+The project begins as a logical monorepo without forcing physical package extraction before it is justified.
 
 ~~~text
 /
@@ -11,14 +13,23 @@
 │   │       ├── chapter.json
 │   │       ├── sections/
 │   │       ├── ideas/
+│   │       ├── explorations/
 │   │       └── references/
 │   └── ...
+├── schemas/
+│   ├── content/
+│   ├── scientific/
+│   ├── exploration/
+│   ├── visualization/
+│   └── api/
 ├── packages/
 │   ├── scientific/
 │   ├── computation/
+│   ├── exploration/
 │   ├── visualization/
 │   ├── design-system/
-│   └── shared/
+│   ├── shared/
+│   └── adapters/
 ├── docs/
 │   ├── architecture/
 │   ├── decisions/
@@ -26,41 +37,29 @@
 │   ├── scientific/
 │   ├── visualization/
 │   └── design-system/
+├── data/
+│   ├── source/
+│   ├── processed/
+│   └── provenance/
 ├── public/
 ├── tooling/
 └── tests/
 ~~~
 
-This is an architectural target, not a command to create every directory immediately.
+## Organization rules
 
-## 2. Organization rule
+Directories express stable architectural boundaries, not temporary convenience.
 
-Directories represent stable architectural boundaries, not temporary convenience. Do not create a directory for a single file unless the directory expresses a real domain or future reuse boundary.
+Content remains separate from executable code.
 
-## 3. Content placement
+Machine-consumed data has explicit schemas.
 
-Content is stored separately from executable application code. A chapter must be discoverable without inspecting React source.
+The packages directory is a logical boundary first; physical npm package extraction happens only when build isolation, ownership, reuse, or dependency boundaries justify it.
 
-## 4. Shared packages
+Generated artifacts are distinct from source and reproducible where possible.
 
-Shared packages contain stable reusable capabilities. They must not become a miscellaneous dumping ground. Each package needs an explicit public API.
+public/ contains only distributable assets with known provenance/licensing.
 
-## 5. Documentation placement
+Markdown is used for human-readable specifications and ADRs. JSON/schema files are used for machine-consumed structured data.
 
-Architecture specifications live in docs/architecture/. Architecture Decision Records live in docs/decisions/.
-
-Long-lived contributor-facing specifications use Markdown. Machine-consumed content and tokens use structured formats and schemas.
-
-## 6. Generated output
-
-Generated files must be distinguishable from source files and should not be edited manually. Examples include generated scientific datasets, rendered animation assets, generated type definitions, and build output.
-
-## 7. Asset policy
-
-Every public asset must have known provenance and licensing status. Copyrighted Feynman figures or scans must not be copied into public/ merely because they are available online.
-
-## 8. Monorepo decision
-
-The repository should behave as a logical monolith initially. Physical package extraction is justified when it improves boundaries, independent testing, reuse, or build characteristics.
-
-We do not introduce a multi-package toolchain solely for appearance.
+The repository must not contain scraped Feynman corpora, unlicensed copied figures, secrets, dependency caches, or temporary exports.

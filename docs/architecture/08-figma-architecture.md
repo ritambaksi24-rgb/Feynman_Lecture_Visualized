@@ -1,87 +1,62 @@
 # 08 — Figma Architecture
 
-## 1. Role of Figma
+## Role
 
-Figma is the visual design and review environment for the Feynman Visualized Design System and product experiences.
+Figma is the design, prototyping, visual-review, and collaboration environment.
 
-It is not the source of truth for scientific calculations, chapter source material, or runtime application state.
+It is not the runtime source of scientific truth or the authoritative repository for chapter content.
 
-## 2. Token source relationship
+## Canonical token flow
 
-The repository's machine-readable token source is canonical for implementation.
+~~~text
+Repository DTCG token source
+        ↓
+Token translation/reconciliation
+        ↓
+Figma variables
+        ↓
+Components / patterns
+        ↓
+Visual review
+        ↓
+Implementation
+~~~
 
-Figma variables mirror or are explicitly reconciled with those tokens. A Figma-only variable must not silently become a runtime token.
+Figma changes must be reconciled into the repository token source before they become runtime design-system decisions.
 
-## 3. Figma hierarchy
+## Figma structure
 
 ~~~text
 Feynman Visualized
 ├── Foundations
-│   ├── Color
-│   ├── Typography
-│   ├── Spacing
-│   ├── Sizing
-│   ├── Radius
-│   ├── Border
-│   ├── Shadow / Elevation
-│   └── Motion
 ├── Components
 ├── Patterns
 ├── Scientific UI
+├── Exploration Workspace
 ├── Templates
-└── Chapter explorations
+└── Chapter Explorations
 ~~~
 
-## 4. Variables and modes
+## Variables and modes
 
-Figma variables represent token values and semantic relationships where practical.
+Figma variables use the same semantic vocabulary as repository tokens. Light and Dark are explicit modes.
 
-The design system supports Light and Dark modes from the beginning.
+## Components and variants
 
-Variables are organized so changing a theme does not require manually editing every component.
+Figma components correspond to implementation contracts where practical. Variants represent meaningful state/configuration rather than combinatorial explosion.
 
-## 5. Components and variants
+## Scientific visualization design
 
-Components correspond to implementation contracts where that mapping provides useful fidelity.
+Figma may specify layout, annotation, typography, controls, interaction choreography, visual hierarchy, and static scientific diagrams. Dynamic numerical rendering remains in the scientific visualization system.
 
-Variant axes represent meaningful states or configuration, not every conceivable combination.
+## Parity
 
-## 6. Scientific visualization design
+System components require visual review against implementation. Token changes require review of both Figma and runtime.
 
-Scientific visualizations may be composed in Figma for layout, annotation, typography, control placement, visual hierarchy, and explanatory diagrams.
+## Naming
 
-Actual dynamic scientific rendering belongs to the application visualization system.
+Figma variables, Figma components, tokens, code components, and documentation use the same semantic vocabulary where practical.
 
-## 7. Code alignment
+## Design-source rule
 
-Where available, Figma-to-code tooling should map named components and design tokens to repository implementations rather than generating anonymous one-off code.
-
-The mapping should be documented for system components whose visual and code contracts need maintained parity.
-
-## 8. Review workflow
-
-~~~text
-Design intent
-   ↓
-Figma component / pattern
-   ↓
-Implementation
-   ↓
-Visual comparison
-   ↓
-Accessibility review
-   ↓
-Scientific review where applicable
-~~~
-
-## 9. Naming alignment
-
-Names should remain consistent across Figma variables, Figma components, tokens, code components, and documentation. Where exact alignment is not practical, the mapping is documented.
-
-## 10. Two-theme review
-
-New components require Light and Dark review before completion. Scientific visualizations require theme review of both controls and scene content.
-
-## 11. Avoiding Figma debt
-
-Do not create Figma components solely for temporary exploration. Promote an artifact to the design system only when it expresses a stable reusable pattern.
+Figma is the source of design intent; repository token files are the canonical machine-readable implementation source. Neither replaces scientific or content sources of truth.

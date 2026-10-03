@@ -1,95 +1,59 @@
 # 06 — Visualization Architecture
 
-## 1. Goal
+## Goal
 
-Visualization is a first-class scientific subsystem capable of supporting multiple rendering strategies without coupling educational content or scientific models to one engine.
+Visualization is a renderer-independent scientific subsystem.
 
-## 2. Conceptual pipeline
+## Pipeline
 
 ~~~text
 Content
-   ↓
-Visualization Definition
-   ↓
+  ↓
+Exploration / Visualization Definition
+  ↓
 Scientific Inputs
-   ↓
-Computed State
-   ↓
-Visual Encoding
-   ↓
-Renderer Adapter
-   ↓
-GPU / Canvas / DOM / Video
-~~~
-
-## 3. Renderer families
-
-The architecture must be able to host Three.js/WebGL/WebGPU-style 3D rendering, 2D mathematical canvases, interactive plots, SVG/canvas diagrams, pre-rendered Manim-style educational animation assets, and future specialized scientific renderers.
-
-The renderer is a capability decision, not a chapter-level architecture decision.
-
-## 4. Renderer adapters
-
-A renderer adapter translates renderer-independent visual specifications into engine-specific objects.
-
-Example:
-
-~~~text
+  ↓
 Scientific State
-      ↓
-Particle Visualization Spec
-      ↓
-Three.js Adapter
+  ↓
+Visual Encoding
+  ↓
+Renderer Adapter
+  ↓
+2D / 3D / Canvas / SVG / Video / GPU
 ~~~
 
-The visualization specification should remain usable without importing Three.js.
+## Visualization definition
 
-## 5. Interactive mathematical canvas
+A definition identifies stable ID/version, required model/data contract, visual channels, interaction requirements, view configuration, accessibility description, theme roles, renderer capabilities, and performance class.
 
-The project may implement a GeoGebra-like mathematical environment for graphing, geometry, parameter exploration, and symbolic/numeric explanation.
+## Renderer adapters
 
-This is a dedicated subsystem with its own mathematical model and rendering contract, not a collection of chart components.
+Adapters translate renderer-independent definitions and scientific state into engine-specific representations.
 
-## 6. Manim integration
+## Scientific visual semantics
 
-Manim-style rendering is treated initially as an asset-generation or specialized animation pipeline. Rendered sequences should be reproducible from source definitions and metadata.
+Visual encodings have documented meaning. Position, scale, orientation, color, opacity, shape, motion, and annotation must not carry ambiguous meanings in one scene.
 
-The runtime application must not depend on Manim being installed in the browser.
+## Real scientific data
 
-## 7. Real scientific data
+Production values originate from analytical equations, numerical computation, measured/curated datasets with provenance, or documented educational approximations. Fabricated placeholder values are prohibited.
 
-Visualized values must originate from analytical formulas, numerical computation, measured datasets with provenance, or explicitly declared educational approximations.
+## Animation
 
-Mock values are prohibited in production scientific scenes.
+Simulation time is separate from presentation time. Animations have explicit lifecycle and safe pause/reset behavior.
 
-## 8. Time and animation
+## Performance
 
-Animation uses a documented timeline/state model rather than arbitrary timer chains. Simulation time and presentation time must be distinguishable.
+Renderers consume derived state/buffers rather than recomputing expensive domain logic every frame. Large datasets may use workers, precomputation, instancing, GPU buffers, LOD, sampling, tiling, or streaming where scientifically honest.
 
-## 9. Camera and view state
+## Theme
 
-Camera configuration is presentation state. It must not be embedded in the scientific model.
+Semantic visualization roles drive renderer styling. Theme-specific raw literals require documented exception.
 
-## 10. Performance boundary
+## Tool roles
 
-Expensive computation belongs in suitable compute contexts, including workers or precomputation where required.
+Three.js is a browser visualization capability. Manim is an offline authoring/pre-render candidate. VisPy is optional Python scientific tooling/validation. Neither Manim nor VisPy is a mandatory browser dependency.
 
-The rendering loop must not repeatedly perform expensive scientific work when the result can be cached or computed incrementally.
+## Failure states
 
-## 11. Scientific visual semantics
-
-Color, opacity, scale, line weight, glyph shape, motion, and spatial position must have documented meaning.
-
-Where scientific meaning is represented by color, a complementary non-color cue should be used when needed for interpretation or accessibility.
-
-## 12. Theme compatibility
-
-Visualization roles map through semantic tokens so Light and Dark themes preserve scientific legibility.
-
-Renderer code consumes semantic visualization tokens rather than raw color literals.
-
-## 13. Error states
-
-A scientific visualization distinguishes valid state, loading, invalid parameters, numerical failure, and unavailable capability.
-
-A broken simulation must not silently display plausible-looking output.
+Renderers expose loading, invalid-input, unavailable-capability, numerical-failure, and runtime-failure states. They never silently substitute plausible fake scientific output.

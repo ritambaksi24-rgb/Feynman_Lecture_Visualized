@@ -1,81 +1,82 @@
 # 02 — System Boundaries
 
-## 1. Boundary map
-
-The system is divided into six primary domains:
+## Boundary map
 
 ~~~text
-Content
-   ↓
-Scientific Domain
-   ↓
-Computation
-   ↓
-Visualization
-   ↓
-Interaction
-   ↓
-Application Presentation
+                     CONTRACTS
+                        │
+                        ▼
+Content → Scientific Domain → Computation → Exploration → Visualization
+  │             │                │             │              │
+  └─────────────┴────────────────┴─────────────┴──────────────┘
+                              ↓
+                         Application
+                              ↓
+                         Presentation
 ~~~
 
-The Design System cuts across presentation and interaction surfaces, while Infrastructure provides shared technical capabilities.
+Design System spans application, interaction, and visual presentation. Infrastructure supports domains through narrow adapters.
 
-## 2. Content domain
+## Content domain
 
-Owns volumes, chapters, sections, ideas, original explanatory copy, source references, equations as content objects, visualization references, and educational objectives.
+Owns volumes, chapters, sections, ideas, educational objectives, source references, original explanatory content, and semantic references.
 
-Does not own React components, Three.js scenes, DOM event handling, or physics calculations.
+Must not own renderer code, UI event logic, or scientific algorithms.
 
-## 3. Scientific domain
+## Scientific domain
 
-Owns concepts, physical and mathematical models, variables, parameters, units, assumptions, transformations, and validation constraints.
+Owns concepts, mathematical/physical models, variables, parameters, units, assumptions, constraints, and model identity/version.
 
-Does not own visual styles, component layout, framework state, or renderer-specific scene graphs.
+Must not depend on React or rendering libraries.
 
-## 4. Computation domain
+## Computation domain
 
-Owns deterministic numerical procedures, analytical evaluation, simulation stepping, numerical data generation, validation, error bounds, and worker-friendly computation contracts.
+Owns numerical algorithms, analytical evaluation, simulation stepping, randomness policy, validation, worker execution, and derived scientific data.
 
-Does not own chapter copy, visual styling, or renderer-specific scene graphs.
+Must not own UI or visual styling.
 
-## 5. Visualization domain
+## Scientific Exploration domain
 
-Owns visual encodings, renderer-independent visualization specifications, scene composition, scientific-state-to-visual mapping, animation timelines, and view configuration.
+Owns interactive scientific/mathematical exploration semantics: expressions, dependency graphs, parameter bindings, calculation state, graphs, plots, tables, experiment configuration, simulation controls, derived quantities, snapshots, and reset.
 
-Does not own source text, core physical assumptions, or design-token definitions.
+It connects scientific models to interactive exploration without becoming a renderer.
 
-## 6. Interaction domain
+## Visualization domain
 
-Owns user input state, exploration controls, parameter manipulation, selection, playback control, and accessibility interaction semantics.
+Owns visual encodings, visualization specifications, scene/plot composition, animation timelines, and renderer adapters.
 
-Interaction state may alter a model's parameters but must not redefine the model.
+Must not define scientific truth.
 
-## 7. Application domain
+## Interaction domain
 
-Owns routing, navigation, page composition, session-level preferences, layout orchestration, and theme selection.
+Owns user input, selection, parameter editing, playback, manipulation, accessibility interaction, and interaction state.
 
-It assembles capabilities; it should not become the home for domain logic.
+It changes model inputs through explicit contracts.
 
-## 8. Design-system boundary
+## Application domain
 
-The design system owns tokens, primitives, accessible UI components, component states, interaction patterns, and layout primitives.
+Owns routing, navigation, layout composition, chapter loading, preferences, theme selection, and session-level orchestration.
 
-Scientific visualization components may consume design-system components but remain separate from ordinary UI primitives.
+It assembles capabilities; it does not contain their core logic.
 
-## 9. Figma boundary
+## Design System boundary
 
-Figma owns design intent and system representation: variables, components, variants, layouts, interaction specifications, and visual review artifacts.
+Owns tokens, UI primitives, components, interaction patterns, states, and design-system accessibility.
 
-Figma is not the runtime source of scientific truth.
+Scientific visualization and exploration components may compose these primitives.
 
-## 10. Infrastructure boundary
+## Figma boundary
 
-Infrastructure includes build tooling, testing, asset loading, worker orchestration, persistence adapters, and later justified observability/analytics.
+Figma is a design/review environment. Repository token files are canonical for runtime implementation. Figma variables mirror/reconcile rather than silently override runtime definitions.
 
-Infrastructure exposes narrow interfaces and remains replaceable.
+## Infrastructure boundary
 
-## 11. Boundary rule
+Build, testing, persistence, asset delivery, workers, observability, and adapters are infrastructure concerns.
 
-A dependency crossing a boundary must be intentional and one-directional wherever practical.
+## Contract boundary
 
-A lower layer must not import a higher-layer presentation implementation merely for convenience.
+Contracts are not a business domain; they are explicit interfaces at stable boundaries.
+
+## Dependency direction
+
+Prefer Presentation → Application → Domain capabilities → Shared primitives, with infrastructure behind adapters. Lower-level scientific modules must not import higher-level presentation modules.

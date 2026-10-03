@@ -1,15 +1,16 @@
 # 05 — Scientific Model Architecture
 
-## 1. Purpose
+## Purpose
 
-Scientific models are the authoritative computational representation of the physical or mathematical assumptions used by a visualization.
+A Scientific Model represents physical or mathematical semantics independently of user interface and rendering.
 
-## 2. Model contract
+## Model contract
 
-A model should expose, as appropriate:
+As applicable:
 
 ~~~text
-identity
+id
+version
 description
 variables
 parameters
@@ -19,61 +20,50 @@ initial conditions
 state
 evolution rule
 derived quantities
-validation constraints
+validity domain
+validation invariants
+randomness policy
+precision/tolerance
 ~~~
 
-The concrete TypeScript interface will be defined during implementation, but the responsibility boundary is fixed here.
-
-## 3. Separation of concerns
+## Separation
 
 ~~~text
-Scientific Model
+Model Semantics
       ↓
-Computation
+Computation Contract
       ↓
 Scientific State
       ↓
-Visualization Mapping
-      ↓
-Renderer
+Exploration / Visualization
 ~~~
 
-A model does not create meshes, DOM nodes, canvas elements, or UI controls.
+A model must not create React elements, DOM nodes, Three.js objects, canvas nodes, or Figma artifacts.
 
-## 4. Determinism
+## Mathematical semantics
 
-Where deterministic behavior is expected, identical inputs and configuration must yield reproducible results within a documented numerical tolerance.
+Expressions represent domain meaning rather than renderer-specific formulas.
 
-Randomized models must expose their random-source policy and support deterministic seeds for testing where scientifically meaningful.
+## Units
 
-## 5. Units
+Dimensional quantities carry explicit units or belong to a documented normalized system. Conversion is explicit.
 
-Physical quantities must carry explicit units or belong to a documented normalized/dimensionless system. The application must never silently mix incompatible units.
+## Numerical integrity
 
-## 6. Numerical integrity
+Production numerical models document algorithm, resolution/step size, stability/convergence considerations, valid domain, numerical tolerance, and expected failure modes.
 
-Every numerical model used in production documents numerical method, step size or resolution, convergence/stability considerations, expected error where meaningful, and valid parameter range.
+## Validation
 
-## 7. Analytical vs numerical paths
+Where feasible, compare numerical implementations with analytical solutions or known limiting behavior. Tests may include dimensional consistency, symmetry, conservation laws, limiting cases, monotonicity, asymptotics, convergence, and statistical behavior.
 
-When an analytical solution exists and is suitable, it should be available as a validation reference for numerical implementations.
+## Determinism
 
-## 8. Scientific validation
+Deterministic simulations are reproducible. Stochastic simulations expose seed/random-source policy when deterministic replay is appropriate.
 
-Tests should verify limiting cases, symmetries, conservation laws where applicable, dimensional consistency, expected qualitative behavior, and numerical convergence where applicable.
+## Versioning
 
-## 9. Model versioning
+Scientific model version is independent of content, API, and renderer versions. Output-semantic changes require a model version/migration.
 
-Changing a scientific model in a way that changes output semantics requires a documented model-version change or ADR.
+## Reuse
 
-## 10. Renderer independence
-
-The same scientific model should be capable of feeding multiple visualizations. A particle system, chart, and explanatory diagram may consume the same derived scientific state.
-
-## 11. No hidden constants
-
-Scientific constants and parameters must be named and centralized. Renderer code must not contain unexplained numerical constants that control scientific behavior.
-
-## 12. Scientific review
-
-A production scientific visualization requires a model review appropriate to its complexity. Validation evidence should be stored with the scientific documentation.
+One model may power multiple explorations, graphs, tables, scenes, and demonstrations.

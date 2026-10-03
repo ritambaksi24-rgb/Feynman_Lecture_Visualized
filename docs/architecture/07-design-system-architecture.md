@@ -1,91 +1,63 @@
 # 07 — Design-System Architecture
 
-## 1. Foundation
+## Foundation
 
-The initial open-source UI foundation is proposed as **shadcn/ui with Base UI primitives**, subject to implementation-stage verification and an ADR review. The project owns its application-level component source rather than treating the shadcn visual identity as the product identity.
+The proposed UI foundation is **shadcn/ui using Base UI primitives**, subject to implementation-stage verification. The project owns its visual identity and application-level component source.
 
-## 2. Layers
+## Layers
 
 ~~~text
-Design Tokens
-   ↓
-Foundation / Accessibility Primitives
-   ↓
+DTCG Token Source
+      ↓
+Semantic Theme Tokens
+      ↓
+Base UI / Foundation Primitives
+      ↓
 Feynman UI Components
-   ↓
+      ↓
 Patterns
-   ↓
+      ↓
 Scientific UI Compositions
-   ↓
+      ↓
 Chapter Experiences
 ~~~
 
-## 3. Token architecture
+## Token authority
 
-Tokens are organized into:
+Repository token files are the canonical implementation source. Figma variables mirror/reconcile against them. Generated CSS variables or TypeScript constants are derived artifacts.
 
-~~~text
-Primitive
-  ↓
-Semantic
-  ↓
-Component
-  ↓
-Scientific Visualization Roles
-~~~
+## Token layers
 
-Primitive tokens define values. Semantic tokens define meaning. Component tokens define component-specific relationships. Scientific visualization roles encode domain meaning.
+Primitive → Semantic → Component → Scientific Visualization Roles.
 
-## 4. Canonical token source
+Scientific roles express domain meaning rather than raw color names.
 
-The repository's machine-readable token source is the canonical token source for runtime implementation.
+## Themes
 
-Figma variables are a design-system representation synchronized from or explicitly reconciled with the repository token source. Figma is not permitted to become an untracked second source of truth.
+Light and Dark are first-class. Components do not require separate implementations for themes. Scientific visualization roles have theme-aware mappings.
 
-Any intentional Figma-first change must be reconciled back into the token source before implementation relies on it.
+## Components
 
-## 5. DTCG direction
+Components define semantics, states, accessibility behavior, composition API, and token relationships.
 
-The token source should follow the Design Tokens Community Group format and schema version adopted by the project.
+Scientific components reuse ordinary UI primitives rather than duplicating their behavior.
 
-Token sources must distinguish machine-readable source data from generated implementation output.
+## Accessibility
 
-## 6. Color
+Keyboard navigation, focus management, semantic labeling, reduced motion, contrast, and error states are part of component contracts.
 
-Color tokens support both Light and Dark themes. Scientific visualization color roles remain semantically stable even if underlying values differ by theme.
+## Mathematical UI
 
-Raw color literals in UI components are prohibited unless the value is an intentional non-themeable technical requirement and documented.
+Mathematical expressions use an appropriate math renderer when needed instead of forcing equation content through ordinary UI typography.
 
-## 7. Typography
+## Icons
 
-Typography is tokenized by semantic role, including interface text, headings, labels, metrics, mathematical text, and monospace/code.
+Icons come from the declared project icon source rather than ad hoc duplicated SVGs.
 
-Mathematical typography should use the mathematical renderer where appropriate rather than forcing all equations through ordinary UI typography.
+## Modularity
 
-## 8. Components
+Do not create a component for every markup fragment. Promote stable semantic, behavioral, accessibility, or repeated patterns. Split components when unrelated responsibilities or state ownership accumulate.
 
-Components define explicit states and accessibility behavior.
+## Visual quality
 
-Examples include Button, Dialog, Popover, Tooltip, Tabs, Select, Slider, Navigation, Panel, Data Display, and Form Controls.
-
-## 9. Scientific UI
-
-Scientific UI components may compose ordinary design-system components with visualization capabilities. A scientific parameter control should reuse the base Slider behavior rather than recreate it.
-
-## 10. Accessibility
-
-The design system provides consistent keyboard interaction, focus states, reduced-motion handling, contrast-aware themes, semantic labels, and disabled/loading/error states.
-
-## 11. Ownership
-
-The project controls token names, semantic meanings, component APIs, variants, and composition patterns.
-
-The open-source foundation supplies implementation primitives; it does not dictate the project's scientific visual language.
-
-## 12. Avoiding fragmentation
-
-A component is not created merely because a markup fragment repeats once. Create one when it expresses a stable semantic pattern, behavior, accessibility contract, or meaningful visual rule.
-
-## 13. Theme API
-
-Theme selection belongs to application/user preference state. Components consume tokens and should not contain theme-specific branching unless behavior genuinely differs.
+The design system should support a restrained, precise, premium scientific interface rather than a generic dashboard aesthetic.
