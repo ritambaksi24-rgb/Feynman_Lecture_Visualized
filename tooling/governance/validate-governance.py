@@ -102,6 +102,12 @@ required_rules = [
     (technology_inventory, "Three.js"),
     (technology_inventory, "Playwright"),
     (technology_inventory, "explicit non-selections"),
+    (technology_inventory, "shadcn/ui"),
+    (technology_inventory, "CodeMirror 6"),
+    (technology_inventory, "Storybook"),
+    (technology_inventory, "@testing-library/react"),
+    (technology_inventory, "MSW"),
+    (technology_inventory, "Comlink"),
 ]
 
 for content, phrase in required_rules:
