@@ -30,9 +30,7 @@ export function App():JSX.Element{
   const host=useRef<HTMLDivElement>(null);
   const renderer=useMemo(()=>new SvgScientificRenderer(),[]);
 
-  useEffect(()=>{
-    document.documentElement.dataset.theme=theme;
-  },[theme]);
+  useEffect(()=>{document.documentElement.dataset.theme=theme;},[theme]);
 
   useEffect(()=>{
     try{
@@ -47,7 +45,7 @@ export function App():JSX.Element{
 
   useEffect(()=>{
     if(!host.current||status!=="ready")return;
-    renderer.mount(host.current);
+    renderer.mount({container:host.current});
     renderer.render({
       visualizationId:"visualization.harmonic-oscillator",
       version:"1.0.0",
@@ -68,26 +66,22 @@ export function App():JSX.Element{
       <p className="eyebrow">Step 2 foundation proof</p>
       <h1>Scientific state, from model to renderer</h1>
       <p>A deterministic scientific model is computed independently, converted to renderer-neutral state, and consumed by an isolated renderer adapter.</p>
-
       <div className="controls">
         <label className="control">
           <span>Initial position</span>
           <input aria-label="Initial position" type="range" min="-2" max="2" step="0.1" value={initialPosition} onChange={event=>setInitialPosition(Number(event.target.value))}/>
           <output>{initialPosition.toFixed(1)} m</output>
         </label>
-
         <FeynmanButton type="button" tone="neutral" onClick={()=>setTheme(theme==="light"?"dark":"light")}>
           Use {theme==="light"?"dark":"light"} theme
         </FeynmanButton>
       </div>
-
       <div className="actions">
         <FeynmanButton type="button" onClick={()=>setInitialPosition(1)}>Reset experiment</FeynmanButton>
         <output aria-label="Initial position summary">x₀ = {initialPosition.toFixed(3)} m</output>
         <output aria-label="Energy drift">ΔE = {drift.toExponential(2)} J</output>
       </div>
     </header>
-
     <section className="proof-card" aria-labelledby="proof-title">
       <h2 id="proof-title">{status==="ready"?result.title:"Scientific computation error"}</h2>
       {status==="error"&&<p role="alert">{error}</p>}
