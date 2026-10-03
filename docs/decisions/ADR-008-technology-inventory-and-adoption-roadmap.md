@@ -26,6 +26,7 @@ This record centralizes that inventory so future agents do not infer architectur
 | TypeScript | Type system / implementation language | Selected for foundation |
 | Vite | Browser build and development | Selected for foundation |
 | Base UI | Headless accessible UI primitives | Selected for foundation |
+| shadcn/ui conventions | Component/composition conventions layered over Base UI and project-owned tokens | Selected design-system approach; not a separate runtime dependency source |
 | npm workspaces + package-lock.json | Repository/package management | Selected for foundation |
 | DTCG JSON + generated CSS | Canonical design-token implementation | Selected for foundation |
 | Project-owned CSS | Component/application styling | Selected for foundation |
@@ -53,6 +54,7 @@ These technologies are approved as implementation capabilities, but they are not
 | WebGL | Browser GPU capability for rendering | Capability layer for renderer implementations |
 | WebGPU | Future GPU capability | Adopt only when browser support and workload evidence justify it |
 | OffscreenCanvas | Worker-side rendering/transfer optimization | Candidate optimization for measured rendering bottlenecks |
+| Comlink | RPC-style ergonomics over Web Worker messaging | Candidate when worker orchestration becomes complex |
 
 ### C. Content, authoring, and scientific publishing — future
 
@@ -68,7 +70,13 @@ These technologies are approved as implementation capabilities, but they are not
 | IndexedDB | Browser persistence for local experiments/caches | Future storage mechanism if persistent local state is required |
 | TanStack Query | Remote/server-state fetching, caching and synchronization | Candidate only after a server/remote-data requirement exists; never the exploration-state authority |
 | GraphQL | Typed remote API/query layer | Candidate only if/when a backend and flexible content/data API are justified |
+| OpenTelemetry | Structured telemetry for a future backend/remote-compute system | Candidate only if distributed runtime services are introduced |
 | Mermaid | Developer/architecture diagrams and documentation | Documentation tooling; not scientific runtime visualization |
+| CodeMirror 6 | Structured expression/editor input surface | Candidate if expression authoring needs exceed native controls |
+| Storybook | Isolated design-system/component development, documentation, interaction and visual testing | Future design-system verification candidate |
+| @testing-library/react | User-facing React component/integration tests | Future UI testing candidate; not a test runner |
+| MSW | Deterministic HTTP/GraphQL/WebSocket mocking | Future remote-data testing candidate |
+| Style Dictionary | Design-token transformation/build tooling | Candidate only if custom DTCG generation becomes insufficient |
 
 ### D. Scientific authoring and validation — offline
 
